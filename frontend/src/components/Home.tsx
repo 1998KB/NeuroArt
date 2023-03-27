@@ -7,8 +7,6 @@ const Home = () => {
     return (
         <div>
             <p>Home</p>
-            <ImageCarousel/>
-            <About/>
         </div>
     );
 };
