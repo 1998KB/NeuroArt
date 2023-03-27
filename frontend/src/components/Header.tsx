@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <div>
             <p>Header</p>
-            <button onClick={() => nav("/home")}>fuck off</button>
+            <button onClick={() => nav("/home")}>fuck off NOW</button>
         </div>
     );
 };
