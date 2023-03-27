@@ -3,8 +3,25 @@
     padding: 0;
 }
 
+@font-face {
+    font-family: Poppins-Regular;
+    src: url("fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: Poppins-Light;
+    src: url("fonts/Poppins-Light.ttf");
+}
+
+@font-face {
+    font-family: Poppins-ExtraLight;
+    src: url("fonts/Poppins-ExtraLight.ttf");
+}
+
 body{
     background-color: rgba(0, 0, 0, 0.95);
     color: white;
+    font-family: Poppins-ExtraLight, sans-serif;
+    margin-top: 8em;
 }
 

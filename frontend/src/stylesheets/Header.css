@@ -1,0 +1,57 @@
+.header {
+    height: 7em;
+    /*border: solid white;*/
+    display: flex;
+    align-items: center;
+    padding-left: 2em;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.header__logo-img {
+    height: 4em;
+}
+
+.header__logo-name{
+    height: 3em;
+    margin-left: 0.5em;
+}
+
+.header__search-bar {
+    height: 2.5em;
+    width: 20%;
+    margin-left: 6em;
+    background-color: #373737;
+    color: white;
+    border: none;
+}
+
+.header__search-bar:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: white;
+    padding-left: 4em;
+    font-weight: lighter;
+    font-size: small;
+}
+
+.header__navigation {
+    margin-left: 13em;
+}
+
+.header__navigation > a {
+    color: white;
+    text-decoration: none;
+    margin-left: 2em;
+    font-size: large;
+}
+
+.header__navigation > a:hover {
+    color: white;
+    text-decoration: underline;
+}
