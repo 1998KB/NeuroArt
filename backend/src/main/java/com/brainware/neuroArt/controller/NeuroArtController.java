@@ -19,7 +19,7 @@ public class NeuroArtController {
     public ResponseEntity<String> getList(){
         Client client = neuroArtService.getCollectionOfUser();
         System.out.println(client);
-        return new ResponseEntity<>("Hey, Its Jorge!", HttpStatus.OK);
+        return new ResponseEntity<>("Hey!", HttpStatus.OK);
     }
 
 }
