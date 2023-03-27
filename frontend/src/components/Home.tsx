@@ -20,7 +20,6 @@ const Home = () => {
             <h1 className="home__motto">Explore Your Creativity</h1>
             <Link className='home__try-now' to='/generate'>Try Now</Link>
             <Link className='home__visit-our-gallery' to='/gallery'>Visit Our Gallery</Link>
-
         </div>
     );
 };
