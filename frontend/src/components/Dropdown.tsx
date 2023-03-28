@@ -3,11 +3,6 @@ import '../stylesheets/Dropdown.css'
 import Select, {CSSObjectWithLabel, OnChangeValue, OptionProps, Theme} from 'react-select';
 import {options1, options2, options3, options4, options5} from "../Options";
 
-
-
-
-
-
 interface Option {
     value: string,
     label: string

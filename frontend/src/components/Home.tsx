@@ -16,10 +16,12 @@ const Home = () => {
                 Aspernatur assumenda dolorum ex excepturi exercitationem expedita facere ipsam iure magni maiores, natus
                 odit quasi quo recusandae reiciendis rem repellat tempora velit. A corporis eveniet explicabo mollitia
                 optio, quaerat quo! Cupiditate eligendi excepturi pariatur quae quaerat quia unde.</p>
-            <img className='home__image' src={require('../components/Images/LogoImgWhite.png')}/>
+            <img className='home__image-wheel' src={require('../components/Images/LogoImgWhite.png')}/>
             <h1 className="home__motto">Explore Your Creativity</h1>
-            <Link className='home__try-now' to='/generate'>Try Now</Link>
-            <Link className='home__visit-our-gallery' to='/gallery'>Visit Our Gallery</Link>
+            <div className='home__link-div'>
+                <Link className='home__try-now' to='/generate'>Try Now</Link>
+                <Link className='home__visit-our-gallery' to='/gallery'>Visit Our Gallery</Link>
+            </div>
         </div>
     );
 };
