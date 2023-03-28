@@ -2,13 +2,16 @@ import React from 'react';
 import "../stylesheets/Form.css"
 import Dropdown from "./Dropdown";
 
+interface FormProps {
+    setPrompt: Function
+}
 
-const Form = () => {
+const Form = (props : FormProps) => {
 
     return (
         <div>
             <form>
-                <Dropdown/>
+                <Dropdown setPrompt={props.setPrompt}/>
             </form>
         </div>
     );
