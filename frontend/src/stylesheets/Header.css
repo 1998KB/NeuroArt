@@ -52,6 +52,10 @@
     .header__search-bar:focus {
         outline: none;
     }
+
+    a {
+        -webkit-tap-highlight-color: transparent;
+    }
 }
 
 @media screen and (min-width: 768px) {
