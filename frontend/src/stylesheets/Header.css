@@ -2,7 +2,7 @@
 
     .header {
         width: 100%;
-        border: solid white;
+        border-bottom: solid white;
         top: 0;
         position: fixed;
         z-index: 999;
@@ -29,16 +29,24 @@
         margin: 0 auto 0.5em;
         height: 2em;
         width: 11em;
+        padding-left: 2em;
+        padding-right: 1.5em;
     }
 
     .header__navigation {
-        margin-left: 1em;
+        margin-left: 0.5em;
+        margin-bottom: 0.5em;
     }
 
     .header__navigation > a {
         color: white;
         text-decoration: none;
         margin-left: 1em;
+    }
+
+    .header__navigation > a:hover {
+        color: white;
+        text-decoration: underline overline;
     }
 
     .header__search-bar:focus {
@@ -144,11 +152,6 @@
         text-decoration: none;
         margin-left: 1em;
         font-size: large;
-    }
-
-    .header__navigation > a:hover {
-        color: white;
-        text-decoration: underline;
     }
 
 }
