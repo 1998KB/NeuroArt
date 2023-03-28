@@ -1,11 +1,15 @@
 import React from 'react';
 import "../stylesheets/Form.css"
+import Dropdown from "./Dropdown";
 
 
 const Form = () => {
+
     return (
         <div>
-            <p>Form</p>
+            <form>
+                <Dropdown/>
+            </form>
         </div>
     );
 };
