@@ -15,7 +15,7 @@ const AppContainer = () => {
             <div>
                 <Routes>
                     <Route path="/generate" element={<Generate/>}/>
-                    <Route path="/" element={<Home/>}/>
+                    <Route path="/home" element={<Home/>}/>
                 </Routes>
             </div>
         </>
