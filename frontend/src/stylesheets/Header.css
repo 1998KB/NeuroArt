@@ -116,6 +116,7 @@
 
     .header__logo-img {
         height: 4em;
+        margin-left: 1em;
     }
 
     .header__logo-name{
