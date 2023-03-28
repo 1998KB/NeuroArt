@@ -1,10 +1,14 @@
 import React from 'react';
 import "../stylesheets/ImageContainer.css"
 
+interface ImageContainerProps {
+    image: string
+}
 
-const ImageContainer = () => {
+const ImageContainer = (props: ImageContainerProps) => {
     return (
         <div>
+            <img src={props.image}/>
             <p>Image Container</p>
         </div>
     );
