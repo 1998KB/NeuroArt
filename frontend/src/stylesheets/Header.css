@@ -154,5 +154,9 @@
         font-size: large;
     }
 
+    .header__navigation > a:hover {
+        color: white;
+        text-decoration: underline;
+    }
 }
 
