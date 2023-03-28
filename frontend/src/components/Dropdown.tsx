@@ -15,6 +15,7 @@ interface Option {
 
 interface DropdownProps {
     setPrompt: Function
+
 }
 
 const Dropdown = (props : DropdownProps) => {
