@@ -2,7 +2,7 @@ package com.brainware.neuroArt.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record UrlData(
+public record OpenApiUrlData(
         @JsonProperty("url") String url
 ) {
 }

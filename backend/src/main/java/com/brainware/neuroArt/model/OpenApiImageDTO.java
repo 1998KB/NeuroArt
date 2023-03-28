@@ -2,8 +2,8 @@ package com.brainware.neuroArt.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record ImageDTO(
+public record OpenApiImageDTO(
         @JsonProperty("created") long created,
-        @JsonProperty("data") UrlData[] data) {
+        @JsonProperty("data") OpenApiUrlData[] data) {
 }
 
