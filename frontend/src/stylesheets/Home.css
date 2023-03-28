@@ -18,6 +18,7 @@
         float: right;
         margin-top: 8em;
         width: 5em;
+        animation: rotation 5s infinite linear;
     }
 
     .home__link-div {
@@ -47,6 +48,15 @@
     .home__visit-our-gallery {
         margin-left: 2em;
         margin-top: 0.5em;
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(359deg);
+        }
     }
 }
 
