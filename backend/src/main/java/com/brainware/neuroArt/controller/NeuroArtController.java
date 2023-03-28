@@ -1,7 +1,6 @@
 package com.brainware.neuroArt.controller;
 import com.brainware.neuroArt.model.Client;
 import com.brainware.neuroArt.model.OpenApiImageDTO;
-import com.brainware.neuroArt.model.PromptDTO;
 import com.brainware.neuroArt.service.NeuroArtService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -27,10 +26,10 @@ public class NeuroArtController {
     }
 
     @PostMapping("/generate")
-    public ResponseEntity<String> generateImage(@RequestBody PromptDTO promptDTO){
+    public ResponseEntity<String> generateImage(@RequestBody String prompt){
         OpenApiImageDTO openApiImageDTO;
         try {
-            openApiImageDTO = neuroArtService.getImage(promptDTO.prompt());
+            openApiImageDTO = neuroArtService.getImage(prompt);
         } catch (ExecutionException | InterruptedException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR , "Something went wrong");
         } catch (IllegalArgumentException e) {
