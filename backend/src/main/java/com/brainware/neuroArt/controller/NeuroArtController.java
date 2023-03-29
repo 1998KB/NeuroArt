@@ -26,7 +26,7 @@ public class NeuroArtController {
     @PostMapping("/generate")
     public ResponseEntity<String> generateImage(HttpServletResponse response, @RequestBody String prompt){
         response.setHeader("Access-Control-Allow-Origin",
-                "https://blue-sky-0e47a0403.2.azurestaticapps.net/generate");
+                "https://blue-sky-0e47a0403.2.azurestaticapps.net");
         OpenApiImageDTO openApiImageDTO;
         try {
             openApiImageDTO = neuroArtService.getImage(prompt);
