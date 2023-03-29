@@ -23,7 +23,7 @@ const Generate = () => {
 
     const handleGenerate = async () => {
         const response = await fetch(
-            "http://localhost:8080/generate",
+            "https://neuroart.azurewebsites.net/generate",
             {
                 method: "POST",
                 headers: {
