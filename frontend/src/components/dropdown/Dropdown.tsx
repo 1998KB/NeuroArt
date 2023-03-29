@@ -14,9 +14,6 @@ const Dropdown = (props: DropdownProps) => {
     let color: string;
     let landscape: string;
     let userInput: string;
-    // let prompt: string = '';
-
-
 
     const handleChangeLighting = (event: OnChangeValue<unknown, false>) => {
         if (event) {
@@ -71,7 +68,6 @@ const Dropdown = (props: DropdownProps) => {
         event.preventDefault();
         let promptMade = makePrompt()
         console.log(promptMade)
-        // if (prompt){
         if (promptMade){
             console.log("in dropdown :" + promptMade)
             setPrompt(promptMade)
@@ -97,7 +93,7 @@ const Dropdown = (props: DropdownProps) => {
     const customStyles = {
         option: (baseStyle: CSSObjectWithLabel, state: OptionProps) => ({
             ...baseStyle,
-            color: 'darkgrey'
+            color: 'black'
         })
     };
 
@@ -142,7 +138,7 @@ const Dropdown = (props: DropdownProps) => {
             <label>
                 Text input: <input type="text" onChange={event => handleUserInput(event)}/>
             </label>
-            <button onClick={event => handleGenerate(event)}>Generate</button>
+            <button onClick={event => handleGenerate(event)} disabled={props.isLoading}>Generate</button>
         </div>
     );
 };

@@ -5,5 +5,6 @@ export interface Option {
 
 export interface DropdownProps {
     setPrompt: Function
+    isLoading: boolean
 
 }
