@@ -1,5 +1,6 @@
 package com.brainware.neuroArt.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,6 +12,7 @@ import lombok.Data;
 @Data
 public class Image {
     @Id
+    @JsonIgnore
     private String id;
 
     @Column(nullable = false)

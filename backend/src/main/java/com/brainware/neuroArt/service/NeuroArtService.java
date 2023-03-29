@@ -1,6 +1,7 @@
 package com.brainware.neuroArt.service;
 
 import com.brainware.neuroArt.model.Client;
+import com.brainware.neuroArt.model.Image;
 import com.brainware.neuroArt.model.OpenApiImageDTO;
 import com.brainware.neuroArt.model.repository.ClientRepository;
 import com.brainware.neuroArt.model.repository.CollectionRepository;
@@ -68,5 +69,12 @@ public class NeuroArtService {
                 throw new IllegalArgumentException("Something went wrong with fetching");
             }
         }).get();
+    }
+    public Image saveImage(Image image) {
+        return imageRepository.save(image);
+    }
+
+    public void deleteImage(String id) {
+        imageRepository.deleteById(id);
     }
 }
