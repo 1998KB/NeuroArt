@@ -6,8 +6,6 @@ import com.brainware.neuroArt.model.repository.ClientRepository;
 import com.brainware.neuroArt.model.repository.CollectionRepository;
 import com.brainware.neuroArt.model.repository.ImageRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
-import lombok.ToString;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +33,9 @@ public class NeuroArtService {
         this.imageRepository = imageRepository;
         this.clientRepository = clientRepository;
         this.mapper = mapper;
+    }
+
+    public NeuroArtService() {
     }
 
     public Client getCollectionOfUser() {
