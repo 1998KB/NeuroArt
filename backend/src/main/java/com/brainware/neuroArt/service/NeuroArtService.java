@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 @Service
+@NoArgsConstructor
 public class NeuroArtService {
     @Value("${OPENAI_KEY}")
     String openAiKey;
