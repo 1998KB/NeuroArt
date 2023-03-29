@@ -51,6 +51,7 @@ const ImageCarousel = ({ items }: Props) => {
 
     return (
         <div className='imagecarousel' onTouchStart={onTouchStart} onMouseDown={onTouchStart}>
+
             {/*<p>Image Carousel</p>*/}
             {/*/!*<ImageCard/>*!/*/}
             <ul className='imagecarousel__list' style={{ transform: `translate3d(${offsetX}px, 0, 0)`}}>
