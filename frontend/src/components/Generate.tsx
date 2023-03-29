@@ -8,8 +8,12 @@ const Generate = () => {
     const [generatedImage, setGeneratedImage] = useState<string>('');
 
     useEffect(() => {
+        setPrompt('')
         return () => {
+            console.log("in the use effect")
+            console.log(prompt)
             if (prompt === ''){
+                console.log("in empty")
                 return
             }
             handleGenerate()
@@ -19,7 +23,7 @@ const Generate = () => {
 
     const handleGenerate = async () => {
         const response = await fetch(
-            "https://neuroart.azurewebsites.net/generate",
+            "http://localhost:8080/generate",
             {
                 method: "POST",
                 headers: {
@@ -34,6 +38,7 @@ const Generate = () => {
         }
 
         const url = await response.text();
+        console.log()
 
         setGeneratedImage( url );
     };
