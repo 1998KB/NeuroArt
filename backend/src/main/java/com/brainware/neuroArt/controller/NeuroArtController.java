@@ -49,7 +49,7 @@ public class NeuroArtController {
     public void deleteImage(@RequestParam String id){
         neuroArtService.deleteImage(id);
     }
-
+    
     @GetMapping("/gallery")
     public ResponseEntity<List<Image>> getGallery(){
         return new ResponseEntity<List<Image>>(neuroArtService.getAllImages(), HttpStatus.OK);

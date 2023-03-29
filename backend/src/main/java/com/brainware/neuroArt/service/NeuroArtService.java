@@ -79,8 +79,8 @@ public class NeuroArtService {
     public void deleteImage(String id) {
         imageRepository.deleteById(id);
     }
-
+    
     public List<Image> getAllImages() {
         return Streamable.of(imageRepository.findAll()).toList();
     }
-}
+  }  
