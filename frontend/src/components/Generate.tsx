@@ -9,14 +9,16 @@ const Generate = () => {
 
     useEffect(() => {
         setPrompt('')
+    })
+
+    useEffect(() => {
+        if (prompt === ''){
+            return;
+        }
+        handleGenerate();
         return () => {
             console.log("in the use effect")
             console.log(prompt)
-            if (prompt === ''){
-                console.log("in empty")
-                return
-            }
-            handleGenerate()
         };
     }, [prompt]);
 
