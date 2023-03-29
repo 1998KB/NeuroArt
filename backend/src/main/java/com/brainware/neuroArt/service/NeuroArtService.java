@@ -1,86 +1,77 @@
 package com.brainware.neuroArt.service;
 
+import com.brainware.neuroArt.controller.dto.ImageDTO;
+import com.brainware.neuroArt.controller.dto.UrlAndIdDto;
+import com.brainware.neuroArt.mapper.Mapper;
 import com.brainware.neuroArt.model.Client;
+import com.brainware.neuroArt.model.Collection;
 import com.brainware.neuroArt.model.Image;
-import com.brainware.neuroArt.model.OpenApiImageDTO;
 import com.brainware.neuroArt.model.repository.ClientRepository;
 import com.brainware.neuroArt.model.repository.CollectionRepository;
 import com.brainware.neuroArt.model.repository.ImageRepository;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-@Service
-public class NeuroArtService {
-    @Value("${openaikey}")
-    String openAiKey;
-    CollectionRepository collectionRepository;
-    ImageRepository imageRepository;
-    ClientRepository clientRepository;
-    ObjectMapper mapper;
+import static com.brainware.neuroArt.utils.ObjectMapperUtils.toJsonTree;
 
-    public NeuroArtService(@Autowired CollectionRepository collectionRepository,
-                           @Autowired ImageRepository imageRepository, @Autowired ClientRepository clientRepository) {
-        this.collectionRepository = collectionRepository;
-        this.imageRepository = imageRepository;
-        this.clientRepository = clientRepository;
-        this.mapper = new ObjectMapper();
-    }
+@Service
+@RequiredArgsConstructor
+public class NeuroArtService {
+
+    private final CollectionRepository collectionRepository;
+    private final ImageRepository imageRepository;
+    private final ClientRepository clientRepository;
+    private final ObjectMapper objectMapper;
+    private final ImgBBService imgBBService;
+    private final OpenApiService openApiService;
 
     public Client getCollectionOfUser() {
         return clientRepository.findById(1L).orElse(null);
     }
 
-    public OpenApiImageDTO getImage(String prompt) throws ExecutionException, InterruptedException {
+    public String getImageUrl(String prompt) throws ExecutionException, InterruptedException {
         if (prompt.isEmpty() || prompt.isBlank()) {
             throw new IllegalArgumentException("Prompt has to be valid");
         }
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.openai.com/v1/images/generations"))
-                .header("Authorization", "Bearer " + openAiKey)
-                .header("Content-Type", "application/json")
-                .method("POST", HttpRequest.BodyPublishers.ofString(String.format("""
-                        {
-                            "prompt": "%s"
-                        }
-                        """,prompt)))
-                .build();
-
-        CompletableFuture<HttpResponse<String>> responseFuture = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-        return responseFuture.thenApply(response -> {
-            int statusCode = response.statusCode();
-            if (statusCode != 200) {
-                throw new IllegalArgumentException("OpenAPI is not available right now");
-            }
-            String responseBody = response.body();
-            try {
-                return mapper.readValue(responseBody, OpenApiImageDTO.class);
-            } catch (IOException e) {
-                throw new IllegalArgumentException("Something went wrong with fetching");
-            }
-        }).get();
-    }
-    public Image saveImage(Image image) {
-        return imageRepository.save(image);
+        String responseBody = openApiService.generateImage(prompt);
+        JsonNode jsonTree = toJsonTree(objectMapper, responseBody, "Something went wrong with fetching");
+        return jsonTree.get("data").get(0).get("url").asText();
     }
 
+    public Image saveImage(ImageDTO imageDto) {
+        UrlAndIdDto urlAndIdDto = imgBBService.fetchPermanentUrl(imageDto.temporaryUrl());
+        Image image = Mapper.mapToImage(urlAndIdDto, imageDto);
+        image = imageRepository.save(image);
+        Collection collection = getSingleCollection();
+        addImageToCollectionAndSave(collection, image);
+        return image;
+    }
+
+    @Transactional
     public void deleteImage(String id) {
+        Collection collection = getSingleCollection();
+        collection.getImages().removeIf(image -> image.getId().equals(id));
+        collectionRepository.save(collection);
         imageRepository.deleteById(id);
     }
     
     public List<Image> getAllImages() {
         return Streamable.of(imageRepository.findAll()).toList();
     }
-  }  
+
+    private Collection getSingleCollection() {
+        return collectionRepository.findById(1L).get();
+    }
+
+    private void addImageToCollectionAndSave(Collection collection, Image image) {
+        collection.getImages().add(image);
+        collectionRepository.save(collection);
+    }
+}

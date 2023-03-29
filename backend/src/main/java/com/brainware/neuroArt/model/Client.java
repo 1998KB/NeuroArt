@@ -10,14 +10,13 @@ import java.util.List;
 @Table(name = "client")
 @Data
 public class Client {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String username;
-
     private String sub;
-
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Collection> collectionList = new ArrayList<>();
+
 }
