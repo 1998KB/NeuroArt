@@ -28,10 +28,8 @@ const Generate = () => {
         const response = await fetch(
             "https://neuroart.azurewebsites.net/generate",
             {
-                method: "POST",
-                headers: {
-                    "Content-Type": "text/plain",
-                },
+                method: 'POST',
+                headers: {'content-type': 'text/plain'},
                 body: prompt,
             }
         );

@@ -2,6 +2,8 @@ debug: true
 server:
   error:
     include-stacktrace: never
+  ssl:
+    enabled: false
 spring:
   sql:
     init:
@@ -29,4 +31,4 @@ logging:
       springframework:
         boot:
           autoconfigure: ERROR
-openai_key: ${OPENAI_KEY}
+OPENAI_KEY: ${OPENAI_KEY}

@@ -7,6 +7,7 @@ import com.brainware.neuroArt.model.repository.CollectionRepository;
 import com.brainware.neuroArt.model.repository.ImageRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +19,23 @@ import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-@AllArgsConstructor
 @Service
 public class NeuroArtService {
+    @Value("${OPENAI_KEY}")
+    String openAiKey;
     CollectionRepository collectionRepository;
     ImageRepository imageRepository;
     ClientRepository clientRepository;
     ObjectMapper mapper;
+
+    public NeuroArtService(CollectionRepository collectionRepository,
+                           ImageRepository imageRepository, ClientRepository clientRepository,
+                           ObjectMapper mapper) {
+        this.collectionRepository = collectionRepository;
+        this.imageRepository = imageRepository;
+        this.clientRepository = clientRepository;
+        this.mapper = mapper;
+    }
 
     public Client getCollectionOfUser() {
         return clientRepository.findById(1L).orElse(null);
@@ -37,7 +48,7 @@ public class NeuroArtService {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.openai.com/v1/images/generations"))
-                .header("Authorization", "Bearer " + System.getenv("OPENAI_KEY"))
+                .header("Authorization", "Bearer " + openAiKey)
                 .header("Content-Type", "application/json")
                 .method("POST", HttpRequest.BodyPublishers.ofString(String.format("""
                         {
