@@ -1,5 +1,6 @@
 package com.brainware.neuroArt.controller;
 import com.brainware.neuroArt.model.Client;
+import com.brainware.neuroArt.model.Image;
 import com.brainware.neuroArt.model.OpenApiImageDTO;
 import com.brainware.neuroArt.service.NeuroArtService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import java.util.concurrent.ExecutionException;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin({"http://localhost:3000", "https://blue-sky-0e47a0403.2.azurestaticapps.net"})
 public class NeuroArtController {
     NeuroArtService neuroArtService;
 
@@ -25,7 +27,6 @@ public class NeuroArtController {
     }
 
     @PostMapping("/generate")
-    @CrossOrigin({"http://localhost:3000", "https://blue-sky-0e47a0403.2.azurestaticapps.net"})
     public ResponseEntity<String> generateImage(@RequestBody String prompt){
         OpenApiImageDTO openApiImageDTO;
         try {
@@ -36,5 +37,15 @@ public class NeuroArtController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
         return new ResponseEntity<>(openApiImageDTO.data()[0].url(), HttpStatus.OK);
+    }
+
+    @PostMapping("/saveimage")
+    public ResponseEntity<Image> saveImage(@RequestBody Image image){
+        return new ResponseEntity<>(neuroArtService.saveImage(image), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/saveimage")
+    public void deleteImage(@RequestParam String id){
+        neuroArtService.deleteImage(id);
     }
 }
