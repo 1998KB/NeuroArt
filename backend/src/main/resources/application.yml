@@ -1,3 +1,4 @@
+openai_key: ${OPENAI_KEY}
 debug: true
 server:
   error:
@@ -11,7 +12,7 @@ spring:
       ansi:
         enabled: always
   datasource:
-    url: jdbc:postgresql://trumpet.db.elephantsql.com:5432/${PGSQL_DB}
+    url: jdbc:postgresql://dumbo.db.elephantsql.com:5432/${PGSQL_DB}
     username: ${PGSQL_USERNAME}
     password: ${PGSQL_PASSWORD}
     hikari:
