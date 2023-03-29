@@ -14,7 +14,7 @@ const Dropdown = (props: DropdownProps) => {
     let color: string;
     let landscape: string;
     let userInput: string;
-    let prompt: string = '';
+    // let prompt: string = '';
 
 
 
@@ -71,8 +71,11 @@ const Dropdown = (props: DropdownProps) => {
         event.preventDefault();
         let promptMade = makePrompt()
         console.log(promptMade)
-        if (prompt){
+        // if (prompt){
+        if (promptMade){
+            console.log("in dropdown :" + promptMade)
             setPrompt(promptMade)
+            console.log("after setting prompt")
         }
     }
 
