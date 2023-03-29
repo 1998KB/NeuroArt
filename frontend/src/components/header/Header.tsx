@@ -7,10 +7,10 @@ const Header = () => {
         <div>
             <header className='header'>
                 <a href='/'>
-                    <img className='header__logo-img' src={require('../components/Images/LogoImg.png')}/>
+                    <img className='header__logo-img' src={require('../../Images/LogoImg.png')}/>
                 </a>
                 <a href='/'>
-                    <img className='header__logo-name' src={require('../components/Images/LogoName.png')}/>
+                    <img className='header__logo-name' src={require('../../Images/LogoName.png')}/>
                 </a>
                 <input className='header__search-bar' placeholder='Search for anything'/>
                 <div className="header__navigation">
