@@ -21,9 +21,6 @@ import java.util.concurrent.ExecutionException;
 @AllArgsConstructor
 @Service
 public class NeuroArtService {
-    @Value("${openai_key}")
-    String openAiKey;
-
     CollectionRepository collectionRepository;
     ImageRepository imageRepository;
     ClientRepository clientRepository;
@@ -40,7 +37,7 @@ public class NeuroArtService {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.openai.com/v1/images/generations"))
-                .header("Authorization", "Bearer " + openAiKey)
+                .header("Authorization", "Bearer " + System.getenv("OPENAI_KEY"))
                 .header("Content-Type", "application/json")
                 .method("POST", HttpRequest.BodyPublishers.ofString(String.format("""
                         {

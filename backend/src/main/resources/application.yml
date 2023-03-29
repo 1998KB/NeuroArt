@@ -1,4 +1,3 @@
-openai_key: ${OPENAI_KEY}
 debug: true
 server:
   error:
@@ -30,3 +29,4 @@ logging:
       springframework:
         boot:
           autoconfigure: ERROR
+openai_key: ${OPENAI_KEY}
