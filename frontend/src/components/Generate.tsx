@@ -26,7 +26,7 @@ const Generate = () => {
     const handleGenerate = async () => {
         console.log("in fetch :" + prompt)
         const response = await fetch(
-            "https://blue-sky-0e47a0403.2.azurestaticapps.net/generate",
+            "https://neuroart.azurewebsites.net/generate",
             {
                 method: "POST",
                 headers: {
