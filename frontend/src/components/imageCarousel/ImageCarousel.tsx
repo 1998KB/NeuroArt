@@ -7,7 +7,8 @@ const ImageCarousel = () => {
     return (
         <div>
             <p>Image Carousel</p>
-            <ImageCard/>
+            {/*<ImageCard/>*/}
+
         </div>
     );
 };

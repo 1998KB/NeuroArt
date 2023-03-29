@@ -1,9 +1,10 @@
 import React from 'react';
 import "./AppContainer.css"
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Header from "../header/Header";
 import Home from "../home/Home";
 import Generate from "../generate/Generate";
+import Gallery from "../gallery/Gallery";
 
 
 const AppContainer = () => {
@@ -15,6 +16,7 @@ const AppContainer = () => {
             <div>
                 <Routes>
                     <Route path="/generate" element={<Generate/>}/>
+                    <Route path="/gallery" element={<Gallery/>}/>
                     <Route path="/" element={<Home/>}/>
                 </Routes>
             </div>
