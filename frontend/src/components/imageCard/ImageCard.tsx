@@ -1,5 +1,5 @@
 import React from 'react';
-import "../stylesheets/ImageCard.css"
+import "./ImageCard.css"
 
 
 const ImageCard = () => {

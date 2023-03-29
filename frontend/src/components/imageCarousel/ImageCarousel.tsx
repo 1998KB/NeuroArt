@@ -1,6 +1,6 @@
 import React from 'react';
-import "../stylesheets/ImageCarousel.css"
-import ImageCard from "./ImageCard";
+import "./ImageCarousel.css"
+import ImageCard from "../imageCard/ImageCard";
 
 
 const ImageCarousel = () => {

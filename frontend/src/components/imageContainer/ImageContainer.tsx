@@ -1,5 +1,5 @@
 import React from 'react';
-import "../stylesheets/ImageContainer.css"
+import "./ImageContainer.css"
 
 interface ImageContainerProps {
     image: string

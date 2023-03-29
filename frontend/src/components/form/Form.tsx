@@ -1,6 +1,6 @@
 import React from 'react';
-import "../stylesheets/Form.css"
-import Dropdown from "./Dropdown";
+import "./Form.css"
+import Dropdown from "../dropdown/Dropdown";
 
 interface FormProps {
     setPrompt: Function
