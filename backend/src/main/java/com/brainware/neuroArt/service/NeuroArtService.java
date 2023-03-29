@@ -6,6 +6,7 @@ import com.brainware.neuroArt.model.repository.ClientRepository;
 import com.brainware.neuroArt.model.repository.CollectionRepository;
 import com.brainware.neuroArt.model.repository.ImageRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -24,16 +25,14 @@ public class NeuroArtService {
     CollectionRepository collectionRepository;
     ImageRepository imageRepository;
     ClientRepository clientRepository;
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper mapper;
 
-    public NeuroArtService(CollectionRepository collectionRepository,
-                           ImageRepository imageRepository, ClientRepository clientRepository) {
+    public NeuroArtService(@Autowired CollectionRepository collectionRepository,
+                           @Autowired ImageRepository imageRepository, @Autowired ClientRepository clientRepository) {
         this.collectionRepository = collectionRepository;
         this.imageRepository = imageRepository;
         this.clientRepository = clientRepository;
-    }
-
-    public NeuroArtService() {
+        this.mapper = new ObjectMapper();
     }
 
     public Client getCollectionOfUser() {
