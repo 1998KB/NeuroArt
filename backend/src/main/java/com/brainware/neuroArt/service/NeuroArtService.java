@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class NeuroArtService {
-    @Value("${OPENAI_KEY}")
+    @Value("${openaikey}")
     String openAiKey;
     CollectionRepository collectionRepository;
     ImageRepository imageRepository;
