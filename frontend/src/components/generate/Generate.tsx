@@ -6,6 +6,7 @@ import ImageContainer from "../imageContainer/ImageContainer";
 const Generate = () => {
     const [prompt, setPrompt] = useState<string>('');
     const [generatedImage, setGeneratedImage] = useState<string>('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         setPrompt('')
@@ -24,6 +25,7 @@ const Generate = () => {
 
 
     const handleGenerate = async () => {
+        setIsLoading(true)
         console.log("in fetch :" + prompt)
         const response = await fetch(
             "https://neuroart.azurewebsites.net/generate",
@@ -32,7 +34,7 @@ const Generate = () => {
                 headers: {'content-type': 'text/plain'},
                 body: prompt,
             }
-        );
+        )
 
         if (!response.ok) {
             throw new Error(`Failed to generate image: ${response.status}`);
@@ -42,6 +44,7 @@ const Generate = () => {
         console.log()
 
         setGeneratedImage(url);
+        setIsLoading(false)
     };
 
     return (
@@ -55,8 +58,8 @@ const Generate = () => {
                 eos est ex in ipsam ipsum laboriosam laborum minima mollitia nostrum odit placeat quas quibusdam quos
                 tempora tempore vel velit voluptates voluptatum. At consequuntur dolor expedita explicabo hic itaque,
                 iusto magnam neque, obcaecati saepe sunt tempora?</p>
-            <Form setPrompt={setPrompt}/>
-            <ImageContainer image={generatedImage}/>
+            <Form setPrompt={setPrompt} isLoading={isLoading}/>
+            <ImageContainer image={generatedImage} isLoading={isLoading}/>
         </div>
     );
 };
