@@ -1,9 +1,9 @@
 import React from 'react';
-import "../stylesheets/AppContainer.css"
+import "./AppContainer.css"
 import {Routes, Route} from 'react-router-dom'
-import Header from "./Header";
-import Home from "./Home";
-import Generate from "./Generate";
+import Header from "../header/Header";
+import Home from "../home/Home";
+import Generate from "../generate/Generate";
 
 
 const AppContainer = () => {

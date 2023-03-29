@@ -1,8 +1,8 @@
 import React, {useRef, useState} from 'react';
-import '../stylesheets/Dropdown.css'
+import './Dropdown.css'
 import Select, {CSSObjectWithLabel, OnChangeValue, OptionProps, Theme} from 'react-select';
-import {options1, options2, options3, options4, options5} from "../Options";
-import {DropdownProps, Option} from "../interfaces";
+import {options1, options2, options3, options4, options5} from "./options";
+import {DropdownProps, Option} from "../../interfaces";
 
 
 const Dropdown = (props: DropdownProps) => {

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import "../stylesheets/Generate.css"
-import Form from "./Form";
-import ImageContainer from "./ImageContainer";
+import "./Generate.css"
+import Form from "../form/Form";
+import ImageContainer from "../imageContainer/ImageContainer";
 
 const Generate = () => {
     const [prompt, setPrompt] = useState<string>('');

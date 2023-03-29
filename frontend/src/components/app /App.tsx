@@ -1,7 +1,7 @@
 import React from 'react';
-import '../stylesheets/App.css'
+import './App.css'
 import {BrowserRouter} from 'react-router-dom'
-import AppContainer from "./AppContainer";
+import AppContainer from "../appContainer/AppContainer";
 
 function App() {
     return (

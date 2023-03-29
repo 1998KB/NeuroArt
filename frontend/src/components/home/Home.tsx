@@ -1,7 +1,7 @@
 import React from 'react';
-import "../stylesheets/Home.css"
-import ImageCarousel from "./ImageCarousel";
-import About from "./About";
+import "./Home.css"
+import ImageCarousel from "../imageCarousel/ImageCarousel";
+import About from "../about/About";
 import {Link} from "react-router-dom";
 
 const Home = () => {
