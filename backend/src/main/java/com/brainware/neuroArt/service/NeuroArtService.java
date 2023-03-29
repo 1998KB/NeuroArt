@@ -9,6 +9,7 @@ import com.brainware.neuroArt.model.repository.ImageRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -76,5 +78,9 @@ public class NeuroArtService {
 
     public void deleteImage(String id) {
         imageRepository.deleteById(id);
+    }
+
+    public List<Image> getAllImages() {
+        return Streamable.of(imageRepository.findAll()).toList();
     }
 }

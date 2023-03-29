@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -47,5 +48,10 @@ public class NeuroArtController {
     @DeleteMapping("/saveimage")
     public void deleteImage(@RequestParam String id){
         neuroArtService.deleteImage(id);
+    }
+
+    @GetMapping("/gallery")
+    public ResponseEntity<List<Image>> getGallery(){
+        return new ResponseEntity<List<Image>>(neuroArtService.getAllImages(), HttpStatus.OK);
     }
 }
