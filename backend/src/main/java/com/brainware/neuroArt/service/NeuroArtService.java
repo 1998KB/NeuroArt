@@ -37,7 +37,7 @@ public class NeuroArtService {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.openai.com/v1/images/generations"))
-                .header("Authorization", "Bearer " + System.getenv("OPENAI_KEY"))
+                .header("Authorization", "Bearer " + "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")
                 .header("Content-Type", "application/json")
                 .method("POST", HttpRequest.BodyPublishers.ofString(String.format("""
                         {
