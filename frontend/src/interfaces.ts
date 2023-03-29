@@ -8,3 +8,8 @@ export interface DropdownProps {
     isLoading: boolean
     setGenerated: Function
 }
+
+export type CarouselType = {
+    imageSrc: string,
+    imageAlt: string
+}
