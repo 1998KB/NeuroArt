@@ -2,7 +2,9 @@ package com.brainware.neuroArt.controller;
 import com.brainware.neuroArt.model.Client;
 import com.brainware.neuroArt.model.OpenApiImageDTO;
 import com.brainware.neuroArt.service.NeuroArtService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +25,7 @@ public class NeuroArtController {
     }
 
     @PostMapping("/generate")
-    @CrossOrigin("https://blue-sky-0e47a0403.2.azurestaticapps.net/generate")
+    @CrossOrigin({"http://localhost:3000", "https://blue-sky-0e47a0403.2.azurestaticapps.net"})
     public ResponseEntity<String> generateImage(@RequestBody String prompt){
         OpenApiImageDTO openApiImageDTO;
         try {
@@ -35,5 +37,4 @@ public class NeuroArtController {
         }
         return new ResponseEntity<>(openApiImageDTO.data()[0].url(), HttpStatus.OK);
     }
-
 }

@@ -9,26 +9,27 @@ const Generate = () => {
 
     useEffect(() => {
         setPrompt('')
+    })
+
+    useEffect(() => {
+        if (prompt === ''){
+            return;
+        }
+        handleGenerate();
         return () => {
             console.log("in the use effect")
             console.log(prompt)
-            if (prompt === ''){
-                console.log("in empty")
-                return
-            }
-            handleGenerate()
         };
     }, [prompt]);
 
 
     const handleGenerate = async () => {
+        console.log("in fetch :" + prompt)
         const response = await fetch(
-            "http://localhost:8080/generate",
+            "https://neuroart.azurewebsites.net/generate",
             {
-                method: "POST",
-                headers: {
-                    "Content-Type": "text/plain",
-                },
+                method: 'POST',
+                headers: {'content-type': 'text/plain'},
                 body: prompt,
             }
         );
