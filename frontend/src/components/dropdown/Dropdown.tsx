@@ -5,81 +5,81 @@ import {options1, options2, options3, options4, options5} from "./options";
 import {DropdownProps, Option} from "../../interfaces";
 
 
+
 const Dropdown = (props: DropdownProps) => {
-    let setPrompt = props.setPrompt;
-
-    let lighting: string;
-    let style: string;
-    let artist: string;
-    let color: string;
-    let landscape: string;
-    let userInput: string;
-
+    const [lightingOption, setLightingOption] = useState<Option>({value: 'Select ', label:'select'});
+    const [styleOption, setStyleOption] = useState<Option>({value: 'Select ', label:'select'});
+    const [artistOption, setArtistOption] = useState<Option>({value: 'Select ', label:'select'});
+    const [colorOption, setColorOption] = useState<Option>({value: 'Select ', label:'select'});
+    const [landscapeOption, setLandscapeOption] = useState<Option>({value: 'Select ', label:'select'});
+    const [userInput, setUserInput] = useState('');
+    const handleReset = () => {
+        setLightingOption({value: 'Select ', label:'select'});
+        setStyleOption({value: 'Select ', label:'select'});
+        setArtistOption({value: 'Select ', label:'select'});
+        setColorOption({value: 'Select ', label:'select'});
+        setLandscapeOption({value: 'Select ', label:'select'});
+        setUserInput('');
+    };
     const handleChangeLighting = (event: OnChangeValue<unknown, false>) => {
         if (event) {
-            lighting = (event as Option).value
+            setLightingOption(event as Option);
         }
     };
     const handleChangeStyle = (event: OnChangeValue<unknown, false>) => {
         if (event) {
-            style = (event as Option).value
+            setStyleOption(event as Option);
         }
     };
     const handleChangeArtist = (event: OnChangeValue<unknown, false>) => {
         if (event) {
-            artist = (event as Option).value
+            setArtistOption(event as Option);
         }
     };
     const handleChangeColor = (event: OnChangeValue<unknown, false>) => {
         if (event) {
-            color = (event as Option).value
+            setColorOption(event as Option);
         }
     };
-
     const handleChangeLandscape = (event: OnChangeValue<unknown, false>) => {
         if (event) {
-            landscape = (event as Option).value
+            setLandscapeOption(event as Option);
         }
     };
-
     const makePrompt = () => {
         let prompt: string = userInput;
-
-        if (lighting) {
-            prompt = [prompt, lighting].join(' ').toString()
+        if (lightingOption) {
+            prompt = [prompt, lightingOption.value].join(' ').toString()
         }
-
-        if (style) {
-            prompt = [prompt, style].join(' ').toString()
+        if (styleOption) {
+            prompt = [prompt, styleOption.value].join(' ').toString()
         }
-        if (artist) {
-            prompt = [prompt, artist].join(' ').toString()
+        if (artistOption) {
+            prompt = [prompt, artistOption.value].join(' ').toString()
         }
-        if (color) {
-            prompt = [prompt, color].join(' ').toString()
+        if (colorOption) {
+            prompt = [prompt, colorOption.value].join(' ').toString()
         }
-        if (landscape) {
-            prompt = [prompt, landscape].join(' ').toString()
+        if (landscapeOption) {
+            prompt = [prompt, landscapeOption.value].join(' ').toString()
         }
         return prompt;
     }
-
     const handleGenerate = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
         let promptMade = makePrompt()
         console.log(promptMade)
         if (promptMade){
             console.log("in dropdown :" + promptMade)
-            setPrompt(promptMade)
+            props.setPrompt(promptMade)
+            props.setGenerated(false)
             console.log("after setting prompt")
         }
+        handleReset();
     }
-
-
     const handleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        userInput = event.target.value;
+        setUserInput(event.target.value);
     }
-
     const customTheme = (theme: Theme) => ({
         ...theme,
         borderRadius: 0,
@@ -91,49 +91,55 @@ const Dropdown = (props: DropdownProps) => {
     });
 
     const customStyles = {
-        option: (baseStyle: CSSObjectWithLabel, state: OptionProps) => ({
-            ...baseStyle,
+        option: (provided: CSSObjectWithLabel, state: OptionProps) => ({
+            ...provided,
             color: 'black'
         })
     };
 
+
     return (
-        <div className='form-container'>
+        <div>
             <Select theme={customTheme}
-                    styles={customStyles}
                     className='dropdown__select'
                     placeholder='Select Lighting ...'
                     options={options1}
                     autoFocus={true}
-                    onChange={(event) => handleChangeLighting(event)}/>
+                    onChange={(event) => handleChangeLighting(event)}
+                    value={lightingOption}
+            />
             <Select theme={customTheme}
-                    styles={customStyles}
                     className='dropdown__select'
                     placeholder='Select Style ...'
                     options={options2}
                     autoFocus={true}
-                    onChange={(event) => handleChangeStyle(event)}/>
+                    onChange={(event) => handleChangeStyle(event)}
+                    value={styleOption}
+            />
             <Select theme={customTheme}
-                    styles={customStyles}
                     className='dropdown__select'
                     placeholder='Select Artist Style ...'
                     options={options3}
                     autoFocus={true}
-                    onChange={(event) => handleChangeArtist(event)}/>
+                    onChange={(event) => handleChangeArtist(event)}
+                    value={artistOption}
+            />
             <Select theme={customTheme}
-                    styles={customStyles}
                     className='dropdown__select'
                     placeholder='Select Color ...'
                     options={options4}
                     autoFocus={true}
-                    onChange={(event) => handleChangeColor(event)}/>
+                    onChange={(event) => handleChangeColor(event)}
+                    value={colorOption}
+            />
             <Select theme={customTheme}
-                    styles={customStyles}
                     className='dropdown__select'
                     placeholder='Select Landscape ...'
                     options={options5}
                     autoFocus={true}
-                    onChange={(event) => handleChangeLandscape(event)}/>
+                    onChange={(event) => handleChangeLandscape(event)}
+                    value={landscapeOption}
+            />
 
             <label>
                 Text input: <input type="text" onChange={event => handleUserInput(event)}/>
