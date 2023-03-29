@@ -24,15 +24,13 @@ public class NeuroArtService {
     CollectionRepository collectionRepository;
     ImageRepository imageRepository;
     ClientRepository clientRepository;
-    ObjectMapper mapper;
+    ObjectMapper mapper = new ObjectMapper();
 
     public NeuroArtService(CollectionRepository collectionRepository,
-                           ImageRepository imageRepository, ClientRepository clientRepository,
-                           ObjectMapper mapper) {
+                           ImageRepository imageRepository, ClientRepository clientRepository) {
         this.collectionRepository = collectionRepository;
         this.imageRepository = imageRepository;
         this.clientRepository = clientRepository;
-        this.mapper = mapper;
     }
 
     public NeuroArtService() {
