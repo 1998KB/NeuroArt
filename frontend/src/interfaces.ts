@@ -35,3 +35,9 @@ export type CarouselType = {
     imageAlt: string,
     imageId: string
 }
+
+export type CarouselType = {
+    imageSrc: string,
+    imageAlt: string,
+    imageId: string
+}
