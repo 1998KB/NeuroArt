@@ -1,41 +1,30 @@
-import React, {useEffect, useState} from 'react';
-import "./Form.css"
-import Dropdown from "../dropdown/Dropdown";
+import React, { useEffect, useState } from 'react';
+import './Form.css';
+import Dropdown from '../dropdown/Dropdown';
 
 interface FormProps {
-    setPrompt: Function
-    isLoading: boolean,
-    setIsDisable: Function
+    setPrompt: Function;
+    isLoading: boolean;
+    setIsDisable: Function;
 }
 
 const Form = (props: FormProps) => {
-    const [generateClicked, setGenerateClicked] = useState<boolean>(true);
+    const [key, setKey] = useState<number>(0);
 
     const handleGenerated = () => {
-        setGenerateClicked(false)
-        setGenerateClicked(true);
+        setKey((prevKey) => prevKey + 1);
     };
 
     return (
         <div>
             <form>
-                {generateClicked ? (
-                    <Dropdown
-                        setGenerated={handleGenerated}
-                        setPrompt={props.setPrompt}
-                        isLoading={props.isLoading}
-                        setIsDisabled={props.setIsDisable}
-
-
-                    />
-                ) : (
-                    <Dropdown
-                        setGenerated={handleGenerated}
-                        setPrompt={props.setPrompt}
-                        isLoading={props.isLoading}
-                        setIsDisabled={props.setIsDisable}
-                    />
-                )}
+                <Dropdown
+                    key={key}
+                    setGenerated={handleGenerated}
+                    setPrompt={props.setPrompt}
+                    isLoading={props.isLoading}
+                    setIsDisabled={props.setIsDisable}
+                />
             </form>
         </div>
     );

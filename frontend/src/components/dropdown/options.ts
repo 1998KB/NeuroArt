@@ -1,4 +1,5 @@
 export const options1 = [
+    {value: '', label: 'No Lighting'},
     {value: 'cinematic lighting', label: 'Cinematic Lighting'},
     {value: 'dappled lighting', label: 'Dappled Lighting'},
     {value: 'bright lighting', label: 'Bright Lighting'},
@@ -9,6 +10,7 @@ export const options1 = [
 ]
 
 export const options2 = [
+    {value: '', label: 'No Style'},
     {value: 'hyperrealistic', label: 'Hyperrealistic'},
     {value: 'oil painting', label: 'Oil Painting'},
     {value: 'watercolor lighting', label: 'Watercolor Lighting'},
@@ -23,15 +25,7 @@ export const options2 = [
 ]
 
 export const options3 = [
-    {value: 'andy warhol', label: 'Andy Warhol'},
-    {value: 'ansel adams', label: 'Ansel Adams'},
-    {value: 'leonardo da vinci', label: 'Leonardo da Vinci'},
-    {value: 'jackson pollock', label: 'Jackson Pollock'},
-    {value: 'pablo picasso', label: 'Pablo Picasso'},
-    {value: 'salvador dal', label: 'Salvador Dali'}
-]
-
-export const options4 = [
+    {value: '', label: 'No Colors'},
     {value: 'retro colors', label: 'Retro Colors'},
     {value: 'vivid colors', label: 'Vivid Colors'},
     {value: 'pastel colors', label: 'Pastel Colors'},
@@ -42,7 +36,8 @@ export const options4 = [
     {value: 'jewel tones', label: 'Jewel Tones'}
 ]
 
-export const options5 = [
+export const options4 = [
+    {value: '', label: 'No Landscape'},
     {value: 'surreal landscape', label: 'Surreal Landscape'},
     {value: 'unreal landscape', label: 'Unreal Landscape'},
     {value: 'fantasy landscape', label: 'Fantasy Landscape'},

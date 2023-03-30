@@ -32,6 +32,7 @@ const ImageContainer = (props: ImageContainerProps) => {
     }
     return (
         <div>
+            {props.isLoading ? <LoadingSpinner/> : <img src={props.image}/> }
             {props.image &&
                 <>
                     <label className="add-title-label">Add Title: </label>
@@ -49,7 +50,6 @@ const ImageContainer = (props: ImageContainerProps) => {
                     <button className="save-btn" onClick={handleSave} disabled={props.isDisabled}>Save</button>
                 </>
             }
-            {props.isLoading ? <LoadingSpinner/> : <img src={props.image}/>}
         </div>
     );
 };
