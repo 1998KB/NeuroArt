@@ -1,5 +1,23 @@
-.gallery {
-    width: 35em;
+.gallery__carousel-container {
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.gallery__image {
+    width: 80%;
+    margin-top: 2em;
+    border: 1em solid rgba(0, 0, 0, 0.95);
+}
+
+.gallery__image:hover {
+    transition: 0.5s;
+    border: 1em solid rgba(103, 101, 101, 0.5);
+}
+
+.gallery__image-container {
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
 }

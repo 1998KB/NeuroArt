@@ -1,6 +1,6 @@
 import "./Gallery.css"
 import ImageCarousel from "../imageCarousel/ImageCarousel";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 type Image = {
     id: string;
@@ -31,7 +31,16 @@ const Gallery = () => {
 
     return (
         <div className='gallery'>
-            {images.length > 0 && <ImageCarousel items={items}/>}
+            <div className='gallery__carousel-container'>
+                {images.length > 0 && <ImageCarousel items={items}/>}
+            </div>
+            <div className='gallery__image-container'>
+                {items.map((item, index) => (
+                    <>
+                        <img className='gallery__image' src={item.imageSrc}/>
+                    </>
+                ))}
+            </div>
         </div>
     );
 };
