@@ -70,12 +70,9 @@ const Dropdown = (props: DropdownProps) => {
         props.setIsDisabled(false)
         event.preventDefault();
         let promptMade = makePrompt()
-        console.log(promptMade)
         if (promptMade){
-            console.log("in dropdown :" + promptMade)
             props.setPrompt(promptMade)
             props.setGenerated(false)
-            console.log("after setting prompt")
         }
         handleReset();
     }

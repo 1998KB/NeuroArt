@@ -19,15 +19,12 @@ const Generate = () => {
         }
         handleGenerate();
         return () => {
-            console.log("in the use effect")
-            console.log(prompt)
         };
     }, [prompt]);
 
 
     const handleGenerate = async () => {
         setIsLoading(true)
-        console.log("in fetch :" + prompt)
         const response = await fetch(
             "https://neuroart.azurewebsites.net/generate",
             {
@@ -42,8 +39,6 @@ const Generate = () => {
         }
 
         const url = await response.text();
-        console.log()
-
         setGeneratedImage(url);
         setIsLoading(false)
     };
