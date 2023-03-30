@@ -7,6 +7,7 @@ const Generate = () => {
     const [prompt, setPrompt] = useState<string>('');
     const [generatedImage, setGeneratedImage] = useState<string>('');
     const [isLoading, setIsLoading] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     useEffect(() => {
         setPrompt('')
@@ -58,8 +59,8 @@ const Generate = () => {
                 eos est ex in ipsam ipsum laboriosam laborum minima mollitia nostrum odit placeat quas quibusdam quos
                 tempora tempore vel velit voluptates voluptatum. At consequuntur dolor expedita explicabo hic itaque,
                 iusto magnam neque, obcaecati saepe sunt tempora?</p>
-            <Form setPrompt={setPrompt} isLoading={isLoading}/>
-            <ImageContainer image={generatedImage} isLoading={isLoading}/>
+            <Form setPrompt={setPrompt} isLoading={isLoading} setIsDisable={setIsDisabled}/>
+            <ImageContainer image={generatedImage} isLoading={isLoading} prompt={prompt} isDisabled={isDisabled} setIsDisabled={setIsDisabled}/>
         </div>
     );
 };

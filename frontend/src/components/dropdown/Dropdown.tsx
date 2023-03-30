@@ -8,18 +8,18 @@ import {customStyles, customTheme} from "./customsThemeAndStyle";
 
 
 const Dropdown = (props: DropdownProps) => {
-    const [lightingOption, setLightingOption] = useState<Option>({value: 'Select ', label:'select'});
-    const [styleOption, setStyleOption] = useState<Option>({value: 'Select ', label:'select'});
-    const [artistOption, setArtistOption] = useState<Option>({value: 'Select ', label:'select'});
-    const [colorOption, setColorOption] = useState<Option>({value: 'Select ', label:'select'});
-    const [landscapeOption, setLandscapeOption] = useState<Option>({value: 'Select ', label:'select'});
+    const [lightingOption, setLightingOption] = useState<Option>({value: '', label:'select'});
+    const [styleOption, setStyleOption] = useState<Option>({value: '', label:'select'});
+    const [artistOption, setArtistOption] = useState<Option>({value: '', label:'select'});
+    const [colorOption, setColorOption] = useState<Option>({value: '', label:'select'});
+    const [landscapeOption, setLandscapeOption] = useState<Option>({value: '', label:'select'});
     const [userInput, setUserInput] = useState('');
     const handleReset = () => {
-        setLightingOption({value: 'Select ', label:'select'});
-        setStyleOption({value: 'Select ', label:'select'});
-        setArtistOption({value: 'Select ', label:'select'});
-        setColorOption({value: 'Select ', label:'select'});
-        setLandscapeOption({value: 'Select ', label:'select'});
+        setLightingOption({value: '', label:'select'});
+        setStyleOption({value: '', label:'select'});
+        setArtistOption({value: '', label:'select'});
+        setColorOption({value: '', label:'select'});
+        setLandscapeOption({value: '', label:'select'});
         setUserInput('');
     };
     const handleChangeLighting = (event: OnChangeValue<unknown, false>) => {
@@ -67,6 +67,7 @@ const Dropdown = (props: DropdownProps) => {
         return prompt;
     }
     const handleGenerate = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        props.setIsDisabled(false)
         event.preventDefault();
         let promptMade = makePrompt()
         console.log(promptMade)
