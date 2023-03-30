@@ -10,20 +10,17 @@ import java.util.List;
 @Table(name = "collection")
 @Data
 public class Collection {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private String name;
-
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
-
     @Column(nullable = false)
     private String description;
-
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "collection_image",
             joinColumns = @JoinColumn(name = "collection_id"),
@@ -31,7 +28,4 @@ public class Collection {
     )
     private List<Image> images = new ArrayList<>();
 
-    public Long getClient() {
-        return this.client.getId();
-    }
 }

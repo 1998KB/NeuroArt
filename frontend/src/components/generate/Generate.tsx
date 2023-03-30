@@ -7,6 +7,7 @@ const Generate = () => {
     const [prompt, setPrompt] = useState<string>('');
     const [generatedImage, setGeneratedImage] = useState<string>('');
     const [isLoading, setIsLoading] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     useEffect(() => {
         setPrompt('')
@@ -18,15 +19,12 @@ const Generate = () => {
         }
         handleGenerate();
         return () => {
-            console.log("in the use effect")
-            console.log(prompt)
         };
     }, [prompt]);
 
 
     const handleGenerate = async () => {
         setIsLoading(true)
-        console.log("in fetch :" + prompt)
         const response = await fetch(
             "https://neuroart.azurewebsites.net/generate",
             {
@@ -41,8 +39,6 @@ const Generate = () => {
         }
 
         const url = await response.text();
-        console.log()
-
         setGeneratedImage(url);
         setIsLoading(false)
     };
@@ -58,8 +54,8 @@ const Generate = () => {
                 eos est ex in ipsam ipsum laboriosam laborum minima mollitia nostrum odit placeat quas quibusdam quos
                 tempora tempore vel velit voluptates voluptatum. At consequuntur dolor expedita explicabo hic itaque,
                 iusto magnam neque, obcaecati saepe sunt tempora?</p>
-            <Form setPrompt={setPrompt} isLoading={isLoading}/>
-            <ImageContainer image={generatedImage} isLoading={isLoading}/>
+            <Form setPrompt={setPrompt} isLoading={isLoading} setIsDisable={setIsDisabled}/>
+            <ImageContainer image={generatedImage} isLoading={isLoading} prompt={prompt} isDisabled={isDisabled} setIsDisabled={setIsDisabled}/>
         </div>
     );
 };
