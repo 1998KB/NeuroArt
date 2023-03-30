@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import "./ImageCarousel.css"
 import ImageCard from "../imageCard/ImageCard";
 import { CarouselType } from "../../interfaces";
@@ -8,21 +8,59 @@ export type Props = {
     items: Array<CarouselType>
 }
 
+const MIN_SWIPE_REQUIRED = 40;
+
 const ImageCarousel = ({ items }: Props) => {
+    const containerRef = useRef<HTMLUListElement>(null);
+    const containerWidthRef = useRef(0)
+    const minOffSetXRef = useRef(0);
     const currentOffsetXRef = useRef(0);
     const startXRef = useRef(0);
 
-    const [offsetX, setOffsetX, offsetXRef] = useStateRef(-770);
+    const [isSwiping, setIsSwiping] = useState(false);
+    const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const onTouchMove = (event: TouchEvent | MouseEvent) => {
         const currentX = getTouchEventData(event).clientX;
         const diff = getRefValue(startXRef) - currentX;
-        const newOffsetX = getRefValue(currentOffsetXRef) - diff;
+        let newOffsetX = getRefValue(currentOffsetXRef) - diff;
+
+        const maxOffsetX = 0;
+        const minOffsetX = getRefValue(minOffSetXRef)
+
+        if(newOffsetX > maxOffsetX) {
+            newOffsetX = 0;
+        }
+
+        if(newOffsetX < minOffsetX) {
+            newOffsetX = minOffsetX;
+        }
 
         setOffsetX(newOffsetX)
     }
 
     const onTouchEnd = () => {
+        const containerWidth = getRefValue(containerWidthRef);
+        const currentOffsetX = getRefValue(currentOffsetXRef)
+        let newOffsetX = getRefValue(offsetXRef);
+
+        const diff = currentOffsetX - newOffsetX;
+
+        if(Math.abs(diff) > MIN_SWIPE_REQUIRED) {
+            if(diff > 0) {
+                newOffsetX = Math.floor(newOffsetX / containerWidth) * containerWidth;
+            } else {
+                newOffsetX = Math.ceil(newOffsetX / containerWidth) * containerWidth;
+            }
+        } else {
+            newOffsetX = Math.round(newOffsetX / containerWidth) * containerWidth;
+        }
+
+        setIsSwiping(false);
+        setOffsetX(newOffsetX);
+        setCurrentIndex(Math.abs(newOffsetX / containerWidth));
+
         window.removeEventListener('touchmove', onTouchMove)
         window.removeEventListener('touchend', onTouchEnd)
         window.removeEventListener('mousemove', onTouchMove)
@@ -30,8 +68,16 @@ const ImageCarousel = ({ items }: Props) => {
     }
 
     const onTouchStart = (event: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>) => {
+        setIsSwiping(true);
+
         currentOffsetXRef.current = getRefValue(offsetXRef);
         startXRef.current = getTouchEventData(event).clientX
+
+        const containerEl = getRefValue(containerRef);
+        const containerWidth = containerEl.offsetWidth;
+
+        containerWidthRef.current = containerWidth;
+        minOffSetXRef.current = containerEl.offsetWidth - containerEl.scrollWidth;
 
         window.addEventListener('touchmove', onTouchMove)
         window.addEventListener('touchend', onTouchEnd)
@@ -48,18 +94,32 @@ const ImageCarousel = ({ items }: Props) => {
     ) {
         return 'changedTouches' in event ? event.changedTouches[0] : event;
     }
+    
+    const indicatorOnClick = (index: number) => {
+        const containerEl = getRefValue(containerRef);
+        const containerWidth = containerEl.offsetWidth;
+
+        setCurrentIndex(index);
+        setOffsetX(-(containerWidth * index))
+    }
 
     return (
         <div className='imagecarousel' onTouchStart={onTouchStart} onMouseDown={onTouchStart}>
-
-            {/*<p>Image Carousel</p>*/}
-            {/*/!*<ImageCard/>*!/*/}
-            <ul className='imagecarousel__list' style={{ transform: `translate3d(${offsetX}px, 0, 0)`}}>
+            <ul ref={containerRef} className={`imagecarousel__list ${isSwiping ? 'swiping' : ''}`} style={{ transform: `translate3d(${offsetX}px, 0, 0)`}}>
                 {items.map((item, index) => (
                     <ImageCard key={index} {...item}/>
                 ))}
             </ul>
-
+            <ul className='imagecarousel__indicator'>
+                {
+                    items.map((_item, index) => (
+                        <li key={index}
+                            className={`imagecarousel__indicator-item ${index === currentIndex ? 'active': ''}`}
+                            onClick={() => indicatorOnClick(index)}
+                        />
+                    ))
+                }
+            </ul>
         </div>
     );
 };
