@@ -26,6 +26,7 @@ const Form = (props: FormProps) => {
                     isLoading={props.isLoading}
                     setIsDisabled={props.setIsDisable}
                     setGeneratedImage={props.setGeneratedImage}
+
                 />
             </form>
         </div>

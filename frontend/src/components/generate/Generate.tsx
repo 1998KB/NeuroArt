@@ -18,9 +18,6 @@ const Generate = () => {
             return;
         }
         handleGenerate();
-        return () => {
-            console.log(prompt)
-        };
     }, [prompt]);
 
 
@@ -40,8 +37,6 @@ const Generate = () => {
         }
 
         const url = await response.text();
-        console.log()
-
         setGeneratedImage(url);
         setIsLoading(false)
     };
