@@ -11,5 +11,4 @@ public class NeuroArtApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NeuroArtApplication.class, args);
 	}
-
 }

@@ -4,7 +4,8 @@ import Dropdown from "../dropdown/Dropdown";
 
 interface FormProps {
     setPrompt: Function
-    isLoading: boolean
+    isLoading: boolean,
+    setIsDisable: Function
 }
 
 const Form = (props: FormProps) => {
@@ -23,12 +24,16 @@ const Form = (props: FormProps) => {
                         setGenerated={handleGenerated}
                         setPrompt={props.setPrompt}
                         isLoading={props.isLoading}
+                        setIsDisabled={props.setIsDisable}
+
+
                     />
                 ) : (
                     <Dropdown
                         setGenerated={handleGenerated}
                         setPrompt={props.setPrompt}
                         isLoading={props.isLoading}
+                        setIsDisabled={props.setIsDisable}
                     />
                 )}
             </form>

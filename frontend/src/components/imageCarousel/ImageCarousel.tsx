@@ -141,7 +141,6 @@ const ImageCarousel = ({ items }: Props) => {
                     ))
                 }
             </ul>
-
         </div>
     );
 };

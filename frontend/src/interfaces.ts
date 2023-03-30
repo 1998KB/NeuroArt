@@ -6,7 +6,34 @@ export interface Option {
 export interface DropdownProps {
     setPrompt: Function
     isLoading: boolean
-    setGenerated: Function
+    setGenerated: Function,
+    setIsDisabled: Function
+}
+
+export type CarouselType = {
+    imageSrc: string,
+    imageAlt: string
+}
+
+export interface ImageContainerProps {
+    image: string
+    isLoading: boolean
+    prompt: string,
+    isDisabled: boolean,
+    setIsDisabled: Function
+
+}
+export interface ImageSaveData {
+    temporaryUrl: string,
+    prompt:string,
+    title: string,
+    description: string
+}
+
+export type CarouselType = {
+    imageSrc: string,
+    imageAlt: string,
+    imageId: string
 }
 
 export type CarouselType = {

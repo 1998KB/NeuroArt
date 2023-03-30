@@ -32,3 +32,4 @@ logging:
         boot:
           autoconfigure: ERROR
 openaikey: ${OPENAI_KEY}
+imgbbkey: ${IMGBB_KEY}
