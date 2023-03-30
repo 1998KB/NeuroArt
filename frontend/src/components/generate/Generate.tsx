@@ -39,8 +39,6 @@ const Generate = () => {
         }
 
         const url = await response.text();
-        console.log()
-
         setGeneratedImage(url);
         setIsLoading(false)
     };

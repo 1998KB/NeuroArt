@@ -13,8 +13,8 @@ import {
     textureOptions
 } from "./options";
 
-
 const Dropdown = (props: DropdownProps) => {
+
     const [lightingOption, setLightingOption] = useState<Option>(lightingOptions[0]);
     const [styleOption, setStyleOption] = useState<Option>(styleOptions[0]);
     const [colorOption, setColorOption] = useState<Option>(colorOptions[0]);

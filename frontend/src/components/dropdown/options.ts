@@ -106,4 +106,3 @@ export const moodOptions = [
     createOption('eerie mood', 'Eerie'),
     createOption('adventurous mood', 'Adventurous'),
 ];
-

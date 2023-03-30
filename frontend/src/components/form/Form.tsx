@@ -9,6 +9,7 @@ interface FormProps {
     setGeneratedImage: Function;
     setInputTitle: Function
     setInputDescription: Function
+
 }
 
 const Form = (props: FormProps) => {
@@ -30,7 +31,7 @@ const Form = (props: FormProps) => {
                     isLoading={props.isLoading}
                     setIsDisabled={props.setIsDisable}
                     setGeneratedImage={props.setGeneratedImage}
-                />
+                    />
             </form>
         </div>
     );

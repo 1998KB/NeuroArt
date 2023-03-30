@@ -1,11 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import "./ImageCarousel.css"
 import ImageCard from "../imageCard/ImageCard";
 import { CarouselType } from "../../interfaces";
 import {getRefValue, useStateRef} from "../../lib/hooks";
 
 export type Props = {
-    items: Array<CarouselType>
+    items: CarouselType[]
 }
 
 const MIN_SWIPE_REQUIRED = 40;
@@ -94,7 +94,7 @@ const ImageCarousel = ({ items }: Props) => {
     ) {
         return 'changedTouches' in event ? event.changedTouches[0] : event;
     }
-    
+
     const indicatorOnClick = (index: number) => {
         const containerEl = getRefValue(containerRef);
         const containerWidth = containerEl.offsetWidth;
@@ -103,16 +103,37 @@ const ImageCarousel = ({ items }: Props) => {
         setOffsetX(-(containerWidth * index))
     }
 
+    async function deleteImage(event: React.MouseEvent<HTMLButtonElement>, id: string) {
+        event.preventDefault()
+
+        const response = await fetch(`https://neuroart.azurewebsites.net/image/${id}`, {
+            method: 'DELETE'
+        });
+    }
+
+    const [randomItems, setRandomItems] = useState<CarouselType[]>([])
+    useEffect(() => {
+        const itemsCopy = items;
+        for (let i = itemsCopy.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [itemsCopy[i], itemsCopy[j]] = [itemsCopy[j], itemsCopy[i]]
+        }
+        setRandomItems(itemsCopy.slice(0, 5))
+    }, [])
+
     return (
         <div className='imagecarousel' onTouchStart={onTouchStart} onMouseDown={onTouchStart}>
             <ul ref={containerRef} className={`imagecarousel__list ${isSwiping ? 'swiping' : ''}`} style={{ transform: `translate3d(${offsetX}px, 0, 0)`}}>
-                {items.map((item, index) => (
-                    <ImageCard key={index} {...item}/>
+                {randomItems.map((item, index) => (
+                    <>
+                        <ImageCard key={index} {...item}/>
+                        {/*<button className='imagecarousel__button-delete' onClick={event => deleteImage(event, item.imageId)}> Delete</button>*/}
+                    </>
                 ))}
             </ul>
             <ul className='imagecarousel__indicator'>
                 {
-                    items.map((_item, index) => (
+                    randomItems.map((_item, index) => (
                         <li key={index}
                             className={`imagecarousel__indicator-item ${index === currentIndex ? 'active': ''}`}
                             onClick={() => indicatorOnClick(index)}
