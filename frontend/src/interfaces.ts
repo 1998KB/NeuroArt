@@ -9,6 +9,8 @@ export interface DropdownProps {
     setGenerated: Function,
     setIsDisabled: Function
     setGeneratedImage: Function
+    setInputTitle: Function
+    setInputDescription: Function
 }
 
 
@@ -17,12 +19,17 @@ export interface ImageContainerProps {
     isLoading: boolean
     prompt: string,
     isDisabled: boolean,
-    setIsDisabled: Function
+    setIsDisabled: Function,
+    inputTitle: string
+    setInputTitle: Function
+    inputDescription: string
+    setInputDescription: Function
 
 }
+
 export interface ImageSaveData {
     temporaryUrl: string,
-    prompt:string,
+    prompt: string,
     title: string,
     description: string
 }
