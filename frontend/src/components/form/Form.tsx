@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './Form.css';
 import Dropdown from '../dropdown/Dropdown';
 
@@ -7,6 +7,8 @@ interface FormProps {
     isLoading: boolean;
     setIsDisable: Function;
     setGeneratedImage: Function;
+    setInputTitle: Function
+    setInputDescription: Function
 }
 
 const Form = (props: FormProps) => {
@@ -21,6 +23,8 @@ const Form = (props: FormProps) => {
             <form>
                 <Dropdown
                     key={key}
+                    setInputTitle={props.setInputTitle}
+                    setInputDescription={props.setInputDescription}
                     setGenerated={handleGenerated}
                     setPrompt={props.setPrompt}
                     isLoading={props.isLoading}

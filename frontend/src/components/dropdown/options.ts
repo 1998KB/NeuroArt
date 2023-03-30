@@ -1,50 +1,109 @@
-export const options1 = [
-    {value: '', label: 'No Lighting'},
-    {value: 'cinematic lighting', label: 'Cinematic Lighting'},
-    {value: 'dappled lighting', label: 'Dappled Lighting'},
-    {value: 'bright lighting', label: 'Bright Lighting'},
-    {value: 'ambient lighting', label: 'Ambient Lighting'},
-    {value: 'flat lighting', label: 'Flat Lighting'},
-    {value: 'volumetric lighting', label: 'Volumetric Lighting'},
-    {value: 'backlit', label: 'Backlit'}
-]
+const createOption = (value: string, label: string) => ({ value, label });
 
-export const options2 = [
-    {value: '', label: 'No Style'},
-    {value: 'hyperrealistic', label: 'Hyperrealistic'},
-    {value: 'oil painting', label: 'Oil Painting'},
-    {value: 'watercolor lighting', label: 'Watercolor Lighting'},
-    {value: 'Graffiti Style', label: 'Graffiti Style'},
-    {value: '3D render', label: '3D Render'},
-    {value: 'Surrealism', label: 'Surrealism'},
-    {value: 'impressionism', label: 'Impressionism'},
-    {value: 'japanese anime', label: 'Japanese Anime'},
-    {value: 'Graffiti Style', label: 'Graffiti Style'},
-    {value: 'pop art style', label: 'Pop Art Style'},
-    {value: 'grunge style', label: 'Grunge Style'}
-]
+export const lightingOptions = [
+    createOption('', 'No Lighting'),
+    createOption('cinematic', 'Cinematic'),
+    createOption('dappled', 'Dappled'),
+    createOption('bright', 'Bright'),
+    createOption('ambient', 'Ambient'),
+    createOption('flat', 'Flat'),
+    createOption('volumetric', 'Volumetric'),
+    createOption('backlit', 'Backlit'),
+    createOption('moody', 'Moody'),
+    createOption('silhouette', 'Silhouette'),
+    createOption('spotlight', 'Spotlight'),
+    createOption('soft', 'Soft'),
+    createOption('nighttime', 'Nighttime'),
+];
 
-export const options3 = [
-    {value: '', label: 'No Colors'},
-    {value: 'retro colors', label: 'Retro Colors'},
-    {value: 'vivid colors', label: 'Vivid Colors'},
-    {value: 'pastel colors', label: 'Pastel Colors'},
-    {value: 'neon colors', label: 'Neon Colors'},
-    {value: 'earthy tones', label: 'Earthy Tones'},
-    {value: 'primary colors', label: 'Primary Colors'},
-    {value: 'monochromatic colors', label: 'Monochromatic Colors'},
-    {value: 'jewel tones', label: 'Jewel Tones'}
-]
+export const styleOptions = [
+    createOption('', 'No Style'),
+    createOption('hyperrealistic', 'Hyperrealistic'),
+    createOption('oil-painting', 'Oil Painting'),
+    createOption('watercolor-lighting', 'Watercolor Lighting'),
+    createOption('graffiti-style', 'Graffiti Style'),
+    createOption('3d-render', '3D Render'),
+    createOption('surrealism', 'Surrealism'),
+    createOption('impressionism', 'Impressionism'),
+    createOption('japanese-anime', 'Japanese Anime'),
+    createOption('pop-art-style', 'Pop Art Style'),
+    createOption('grunge-style', 'Grunge Style'),
+    createOption('cyberpunk', 'Cyberpunk'),
+    createOption('renaissance', 'Renaissance'),
+    createOption('pointillism', 'Pointillism'),
+    createOption('realism', 'Realism'),
+    createOption('sketch', 'Sketch'),
+];
 
-export const options4 = [
-    {value: '', label: 'No Landscape'},
-    {value: 'surreal landscape', label: 'Surreal Landscape'},
-    {value: 'unreal landscape', label: 'Unreal Landscape'},
-    {value: 'fantasy landscape', label: 'Fantasy Landscape'},
-    {value: 'sci-fi landscape', label: 'Sci-fi Landscape'},
-    {value: 'desert landscape', label: 'Desert Landscape'},
-    {value: 'tropical paradise', label: 'Tropical Paradise'},
-    {value: 'rainforest scenery', label: 'Rainforest Scenery'},
-    {value: 'expansive mountain range', label: 'Expansive Mountain Range'},
-    {value: 'cityscape', label: 'Cityscape'}
-]
+export const colorOptions = [
+    createOption('', 'No Colors'),
+    createOption('retro', 'Retro'),
+    createOption('vivid', 'Vivid'),
+    createOption('pastel', 'Pastel'),
+    createOption('neon', 'Neon'),
+    createOption('earthy', 'Earthy'),
+    createOption('primary', 'Primary'),
+    createOption('monochromatic', 'Monochromatic'),
+    createOption('jewel-tones', 'Jewel Tones'),
+    createOption('cool-tones', 'Cool Tones'),
+    createOption('warm-tones', 'Warm Tones'),
+    createOption('metallic', 'Metallic'),
+    createOption('gradient', 'Gradient'),
+    createOption('black-and-white', 'Black and White'),
+];
+
+export const landscapeOptions = [
+    createOption('', 'No Landscape'),
+    createOption('surreal', 'Surreal'),
+    createOption('unreal', 'Unreal'),
+    createOption('fantasy', 'Fantasy'),
+    createOption('sci-fi', 'Sci-fi'),
+    createOption('desert', 'Desert'),
+    createOption('tropical', 'Tropical'),
+    createOption('rainforest', 'Rainforest'),
+    createOption('mountain-range', 'Mountain Range'),
+    createOption('cityscape', 'Cityscape'),
+    createOption('underwater', 'Underwater'),
+    createOption('space', 'Space'),
+    createOption('arctic', 'Arctic'),
+    createOption('volcanic', 'Volcanic'),
+    createOption('industrial', 'Industrial'),
+];
+
+export const textureOptions = [
+    createOption('', 'No Texture'),
+    createOption('grainy texture', 'Grainy'),
+    createOption('metallic texture', 'Metallic'),
+    createOption('marble texture', 'Marble'),
+    createOption('wood texture', 'Wood'),
+    createOption('fabric texture', 'Fabric'),
+    createOption('concrete texture', 'Concrete'),
+    createOption('brick texture', 'Brick'),
+    createOption('glass texture', 'Glass'),
+    createOption('water texture', 'Water'),
+];
+
+export const shapeOptions = [
+    createOption('', 'No Shape'),
+    createOption('geometric shapes', 'Geometric'),
+    createOption('organic shapes', 'Organic'),
+    createOption('abstract shapes', 'Abstract'),
+    createOption('circular shapes', 'Circular'),
+    createOption('square shapes', 'Square'),
+    createOption('triangular shapes', 'Triangular'),
+    createOption('rectangular shapes', 'Rectangular'),
+    createOption('line drawings', 'Line Drawings'),
+];
+
+export const moodOptions = [
+    createOption('', 'No Mood'),
+    createOption('upbeat mood', 'Upbeat'),
+    createOption('relaxing mood', 'Relaxing'),
+    createOption('romantic mood', 'Romantic'),
+    createOption('mysterious mood', 'Mysterious'),
+    createOption('dramatic mood', 'Dramatic'),
+    createOption('comical mood', 'Comical'),
+    createOption('eerie mood', 'Eerie'),
+    createOption('adventurous mood', 'Adventurous'),
+];
+

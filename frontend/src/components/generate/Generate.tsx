@@ -6,8 +6,10 @@ import ImageContainer from "../imageContainer/ImageContainer";
 const Generate = () => {
     const [prompt, setPrompt] = useState<string>('');
     const [generatedImage, setGeneratedImage] = useState<string>('');
-    const [isLoading, setIsLoading] = useState(false);
-    const [isDisabled, setIsDisabled] = useState(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isDisabled, setIsDisabled] = useState<boolean>(false);
+    const [inputTitle, setInputTitle] = useState("");
+    const [inputDescription, setInputDescription] = useState("");
 
     useEffect(() => {
         setPrompt('')
@@ -18,9 +20,6 @@ const Generate = () => {
             return;
         }
         handleGenerate();
-        return () => {
-            console.log(prompt)
-        };
     }, [prompt]);
 
 
@@ -57,8 +56,21 @@ const Generate = () => {
                 eos est ex in ipsam ipsum laboriosam laborum minima mollitia nostrum odit placeat quas quibusdam quos
                 tempora tempore vel velit voluptates voluptatum. At consequuntur dolor expedita explicabo hic itaque,
                 iusto magnam neque, obcaecati saepe sunt tempora?</p>
-            <Form setPrompt={setPrompt} isLoading={isLoading} setIsDisable={setIsDisabled} setGeneratedImage={setGeneratedImage}/>
-            <ImageContainer image={generatedImage} isLoading={isLoading} prompt={prompt} isDisabled={isDisabled} setIsDisabled={setIsDisabled}/>
+            <Form setInputTitle={setInputTitle}
+                  setInputDescription={setInputDescription}
+                  setPrompt={setPrompt}
+                  isLoading={isLoading}
+                  setIsDisable={setIsDisabled}
+                  setGeneratedImage={setGeneratedImage}/>
+            <ImageContainer inputTitle={inputTitle}
+                            setInputTitle={setInputTitle}
+                            inputDescription={inputDescription}
+                            setInputDescription={setInputDescription}
+                            image={generatedImage}
+                            isLoading={isLoading}
+                            prompt={prompt}
+                            isDisabled={isDisabled}
+                            setIsDisabled={setIsDisabled}/>
         </div>
     );
 };

@@ -4,8 +4,7 @@ import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 import {ImageContainerProps, ImageSaveData} from "../../interfaces";
 import {isDisabled} from "@testing-library/user-event/dist/utils";
 const ImageContainer = (props: ImageContainerProps) => {
-    const [inputTitle, setInputTitle] = useState("");
-    const [inputDescription, setInputDescription] = useState("");
+
 
     let save: ImageSaveData;
 
@@ -22,14 +21,13 @@ const ImageContainer = (props: ImageContainerProps) => {
         if (!response.ok) {
             throw new Error(`Failed to save: ${response.status}`);
         }
-        props.setIsDisabled(false);
     }
 
     save = {
         temporaryUrl: props.image,
         prompt: props.prompt,
-        title: inputTitle,
-        description: inputDescription
+        title: props.inputTitle,
+        description: props.inputDescription
     }
     return (
         <div>
@@ -39,14 +37,14 @@ const ImageContainer = (props: ImageContainerProps) => {
                     <label className="add-title-label">Add Title: </label>
                     <input type="text"
                            className="add-title"
-                           value={inputTitle}
-                           onChange={(e) => setInputTitle(e.target.value)}
+                           value={props.inputTitle}
+                           onChange={(e) => props.setInputTitle(e.target.value)}
                     />
                     <label htmlFor="" className="add-description-label">Add Description</label>
                     <input type="text"
                            className="add-description"
-                           value={inputDescription}
-                           onChange={(e) => setInputDescription(e.target.value)}
+                           value={props.inputDescription}
+                           onChange={(e) => props.setInputDescription(e.target.value)}
                     />
                     <button className="save-btn" onClick={handleSave} disabled={props.isDisabled}>Save</button>
                 </>
