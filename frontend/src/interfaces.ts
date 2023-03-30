@@ -29,3 +29,9 @@ export interface ImageSaveData {
     title: string,
     description: string
 }
+
+export type CarouselType = {
+    imageSrc: string,
+    imageAlt: string,
+    imageId: string
+}

@@ -39,3 +39,9 @@
 .imagecarousel__indicator-item.active {
     background-color: white;
 }
+
+.imagecarousel__button-delete {
+    height: 3em;
+    width: 3em;
+    position: relative;
+}
