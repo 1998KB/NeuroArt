@@ -19,7 +19,6 @@ const Generate = () => {
         }
         handleGenerate();
         return () => {
-            console.log("in the use effect")
             console.log(prompt)
         };
     }, [prompt]);
@@ -27,7 +26,6 @@ const Generate = () => {
 
     const handleGenerate = async () => {
         setIsLoading(true)
-        console.log("in fetch :" + prompt)
         const response = await fetch(
             "https://neuroart.azurewebsites.net/generate",
             {
@@ -59,7 +57,7 @@ const Generate = () => {
                 eos est ex in ipsam ipsum laboriosam laborum minima mollitia nostrum odit placeat quas quibusdam quos
                 tempora tempore vel velit voluptates voluptatum. At consequuntur dolor expedita explicabo hic itaque,
                 iusto magnam neque, obcaecati saepe sunt tempora?</p>
-            <Form setPrompt={setPrompt} isLoading={isLoading} setIsDisable={setIsDisabled}/>
+            <Form setPrompt={setPrompt} isLoading={isLoading} setIsDisable={setIsDisabled} setGeneratedImage={setGeneratedImage}/>
             <ImageContainer image={generatedImage} isLoading={isLoading} prompt={prompt} isDisabled={isDisabled} setIsDisabled={setIsDisabled}/>
         </div>
     );

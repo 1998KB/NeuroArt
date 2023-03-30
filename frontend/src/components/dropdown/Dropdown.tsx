@@ -65,6 +65,7 @@ const Dropdown = (props: DropdownProps) => {
         if (promptMade) {
              props.setPrompt(promptMade)
         }
+        props.setGeneratedImage(null)
         props.setGenerated(true)
         handleReset();
     }

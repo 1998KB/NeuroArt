@@ -22,6 +22,7 @@ const ImageContainer = (props: ImageContainerProps) => {
         if (!response.ok) {
             throw new Error(`Failed to save: ${response.status}`);
         }
+        props.setIsDisabled(false);
     }
 
     save = {
