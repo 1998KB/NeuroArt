@@ -10,10 +10,6 @@ export interface DropdownProps {
     setIsDisabled: Function
 }
 
-export type CarouselType = {
-    imageSrc: string,
-    imageAlt: string
-}
 
 export interface ImageContainerProps {
     image: string
@@ -36,8 +32,3 @@ export type CarouselType = {
     imageId: string
 }
 
-export type CarouselType = {
-    imageSrc: string,
-    imageAlt: string,
-    imageId: string
-}
