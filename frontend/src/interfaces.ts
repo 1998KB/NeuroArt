@@ -11,5 +11,6 @@ export interface DropdownProps {
 
 export type CarouselType = {
     imageSrc: string,
-    imageAlt: string
+    imageAlt: string,
+    imageId: string
 }
