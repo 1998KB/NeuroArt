@@ -94,7 +94,7 @@ const ImageCarousel = ({ items }: Props) => {
     ) {
         return 'changedTouches' in event ? event.changedTouches[0] : event;
     }
-
+    
     const indicatorOnClick = (index: number) => {
         const containerEl = getRefValue(containerRef);
         const containerWidth = containerEl.offsetWidth;
@@ -120,7 +120,6 @@ const ImageCarousel = ({ items }: Props) => {
                     ))
                 }
             </ul>
-
         </div>
     );
 };
