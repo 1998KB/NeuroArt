@@ -6,6 +6,7 @@ interface FormProps {
     setPrompt: Function;
     isLoading: boolean;
     setIsDisable: Function;
+    setGeneratedImage: Function;
 }
 
 const Form = (props: FormProps) => {
@@ -24,6 +25,8 @@ const Form = (props: FormProps) => {
                     setPrompt={props.setPrompt}
                     isLoading={props.isLoading}
                     setIsDisabled={props.setIsDisable}
+                    setGeneratedImage={props.setGeneratedImage}
+
                 />
             </form>
         </div>

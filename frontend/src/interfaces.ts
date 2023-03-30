@@ -8,6 +8,7 @@ export interface DropdownProps {
     isLoading: boolean
     setGenerated: Function,
     setIsDisabled: Function
+    setGeneratedImage: Function
 }
 
 
