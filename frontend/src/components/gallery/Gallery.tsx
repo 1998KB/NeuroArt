@@ -1,6 +1,6 @@
-import "./Gallery.css"
+import "./Gallery.css";
 import ImageCarousel from "../imageCarousel/ImageCarousel";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 type Image = {
     id: string;
@@ -8,45 +8,47 @@ type Image = {
     prompt: string;
     title: string;
     description: string;
-}
+};
 
 const Gallery = () => {
-
-    const [images, setImages] = useState<Image[]>([])
+    const [images, setImages] = useState<Image[]>([]);
+    const [deletedImages, setDeletedImages] = useState<string[]>([]);
 
     useEffect(() => {
         async function fetchImages() {
-            const response = await fetch('https://neuroart.azurewebsites.net/gallery');
-            const images: Image[] = await response.json()
+            const response = await fetch("https://neuroart.azurewebsites.net/gallery");
+            const images: Image[] = await response.json();
             setImages(images);
         }
         fetchImages();
-    }, [])
+    }, []);
 
-    const items = images.map(image => ({
-        imageAlt: image.title,
-        imageSrc: image.url,
-        imageId: image.id
-    }))
+    const items = images
+        .filter((image) => !deletedImages.includes(image.id))
+        .map((image) => ({
+            imageAlt: image.title,
+            imageSrc: image.url,
+            imageId: image.id,
+        }));
 
     async function deleteImage(event: React.MouseEvent<HTMLButtonElement>, id: string) {
-        event.preventDefault()
-
-        const response = await fetch(`https://neuroart.azurewebsites.net/image/${id}`, {
-            method: 'DELETE'
+        event.preventDefault();
+        await fetch(`https://neuroart.azurewebsites.net/image/${id}`, {
+            method: "DELETE",
         });
+        setDeletedImages([...deletedImages, id]);
     }
 
     return (
-        <div className='gallery'>
-            <div className='gallery__carousel-container'>
-                {images.length > 0 && <ImageCarousel items={items}/>}
-            </div>
-            <div className='gallery__image-container'>
+        <div className="gallery">
+            <div className="gallery__carousel-container">{images.length > 0 && <ImageCarousel items={items} />}</div>
+            <div className="gallery__image-container">
                 {items.map((item, index) => (
                     <div key={index}>
-                        <img className='gallery__image' src={item.imageSrc}/>
-                        <button className='imagecarousel__button-delete' onClick={event => deleteImage(event, item.imageId)}> Delete</button>
+                        <img className="gallery__image" src={item.imageSrc} />
+                        <button className="imagecarousel__button-delete" onClick={(event) => deleteImage(event, item.imageId)}>
+                            Delete
+                        </button>
                     </div>
                 ))}
             </div>
