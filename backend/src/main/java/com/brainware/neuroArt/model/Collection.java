@@ -31,8 +31,4 @@ public class Collection {
     public Long getClient() {
         return client.getId();
     }
-
-    public Long getClient() {
-        return client.getId();
-    }
 }
