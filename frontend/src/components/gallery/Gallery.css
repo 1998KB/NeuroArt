@@ -21,3 +21,10 @@
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
 }
+
+.imagecarousel__button-delete {
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    border-radius: 10%;
+}
