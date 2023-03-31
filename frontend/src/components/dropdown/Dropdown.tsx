@@ -171,10 +171,14 @@ const Dropdown = (props: DropdownProps) => {
                     options={moodOptions}
                     onChange={(event) => handleChangeMood(event)}
             />
-            <label>
-                Text input: <input type="text" onChange={event => handleUserInput(event)}/>
+            <div className="text-input">
+            <label >
+                Text input:
             </label>
-            <button onClick={event => handleGenerate(event)} disabled={props.isLoading}>Generate</button>
+                <input className='text-input-field'type="text" onChange={event => handleUserInput(event)}/>
+
+                <button onClick={event => handleGenerate(event)} disabled={props.isLoading}>Generate</button>
+            </div>
         </div>
     );
 };

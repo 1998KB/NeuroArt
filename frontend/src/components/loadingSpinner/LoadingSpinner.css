@@ -10,3 +10,13 @@
 .spinner-container__loading-spinner-img {
     animation: rotation 4s linear infinite;
 }
+
+.spinning-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+p{
+    text-align: center;
+}

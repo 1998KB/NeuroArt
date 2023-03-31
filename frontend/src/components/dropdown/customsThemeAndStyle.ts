@@ -25,11 +25,11 @@ export const customStyles : StylesConfig= {
     container: (provided: CSSObjectWithLabel, state:any) => ({
        ...provided,
         width: '100%',
-        margin: '10px 0',
+        margin: '10px',
     }),
     option: (provided: CSSObjectWithLabel, state: any) => ({
         ...provided,
-        color: '#4E4E4E',
+        color: 'black',
         width: 250,
         backgroundColor: state.isFocused ? '#D2D2D2' : 'transparent',
         ':active': {

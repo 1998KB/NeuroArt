@@ -30,10 +30,11 @@ const ImageContainer = (props: ImageContainerProps) => {
     }
 
     return (
-        <div>
-            {props.isLoading ? <LoadingSpinner/> : <img src={props.image}/> }
+        <div className='img-container'>
+            {props.isLoading && <LoadingSpinner/>}
             {props.image &&
                 <>
+                    <img className='generated-image' src={props.image}/>
                     <label className="add-title-label">Add Title: </label>
                     <input type="text"
                            className="add-title"

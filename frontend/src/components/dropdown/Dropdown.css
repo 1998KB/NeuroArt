@@ -1,0 +1,14 @@
+.text-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.text-input-field{
+    font-size: x-large;
+}
+.dropdown{
+    text-align: center;
+}

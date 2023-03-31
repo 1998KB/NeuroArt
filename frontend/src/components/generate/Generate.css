@@ -1,0 +1,11 @@
+.heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xxx-large;
+}
+.text{
+    margin: 1em;
+    text-align: center;
+}
+

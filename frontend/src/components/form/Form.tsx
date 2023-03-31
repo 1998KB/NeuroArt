@@ -20,7 +20,7 @@ const Form = (props: FormProps) => {
     };
 
     return (
-        <div>
+        <div className='dropdown'>
             <form>
                 <Dropdown
                     key={key}
