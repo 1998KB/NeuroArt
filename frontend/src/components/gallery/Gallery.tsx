@@ -29,6 +29,14 @@ const Gallery = () => {
         imageId: image.id
     }))
 
+    async function deleteImage(event: React.MouseEvent<HTMLButtonElement>, id: string) {
+        event.preventDefault()
+
+        const response = await fetch(`https://neuroart.azurewebsites.net/image/${id}`, {
+            method: 'DELETE'
+        });
+    }
+
     return (
         <div className='gallery'>
             <div className='gallery__carousel-container'>
@@ -36,9 +44,10 @@ const Gallery = () => {
             </div>
             <div className='gallery__image-container'>
                 {items.map((item, index) => (
-                    <>
+                    <div key={index}>
                         <img className='gallery__image' src={item.imageSrc}/>
-                    </>
+                        <button className='imagecarousel__button-delete' onClick={event => deleteImage(event, item.imageId)}> Delete</button>
+                    </div>
                 ))}
             </div>
         </div>

@@ -1,14 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./ImageContainer.css"
 import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 import {ImageContainerProps, ImageSaveData} from "../../interfaces";
-import {isDisabled} from "@testing-library/user-event/dist/utils";
+
 const ImageContainer = (props: ImageContainerProps) => {
 
 
-    let save: ImageSaveData;
 
     const handleSave = async () => {
+        const save: ImageSaveData = {
+            temporaryUrl: props.image,
+            prompt: props.prompt,
+            title: props.inputTitle,
+            description: props.inputDescription
+        }
         props.setIsDisabled(true)
         const response = await fetch(
             "https://neuroart.azurewebsites.net/image",
@@ -24,12 +29,6 @@ const ImageContainer = (props: ImageContainerProps) => {
         props.setIsDisabled(false);
     }
 
-    save = {
-        temporaryUrl: props.image,
-        prompt: props.prompt,
-        title: props.inputTitle,
-        description: props.inputDescription
-    }
     return (
         <div>
             {props.isLoading ? <LoadingSpinner/> : <img src={props.image}/> }

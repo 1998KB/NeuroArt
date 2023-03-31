@@ -13,7 +13,7 @@ const Generate = () => {
 
     useEffect(() => {
         setPrompt('')
-    })
+    }, [])
 
     useEffect(() => {
         if (prompt === '') {
@@ -21,7 +21,6 @@ const Generate = () => {
         }
         handleGenerate();
     }, [prompt]);
-
 
     const handleGenerate = async () => {
         setIsLoading(true)

@@ -1,7 +1,5 @@
 import React from 'react';
 import "./Home.css"
-import ImageCarousel from "../imageCarousel/ImageCarousel";
-import About from "../about/About";
 import {Link} from "react-router-dom";
 
 const Home = () => {

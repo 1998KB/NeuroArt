@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import "./ImageCarousel.css"
 import ImageCard from "../imageCard/ImageCard";
-import { CarouselType } from "../../interfaces";
+import {CarouselType} from "../../interfaces";
 import {getRefValue, useStateRef} from "../../lib/hooks";
 
 export type Props = {
@@ -103,14 +103,6 @@ const ImageCarousel = ({ items }: Props) => {
         setOffsetX(-(containerWidth * index))
     }
 
-    async function deleteImage(event: React.MouseEvent<HTMLButtonElement>, id: string) {
-        event.preventDefault()
-
-        const response = await fetch(`https://neuroart.azurewebsites.net/image/${id}`, {
-            method: 'DELETE'
-        });
-    }
-
     const [randomItems, setRandomItems] = useState<CarouselType[]>([])
     useEffect(() => {
         const itemsCopy = items;
@@ -125,10 +117,7 @@ const ImageCarousel = ({ items }: Props) => {
         <div className='imagecarousel' onTouchStart={onTouchStart} onMouseDown={onTouchStart}>
             <ul ref={containerRef} className={`imagecarousel__list ${isSwiping ? 'swiping' : ''}`} style={{ transform: `translate3d(${offsetX}px, 0, 0)`}}>
                 {randomItems.map((item, index) => (
-                    <>
                         <ImageCard key={index} {...item}/>
-                        {/*<button className='imagecarousel__button-delete' onClick={event => deleteImage(event, item.imageId)}> Delete</button>*/}
-                    </>
                 ))}
             </ul>
             <ul className='imagecarousel__indicator'>

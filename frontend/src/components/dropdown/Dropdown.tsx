@@ -1,6 +1,6 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import './Dropdown.css'
-import Select, { OnChangeValue } from 'react-select';
+import Select, {OnChangeValue} from 'react-select';
 import {DropdownProps, Option} from "../../interfaces";
 import {customStyles, customTheme} from "./customsThemeAndStyle";
 import {

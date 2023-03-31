@@ -1,6 +1,6 @@
 import React from 'react';
 import "./AppContainer.css"
-import { Routes, Route } from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
 import Header from "../header/Header";
 import Home from "../home/Home";
 import Generate from "../generate/Generate";

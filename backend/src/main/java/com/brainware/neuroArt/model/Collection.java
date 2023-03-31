@@ -28,4 +28,7 @@ public class Collection {
     )
     private List<Image> images = new ArrayList<>();
 
+    public Long getClient() {
+        return client.getId();
+    }
 }
