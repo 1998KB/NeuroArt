@@ -27,6 +27,10 @@ public class Collection {
             inverseJoinColumns = @JoinColumn(name = "image_id")
     )
     private List<Image> images = new ArrayList<>();
+    
+    public Long getClient() {
+        return client.getId();
+    }
 
     public Long getClient() {
         return client.getId();
