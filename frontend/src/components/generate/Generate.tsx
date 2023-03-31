@@ -45,14 +45,9 @@ const Generate = () => {
     return (
         <div>
             <h1 className='heading'>Be Creative</h1>
-            <p className="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet animi assumenda dicta
-                iusto nisi officiis placeat praesentium quasi sint. Corporis deleniti illo, inventore minima molestiae
-                mollitia nemo quia sequi voluptatibus voluptatum! Aliquid commodi, distinctio fugiat itaque magni
-                maiores minus molestiae neque nostrum officia perferendis possimus quae quam rem veniam. Amet aperiam
-                atque beatae consectetur, cumque deleniti deserunt dignissimos dolorem dolores doloribus eligendi enim,
-                eos est ex in ipsam ipsum laboriosam laborum minima mollitia nostrum odit placeat quas quibusdam quos
-                tempora tempore vel velit voluptates voluptatum. At consequuntur dolor expedita explicabo hic itaque,
-                iusto magnam neque, obcaecati saepe sunt tempora?</p>
+            <p className="text">Explore your creativity. We provide different examples of options that you can set in order to translate your thoughts into art. All the examples are optional, but you can retrieve precise results if you define your preferences.
+                Feel free to experiment with different options and see what kind of images you can create. You can save your favorite creations to your account.
+                Start exploring today and see what you can create!</p>
             <Form setInputTitle={setInputTitle}
                   setInputDescription={setInputDescription}
                   setPrompt={setPrompt}
