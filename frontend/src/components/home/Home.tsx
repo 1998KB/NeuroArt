@@ -6,14 +6,14 @@ const Home = () => {
     return (
         <div className='home'>
             <img className='home__image' src={require('../../Images/LogoName.png')}/>
-            <p className="home__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid
-                beatae dolores eaque enim eveniet illum ipsam maxime modi, molestiae necessitatibus odio officia
-                provident quia sunt! Commodi consequatur cum dicta ducimus et, eveniet ex placeat quod voluptates.
-                Adipisci, aliquid animi at culpa debitis dolorem eos eum officia, provident quo suscipit totam
-                voluptatem voluptates. Aperiam architecto consequuntur deserunt doloribus eius error, iure veniam!
-                Aspernatur assumenda dolorum ex excepturi exercitationem expedita facere ipsam iure magni maiores, natus
-                odit quasi quo recusandae reiciendis rem repellat tempora velit. A corporis eveniet explicabo mollitia
-                optio, quaerat quo! Cupiditate eligendi excepturi pariatur quae quaerat quia unde.</p>
+            <p className="home__description">Welcome to NeuroArt, a website where you can unleash your creativity.
+                With our tool, you can translate your thoughts into stunning and unique images.
+                Our state-of-the-art AI technology allows you to experiment with various styles, colors,
+                and themes to bring your vision to life.
+                Whether you're an artist, designer, or simply someone who loves to create,
+                NeuroArt is the perfect platform to explore your imagination.
+                Our easy-to-use interface and intuitive controls make it simple to generate beautiful images in just a few clicks.
+                With NeuroArt, the only limit is your imagination. Sign up now and see what you can create!</p>
             <img className='home__image-wheel' src={require('../../Images/LogoImgWhite.png')}/>
             <h1 className="home__motto">Explore Your Creativity</h1>
             <div className='home__link-div'>
