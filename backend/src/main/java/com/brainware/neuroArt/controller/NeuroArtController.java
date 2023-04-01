@@ -6,6 +6,8 @@ import com.brainware.neuroArt.service.NeuroArtService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -56,5 +58,10 @@ public class NeuroArtController {
     @GetMapping("/gallery")
     public ResponseEntity<List<Image>> getGallery() {
         return new ResponseEntity<>(neuroArtService.getAllImages(), HttpStatus.OK);
+    }
+
+    private String getSub() {
+        return ((Jwt)SecurityContextHolder.getContext().getAuthentication().getPrincipal())
+                .getClaims().get("sub").toString();
     }
 }
