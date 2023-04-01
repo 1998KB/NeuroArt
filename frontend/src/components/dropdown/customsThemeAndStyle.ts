@@ -26,11 +26,13 @@ export const customStyles : StylesConfig= {
        ...provided,
         width: '100%',
         margin: '10px',
+        borderRadius: '10px',
     }),
     option: (provided: CSSObjectWithLabel, state: any) => ({
         ...provided,
         color: 'black',
         width: 250,
+        borderRadius: '10px',
         backgroundColor: state.isFocused ? '#D2D2D2' : 'transparent',
         ':active': {
             backgroundColor: '#C3C3C3',
@@ -38,12 +40,16 @@ export const customStyles : StylesConfig= {
     }),
     control: (provided: CSSObjectWithLabel) => ({
         ...provided,
-       width: 250
+       width: 250,
+        borderRadius: '10px',
+
     }),
     menu: (provided: CSSObjectWithLabel) => ({
         ...provided,
         width: 250,
         boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.25)',
+        borderRadius: '10px',
+
     }),
     placeholder: (provided: CSSObjectWithLabel) => ({
         ...provided,
