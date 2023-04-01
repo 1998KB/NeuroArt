@@ -47,8 +47,17 @@ label {
         height: 45vh;
         overflow-y: scroll;
         border-radius: 10px;
+        transform: rotate(180deg);
 
     }
+    .dropdown-select-container:active{
+        z-index: 51;
+    }
+    .select{
+        transform: rotate(180deg);
+
+    }
+
 
     .dropdown {
         display: flex;
@@ -69,11 +78,12 @@ label {
         width: 60vw;
     }
     .dropdown__generate-btn {
+        border: 1px solid rgba(74, 255, 50, 0.24);
+
         font-size: 2em;
         font-family: Poppins-Regular;
         width: 20vw;
         height: 8vh;
-        border: none;
         outline: none;
         color: #fff;
         background: #111;
@@ -131,6 +141,6 @@ label {
     }
 
     label {
-        display: none
+        display: none;
     }
 }

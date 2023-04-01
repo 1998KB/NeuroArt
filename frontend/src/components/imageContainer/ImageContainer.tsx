@@ -6,7 +6,6 @@ import {ImageContainerProps, ImageSaveData} from "../../interfaces";
 const ImageContainer = (props: ImageContainerProps) => {
 
 
-
     const handleSave = async () => {
         const save: ImageSaveData = {
             temporaryUrl: props.image,
@@ -34,20 +33,26 @@ const ImageContainer = (props: ImageContainerProps) => {
             {props.isLoading && <LoadingSpinner/>}
             {props.image &&
                 <>
-                    <img className='generated-image' src={props.image}/>
-                    <label className="add-title-label">Add Title: </label>
-                    <input type="text"
-                           className="add-title"
-                           value={props.inputTitle}
-                           onChange={(e) => props.setInputTitle(e.target.value)}
-                    />
-                    <label htmlFor="" className="add-description-label">Add Description</label>
-                    <input type="text"
-                           className="add-description"
-                           value={props.inputDescription}
-                           onChange={(e) => props.setInputDescription(e.target.value)}
-                    />
-                    <button className="save-btn" onClick={handleSave} disabled={props.isDisabled}>Save</button>
+                    <div className="generated-image-container">
+                        <img className='generated-image' src={props.image}/>
+                    </div>
+                    <div className="input-user">
+                        <label className="add-title-label">Add Title: </label>
+                        <input type="text"
+                               className="add-title"
+                               placeholder='Add a title'
+                               value={props.inputTitle}
+                               onChange={(e) => props.setInputTitle(e.target.value)}
+                        />
+                        <label htmlFor="" className="add-description-label">Add Description</label>
+                        <input type="text"
+                               className="add-description"
+                               placeholder='Add a description'
+                               value={props.inputDescription}
+                               onChange={(e) => props.setInputDescription(e.target.value)}
+                        />
+                        <button className="save-btn" onClick={handleSave} disabled={props.isDisabled}>Save</button>
+                    </div>
                 </>
             }
         </div>

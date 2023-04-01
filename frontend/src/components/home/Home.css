@@ -124,6 +124,7 @@
         --s: .45em; /* size of the corner */
         --color: #e3e3e3;
 
+
         padding: calc(.5em + var(--s)) calc(.9em + var(--s));
         color: var(--color);
         --_p: var(--s);
@@ -131,9 +132,10 @@
         transition: .3s linear, color 0s, background-color 0s;
         outline: var(--b) solid #0000;
         outline-offset: .6em;
-        font-size: medium;
         font-family: Poppins-Light;
-
+        width: 18vw;
+        height: 9vh;
+        font-size: x-large;
         border: 0;
         cursor: pointer;
         user-select: none;
@@ -156,9 +158,9 @@
 
     .home__try-now {
         all: unset;
-        width: 100px;
-        height: 30px;
-        font-size: 16px;
+        width: 15vw;
+        height: 5vh;
+        font-size: 1.5em;
         background: transparent;
         border: none;
         position: relative;

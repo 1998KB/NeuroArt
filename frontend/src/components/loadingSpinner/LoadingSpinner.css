@@ -24,6 +24,10 @@ p {
 
 @media screen and (min-width: 1025px) {
     .spinning-container {
-        margin-top: -20em;
+        margin-top: -23em;
+    }
+
+    p {
+        font-size: x-large
     }
 }
