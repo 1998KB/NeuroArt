@@ -1,7 +1,7 @@
 const createOption = (value: string, label: string) => ({ value, label });
 
 export const lightingOptions = [
-    createOption('', 'No Lighting'),
+    createOption('', 'Select Lighting'),
     createOption('cinematic', 'Cinematic'),
     createOption('dappled', 'Dappled'),
     createOption('bright', 'Bright'),
@@ -17,7 +17,7 @@ export const lightingOptions = [
 ];
 
 export const styleOptions = [
-    createOption('', 'No Style'),
+    createOption('', 'Select Style'),
     createOption('hyperrealistic', 'Hyperrealistic'),
     createOption('oil-painting', 'Oil Painting'),
     createOption('watercolor-lighting', 'Watercolor Lighting'),
@@ -36,7 +36,7 @@ export const styleOptions = [
 ];
 
 export const colorOptions = [
-    createOption('', 'No Colors'),
+    createOption('', 'Select Colors'),
     createOption('retro', 'Retro'),
     createOption('vivid', 'Vivid'),
     createOption('pastel', 'Pastel'),
@@ -53,7 +53,7 @@ export const colorOptions = [
 ];
 
 export const landscapeOptions = [
-    createOption('', 'No Landscape'),
+    createOption('', 'Select Landscape'),
     createOption('surreal', 'Surreal'),
     createOption('unreal', 'Unreal'),
     createOption('fantasy', 'Fantasy'),
@@ -71,7 +71,7 @@ export const landscapeOptions = [
 ];
 
 export const textureOptions = [
-    createOption('', 'No Texture'),
+    createOption('', 'Select Texture'),
     createOption('grainy texture', 'Grainy'),
     createOption('metallic texture', 'Metallic'),
     createOption('marble texture', 'Marble'),
@@ -84,7 +84,7 @@ export const textureOptions = [
 ];
 
 export const shapeOptions = [
-    createOption('', 'No Shape'),
+    createOption('', 'Select Shape'),
     createOption('geometric shapes', 'Geometric'),
     createOption('organic shapes', 'Organic'),
     createOption('abstract shapes', 'Abstract'),
@@ -96,7 +96,7 @@ export const shapeOptions = [
 ];
 
 export const moodOptions = [
-    createOption('', 'No Mood'),
+    createOption('', 'Select Mood'),
     createOption('upbeat mood', 'Upbeat'),
     createOption('relaxing mood', 'Relaxing'),
     createOption('romantic mood', 'Romantic'),

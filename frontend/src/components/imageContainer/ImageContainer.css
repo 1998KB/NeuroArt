@@ -1,4 +1,4 @@
-.img-container{
+.img-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,18 @@
     gap: 1em;
     margin: 1em;
 }
-.generated-image{
+
+.generated-image {
     width: 90%;
     height: 90%;
+    border-radius: 1em;
+}
+
+@media screen and (min-width: 1025px) {
+    .generated-image {
+        width: 50vw;
+        height: 70vh;
+        margin-top: -20em;
+
+    }
 }
