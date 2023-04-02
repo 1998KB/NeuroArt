@@ -71,7 +71,7 @@ const Generate = (props: generateProps) => {
                   isLoading={isLoading}
                   setIsDisable={setIsDisabled}
                   setGeneratedImage={setGeneratedImage}/>
-            <ImageContainer inputTitle={inputTitle}
+            <ImageContainer credentials={props.credentials} inputTitle={inputTitle}
                             setInputTitle={setInputTitle}
                             inputDescription={inputDescription}
                             setInputDescription={setInputDescription}
