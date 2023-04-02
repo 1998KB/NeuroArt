@@ -17,6 +17,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/gallery", "/check").permitAll()
                         .anyRequest().authenticated()
                 )
+                .cors().disable()
                 .csrf().disable()
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
         return http.build();
