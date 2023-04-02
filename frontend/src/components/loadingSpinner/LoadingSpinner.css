@@ -11,12 +11,23 @@
     animation: rotation 4s linear infinite;
 }
 
-.spinning-container{
+.spinning-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-p{
+
+p {
     text-align: center;
+}
+
+@media screen and (min-width: 1025px) {
+    .spinning-container {
+        margin-top: -23em;
+    }
+
+    p {
+        font-size: x-large
+    }
 }

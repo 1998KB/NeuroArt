@@ -101,86 +101,108 @@ const Dropdown = (props: DropdownProps) => {
         props.setInputTitle(null)
         props.setInputDescription(null)
         props.setIsDisabled(false)
+        handleReset();
         let promptMade = makePrompt()
         if (promptMade) {
-             props.setPrompt(promptMade)
+            props.setPrompt(promptMade)
         }
         props.setGeneratedImage(null)
         props.setGenerated(true)
-        handleReset();
+
     }
     const handleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserInput(event.target.value);
     }
 
     return (
-        <div>
-            <label>Select Lighting:</label>
-            <Select theme={customTheme}
-                    styles={customStyles}
-                    className='dropdown__select'
-                    defaultValue={lightingOptions[0]}
-                    options={lightingOptions}
-                    onChange={(event) => handleChangeLighting(event)}
-            />
-            <label>Select Style:</label>
-            <Select theme={customTheme}
-                    styles={customStyles}
-                    className='dropdown__select'
-                    defaultValue={styleOptions[0]}
-                    options={styleOptions}
-                    onChange={(event) => handleChangeStyle(event)}
-            />
-            <label>Select Color:</label>
-            <Select theme={customTheme}
-                    styles={customStyles}
-                    className='dropdown__select'
-                    defaultValue={colorOptions[0]}
-                    options={colorOptions}
-                    onChange={(event) => handleChangeColor(event)}
-            />
-            <label>Select Landscape:</label>
-            <Select theme={customTheme}
-                    styles={customStyles}
-                    className='dropdown__select'
-                    defaultValue={landscapeOptions[0]}
-                    options={landscapeOptions}
-                    onChange={(event) => handleChangeLandscape(event)}
-            />
-            <label>Select Texture:</label>
-            <Select theme={customTheme}
-                    styles={customStyles}
-                    className='dropdown__select'
-                    defaultValue={textureOptions[0]}
-                    options={textureOptions}
-                    onChange={(event) => handleChangeTexture(event)}
-            />
-            <label>Select Shape:</label>
-            <Select theme={customTheme}
-                    styles={customStyles}
-                    className='dropdown__select'
-                    defaultValue={shapeOptions[0]}
-                    options={shapeOptions}
-                    onChange={(event) => handleChangeShape(event)}
-            />
-            <label>Select Mood:</label>
-            <Select theme={customTheme}
-                    styles={customStyles}
-                    className='dropdown__select'
-                    defaultValue={moodOptions[0]}
-                    options={moodOptions}
-                    onChange={(event) => handleChangeMood(event)}
-            />
-            <div className="text-input">
-            <label >
-                Text input:
-            </label>
-                <input className='text-input-field'type="text" onChange={event => handleUserInput(event)}/>
+        <div className='dropdown'>
 
-                <button onClick={event => handleGenerate(event)} disabled={props.isLoading}>Generate</button>
+            <div>
+                <div className="text-input">
+                    <label>
+                        Text input:
+                    </label>
+                    <input placeholder='Manifest your ideas ...' className='text-input-field' type="text" onChange={event => handleUserInput(event)}/>
+
+                    <button className='dropdown__generate-btn' onClick={event => handleGenerate(event)} disabled={props.isLoading}>Generate</button>
+                </div>
+            </div>
+            <div className='dropdown-select-container'>
+                <div className="select">
+                    <label>Select Lighting:</label>
+                    <Select theme={customTheme}
+                            styles={customStyles}
+                            className='dropdown__select'
+                            defaultValue={lightingOptions[0]}
+                            options={lightingOptions}
+                            onChange={(event) => handleChangeLighting(event)}
+                    />
+                </div>
+                <div className="select">
+                    <label>Select Style:</label>
+                    <Select theme={customTheme}
+                            styles={customStyles}
+                            className='dropdown__select'
+                            defaultValue={styleOptions[0]}
+                            options={styleOptions}
+                            onChange={(event) => handleChangeStyle(event)}
+                    />
+                </div>
+                <div className="select">
+                    <label>Select Color:</label>
+                    <Select theme={customTheme}
+                            styles={customStyles}
+                            className='dropdown__select'
+                            defaultValue={colorOptions[0]}
+                            options={colorOptions}
+                            onChange={(event) => handleChangeColor(event)}
+                    />
+                </div>
+                <div className="select">
+                    <label>Select Landscape:</label>
+                    <Select theme={customTheme}
+                            styles={customStyles}
+                            className='dropdown__select'
+                            defaultValue={landscapeOptions[0]}
+                            options={landscapeOptions}
+                            onChange={(event) => handleChangeLandscape(event)}
+                    />
+                </div>
+                <div className="select">
+                    <label>Select Texture:</label>
+                    <Select theme={customTheme}
+                            styles={customStyles}
+                            className='dropdown__select'
+                            defaultValue={textureOptions[0]}
+                            options={textureOptions}
+                            onChange={(event) => handleChangeTexture(event)}
+                    />
+                </div>
+                <div className="select">
+                    <label>Select Shape:</label>
+                    <Select theme={customTheme}
+                            styles={customStyles}
+                            className='dropdown__select'
+                            defaultValue={shapeOptions[0]}
+                            options={shapeOptions}
+                            onChange={(event) => handleChangeShape(event)}
+                    />
+                </div>
+                <div className="select">
+                    <label>Select Mood:</label>
+                    <Select theme={customTheme}
+                            styles={customStyles}
+                            className='dropdown__select'
+                            defaultValue={moodOptions[0]}
+                            options={moodOptions}
+                            onChange={(event) => handleChangeMood(event)}
+                    />
+                </div>
             </div>
         </div>
-    );
+
+    )
+        ;
 };
 
 export default Dropdown;

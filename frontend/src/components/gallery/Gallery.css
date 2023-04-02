@@ -2,6 +2,7 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10em;
 }
 
 .gallery__image {
@@ -16,7 +17,7 @@
 }
 
 .gallery__image-container {
-    margin-top: 3em;
+    margin: 3em 0.5em;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
@@ -27,4 +28,10 @@
     background-color: black;
     color: white;
     border-radius: 10%;
+}
+
+@media screen and (min-width: 768px) {
+    .gallery__carousel-container {
+        margin-top: 15em;
+    }
 }
