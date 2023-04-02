@@ -92,8 +92,7 @@ public class NeuroArtService {
         collection.setClient(client);
         collection.setName(client.getUsername());
         collection.setDescription("My first collection");
-        collection = collectionRepository.save(collection);
-        client.getCollectionList().add(collection);
+        collectionRepository.save(collection);
         return clientRepository.save(client);
     }
 }
