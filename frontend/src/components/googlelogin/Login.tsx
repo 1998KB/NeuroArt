@@ -22,7 +22,7 @@ const Login = (props: loginProps) => {
             "https://neuroart.azurewebsites.net/user",
             {
                 method: 'POST',
-                headers: {'authorization': `${credentials.credential}`},
+                headers: {'Authorization': `Bearer ${credentials.credential}`},
             }
         )
 
