@@ -19,7 +19,6 @@ import java.util.concurrent.ExecutionException;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin({"http://localhost:3000", "https://blue-sky-0e47a0403.2.azurestaticapps.net"})
 public class NeuroArtController {
 
     NeuroArtService neuroArtService;
