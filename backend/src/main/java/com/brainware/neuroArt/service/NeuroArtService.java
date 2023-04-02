@@ -71,10 +71,6 @@ public class NeuroArtService {
         return Streamable.of(imageRepository.findAll()).toList();
     }
 
-    private Collection getSingleCollection() {
-        return collectionRepository.findById(1L).get();
-    }
-
     private void addImageToCollectionAndSave(Collection collection, Image image) {
         collection.getImages().add(image);
         collectionRepository.save(collection);
@@ -90,11 +86,13 @@ public class NeuroArtService {
         client.setSub(claims.get("sub").toString());
         client.setUsername(claims.get("given_name").toString());
         client = clientRepository.save(client);
+
         Collection collection = new Collection();
         collection.setClient(client);
         collection.setName(client.getUsername());
         collection.setDescription("My first collection");
         collection = collectionRepository.save(collection);
+
         List<Collection> userCollectionList = client.getCollectionList();
         userCollectionList.add(collection);
         client.setCollectionList(userCollectionList);
