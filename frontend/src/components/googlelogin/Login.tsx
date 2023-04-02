@@ -43,7 +43,6 @@ const Login = (props: loginProps) => {
                 })}
             </>
                 : <GoogleLogin
-                auto_select={true}
                 onSuccess={(credentialResponse) => {
                     handleLogin(credentialResponse)
                     props.setCredentials(credentialResponse);
@@ -53,7 +52,7 @@ const Login = (props: loginProps) => {
                 }}
             />}
             <p></p>
-            <button onClick={handleLogout}>Google logout</button>
+            <button onClick={handleLogout}>Logout</button>
         </>
     );
 };
