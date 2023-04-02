@@ -1,8 +1,7 @@
-.gallery2-container{
-    margin: 4em;
+.gallery2-container {
 }
 
-.gallery2-container__images{
+.gallery2-container__images {
     width: 100%;
     height: 100%;
     display: flex;
@@ -12,17 +11,17 @@
     padding-top: 2em;
 }
 
-.gallery2-container__images__image{
+.gallery2-container__images__image {
     border-radius: 2em;
     padding: 0.5em;
     width: 95%;
     height: 95%;
-
     position: relative;
     z-index: 1;
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
 }
+
 .gallery2-container__images__image:hover {
     opacity: 0.2;
 }
@@ -32,38 +31,56 @@
     visibility: visible;
 }
 
-.gallery2-container__images__carrousel{
+.gallery2-container__images__carrousel {
     text-align: center;
     position: relative;
 }
 
-.gallery2-container__header{
+.gallery2-container__header {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 1em 5em 0 5em;
+}
+
+.gallery2-container__getinspired {
+    font-size: 4em;
+    text-align: left;
+    margin-top: 1em;
+    border-right: 1px solid white;
+    border-radius: 10px;
     padding-right: 1em;
-    padding-top: 1em;
-}
-
-.gallery2-container__getinspired{
-    padding-right: 1em;
-}
-
-h1{
-    font-size: xx-large;
 }
 
 
-.gallery2-container__text{
-    border-left: solid 2px white;
-    padding-left: 1em;
+.gallery2-container__text {
+    height: 30vh;
+    overflow: scroll;
+    padding-left: 5em;
+    text-align: left;
+    width: 100%;
 }
 
-p{
+.gallery2-container__text::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+.gallery2-container__text::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+
+p {
     text-align: left;
 }
 
-.gallery2-container__images__button{
-    background: linear-gradient(to right,#196BCA ,#6433E0);
+.gallery2-container__images__button {
+    background: linear-gradient(to right, #196BCA, #6433E0);
     background-color: #196BCA;
     color: #fff;
     font-family: Trebuchet MS;
@@ -76,10 +93,12 @@ p{
     border-radius: 10px;
     display: inline-block;
 }
-.gallery2-container__images__button:hover{
-    background: linear-gradient(to right,#5482d0 ,#7d5ee3);
+
+.gallery2-container__images__button:hover {
+    background: linear-gradient(to right, #5482d0, #7d5ee3);
     background-color: #5482d0;
 }
-.gallery2-container__images__button:active{
+
+.gallery2-container__images__button:active {
     transform: scale(0.95);
 }

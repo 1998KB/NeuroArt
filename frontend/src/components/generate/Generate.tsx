@@ -10,6 +10,7 @@ interface generateProps {
 }
 
 const Generate = (props: generateProps) => {
+
     const [prompt, setPrompt] = useState<string>('');
     const [generatedImage, setGeneratedImage] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -40,7 +41,7 @@ const Generate = (props: generateProps) => {
             {
                 method: 'POST',
                 headers: {'content-type': 'text/plain',
-                'authorization': `${props.credentials.credential}`},
+                'Authorization': `Bearer ${props.credentials.credential}`},
                 body: prompt,
             }
         )
@@ -56,9 +57,9 @@ const Generate = (props: generateProps) => {
 
     return (
         <div className='generate'>
-            <div className="container">
-                <p className='heading'>Be Creative</p>
-                <p className="text">Explore your creativity. We provide different examples of options that you can set
+            <div className="generate__div">
+                <p className='generate__heading'>Be Creative</p>
+                <p className="generate__text">Explore your creativity. We provide different examples of options that you can set
                     in order to translate your thoughts into art. All the examples are optional, but you can retrieve
                     precise results if you define your preferences.
                     Feel free to experiment with different options and see what kind of images you can create. You can
