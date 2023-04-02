@@ -4,6 +4,12 @@ import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google
 interface loginProps {
     setCredentials: Function
 }
+interface User {
+    username: String,
+    collectionList: []
+    email: String,
+    picture: string
+}
 const Login = (props: loginProps) => {
     const handleLogout = () => {
         googleLogout();
@@ -24,7 +30,11 @@ const Login = (props: loginProps) => {
             throw new Error(`Failed to get user: ${response.status}`);
         }
 
-        const url = await response.text();
+        const data: User = await response.json();
+        console.log(data.username)
+        console.log(data.email)
+        console.log(data.picture)
+        console.log(data.collectionList)
     };
 
     return (
