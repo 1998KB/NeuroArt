@@ -4,6 +4,10 @@
         display: none;
     }
 
+    .header-container {
+        margin-bottom: 8em;
+    }
+
     .header {
         margin-bottom: 8em;
     }

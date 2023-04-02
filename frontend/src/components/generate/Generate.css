@@ -28,7 +28,9 @@ label {
 }
 
 @media screen and (min-width: 1025px) {
+
     .generate__heading {
+        margin: 0;
         font-size: 4em;
         text-align: left;
         border-right: 1px solid white;
@@ -42,16 +44,12 @@ label {
     }
 
     .generate__div {
-        margin: 0 5em 1em 5em;
+        margin: 0 5em 0em 5em;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         text-align: center;
-    }
-
-    .generate__div > Form {
-
     }
 
     Form {
