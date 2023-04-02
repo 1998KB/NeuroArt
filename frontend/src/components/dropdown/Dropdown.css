@@ -43,19 +43,9 @@ label {
         display: flex;
         flex-direction: row;
         text-align: center;
-        width: 90vw;
-        height: 45vh;
-        overflow-y: scroll;
+        width: 95vw;
+        margin: auto;
         border-radius: 10px;
-        transform: rotate(180deg);
-
-    }
-    .dropdown-select-container:active{
-        z-index: 51;
-    }
-    .select{
-        transform: rotate(180deg);
-
     }
 
 
@@ -108,6 +98,8 @@ label {
         opacity: 0;
         transition: opacity .3s ease-in-out;
         border-radius: 10px;
+        opacity: 1;
+
     }
 
     .dropdown__generate-btn:active {

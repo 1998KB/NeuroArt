@@ -17,8 +17,6 @@
     .generated-image {
         width: 50vw;
         height: 70vh;
-        margin-top: -23em;
-
     }
 
     .add-title {
@@ -53,7 +51,6 @@
         justify-content: center;
         align-items: center;
         gap: 5em;
-        margin-top: -40em;
     }
 
     .save-btn{
