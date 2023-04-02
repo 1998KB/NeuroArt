@@ -1,32 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google';
-import {Image} from "../gallery/Gallery";
+import {User} from "../../interfaces";
 
 interface loginProps {
     setCredentials: Function
-}
-
-interface Collection {
-    description: String
-    images: Image[]
-
-}
-interface User {
-    username: String,
-    collectionList: Collection[]
-    email: String,
-    picture: string
+    credentials: CredentialResponse | null
+    setUser: Function
+    user: User
 }
 const Login = (props: loginProps) => {
-    const [userImages, setUserImages] = useState<Image[]>([]);
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [user, setUser] = useState<User>({username:'',collectionList:[],
-    email:'',picture:''});
     const handleLogout = () => {
         googleLogout();
-        console.log('User logged out successfully.');
         props.setCredentials(null);
-        setLoggedIn(false)
+        props.setUser({username:'',collectionList:[],
+            email:'',picture:''})
     };
 
     const handleLogin = async (credentials: CredentialResponse) => {
@@ -37,40 +24,27 @@ const Login = (props: loginProps) => {
                 headers: {'Authorization': `Bearer ${credentials.credential}`},
             }
         )
-
         if (!response.ok) {
             throw new Error(`Failed to get user: ${response.status}`);
         }
-
         const data: User = await response.json();
-
-        console.log(data.username)
-        console.log(data.email)
-        console.log(data.picture)
-        console.log(data.collectionList)
-        const collections: Collection = data.collectionList[0];
-        console.log(collections.description)
-        console.log(collections.images)
-        setUserImages(collections.images)
-        setUser(data)
-        setLoggedIn(true);
+        props.setUser(data)
     };
 
     return (
         <>
-            {loggedIn ?
+            {props.user.username !== '' ?
             <>
-                <h1>{user.username}</h1>
-                <h2>{user.email}</h2>
-                <img src={user.picture} alt={'no'}/>
-                {user.collectionList[0].images.map((image, index) => {
-                    return <img key={index} src={image.url} alt={'no'}/>
+                <h1>{props.user.username}</h1>
+                <h2>{props.user.email}</h2>
+                <img src={props.user.picture} alt={'no'}/>
+                {props.user.collectionList[0].images.map((image, index) => {
+                    return <img key={index} src={image.url}/>
                 })}
             </>
                 : <GoogleLogin
                 auto_select={true}
                 onSuccess={(credentialResponse) => {
-                    console.log(credentialResponse);
                     handleLogin(credentialResponse)
                     props.setCredentials(credentialResponse);
                 }}
