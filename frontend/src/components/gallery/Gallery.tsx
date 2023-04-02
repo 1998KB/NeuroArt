@@ -1,6 +1,6 @@
 import "./Gallery.css";
 import ImageCarousel from "../imageCarousel/ImageCarousel";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 
 export type Image = {
     id: string;
