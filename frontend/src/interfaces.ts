@@ -40,3 +40,9 @@ export type CarouselType = {
     imageId: string
 }
 
+export interface AuthorInfo{
+    username: string,
+    email: string,
+    picture: string,
+    collectionList: []
+}
