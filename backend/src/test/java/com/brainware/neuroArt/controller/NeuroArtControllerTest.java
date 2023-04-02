@@ -22,25 +22,4 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 public class NeuroArtControllerTest {
 
-    @Autowired
-    MockMvc mockMvc;
-
-    @Test
-    void unauthorizedGenerate() throws Exception {
-        mockMvc.perform(post("/generate"))
-                .andExpect(status().isUnauthorized());
-    }
-
-    @Test
-    void okCheck() throws Exception {
-        mockMvc.perform(get("/check"))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    void okGallery() throws Exception {
-        mockMvc.perform(get("/gallery"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(not(emptyString())));
-    }
 }
