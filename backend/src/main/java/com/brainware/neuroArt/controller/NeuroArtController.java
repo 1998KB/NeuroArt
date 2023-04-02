@@ -54,7 +54,7 @@ public class NeuroArtController {
         if (id == null || id.isEmpty() || id.isBlank()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Provided id has to be valid");
         }
-        neuroArtService.deleteImage(id);
+        neuroArtService.deleteImage(id, getClaims());
     }
     
     @GetMapping("/gallery")
