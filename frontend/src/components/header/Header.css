@@ -1,5 +1,9 @@
 @media screen and (min-width: 320px) {
 
+    .gallery2{
+        display: none;
+    }
+
     .header-container {
         margin-bottom: 8em;
 
@@ -83,6 +87,15 @@
 
 @media screen and (min-width: 768px) {
 
+
+    .gallery1{
+        display: none;
+    }
+
+    .gallery2{
+        display: block;
+    }
+
     .header__search-bar {
         margin-top: 1em;
     }
@@ -130,6 +143,10 @@
 }
 
 @media screen and (min-width: 1025px) {
+    .gallery1{
+        display: none;
+    }
+
     .header {
         flex-direction: row;
     }
@@ -239,4 +256,5 @@
 /*        text-decoration: underline;*/
 /*    }*/
 /*}*/
+
 

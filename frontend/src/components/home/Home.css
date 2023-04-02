@@ -1,5 +1,8 @@
 @media screen and (min-width: 320px) {
 
+    .gallery2{
+        display: none;
+    }
     .home {
         display: flex;
         flex-direction: column;
@@ -54,6 +57,12 @@
 
 
 @media screen and (min-width: 768px) {
+    .gallery2{
+        display: block;
+    }
+    .gallery1{
+        display: none;
+    }
 
     .home {
         margin-top: 13em;
@@ -86,6 +95,7 @@
 }
 
 @media screen and (min-width: 1025px) {
+
     .home {
         flex-direction: row;
     }
@@ -268,3 +278,4 @@
 /*        width: 20em;*/
 /*    }*/
 /*}*/
+
