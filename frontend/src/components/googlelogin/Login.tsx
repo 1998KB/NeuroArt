@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 
-const Login = () => {
-    const [loggedIn, setLoggedIn] = useState(false);
+interface loginProps {
+    setCredentials: Function
+}
+const Login = (props: loginProps) => {
     const handleLogout = () => {
         googleLogout();
-        setLoggedIn(false);
         console.log('User logged out successfully.');
+        props.setCredentials(null);
     };
 
     return (
@@ -14,15 +16,13 @@ const Login = () => {
             <GoogleLogin
                 auto_select={true}
                 onSuccess={(credentialResponse) => {
-                    setLoggedIn(true)
                     console.log(credentialResponse);
-
+                    props.setCredentials(credentialResponse);
                 }}
                 onError={() => {
                     console.log('Login Failed:');
                 }}
             />
-            {loggedIn ? <p>User is logged in</p> : <p>User is not logged in</p>}
             <button onClick={handleLogout}>Google logout</button>
         </>
     );
