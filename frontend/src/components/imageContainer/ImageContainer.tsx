@@ -5,7 +5,6 @@ import {ImageContainerProps, ImageSaveData} from "../../interfaces";
 
 const ImageContainer = (props: ImageContainerProps) => {
 
-
     const handleSave = async () => {
         if (props.credentials == null) {
             return;
@@ -33,29 +32,29 @@ const ImageContainer = (props: ImageContainerProps) => {
     }
 
     return (
-        <div className='img-container'>
+        <div className='imagecontainer'>
             {props.isLoading && <LoadingSpinner/>}
             {props.image &&
                 <>
-                    <div className="generated-image-container">
-                        <img className='generated-image' src={props.image}/>
+                    <div className="imagecontainer__generated-image-div">
+                        <img className='imagecontainer__generated-image' src={props.image}/>
                     </div>
-                    <div className="input-user">
+                    <div className="imagecontainer__input-div">
                         <label className="add-title-label">Add Title: </label>
                         <input type="text"
-                               className="add-title"
+                               className="imagecontainer__title-input"
                                placeholder='Add a title'
                                value={props.inputTitle}
                                onChange={(e) => props.setInputTitle(e.target.value)}
                         />
                         <label htmlFor="" className="add-description-label">Add Description</label>
                         <input type="text"
-                               className="add-description"
+                               className="imagecontainer__description-input"
                                placeholder='Add a description'
                                value={props.inputDescription}
                                onChange={(e) => props.setInputDescription(e.target.value)}
                         />
-                        <button className="save-btn" onClick={handleSave} disabled={props.isDisabled}>Save</button>
+                        <button className="imagecontainer__save-btn" onClick={handleSave} disabled={props.isDisabled}>Save</button>
                     </div>
                 </>
             }
