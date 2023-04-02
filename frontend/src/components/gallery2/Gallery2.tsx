@@ -1,5 +1,5 @@
 import "./Gallery2.css";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import ImageInfo from "./ImageInfo";
 
 type Image = {
@@ -22,6 +22,7 @@ const Gallery2 = () => {
             const images: Image[] = await response.json();
             setImages(images);
         }
+
         fetchImages();
     }, []);
 
@@ -57,20 +58,19 @@ const Gallery2 = () => {
     return (
         <div className="gallery2-container">
             <div className="gallery2-container__header">
-                <div className="gallery2-container__getinspired">
-                    <h1>Get Inspired</h1>
-                    <h3>By our gallery</h3>
-                </div>
-                <div className="gallery2-container__text">
-                    <p>Step into our world of visual inspiration and marvel at the stunning creations showcased in our gallery.
-                        We've curated a collection of artwork from our talented authors.
-                        With a diverse range of styles and techniques on display, there's something for everyone in our gallery.
-                        From sleek, modern designs to whimsical illustrations bursting with color,
-                        each piece offers a unique perspective on the world of visual art.
-                        We believe that anyone can tap into their inner creativity and become a master of their craft,
-                        and our gallery is the perfect place to start. So come explore, get lost in the beauty of our creations,
-                        and let your own imagination take flight.</p>
-                </div>
+                <p className="gallery2-container__getinspired">Get Inspired</p>
+                <p className="gallery2-container__text">Step into our world of visual inspiration and marvel at the
+                    stunning creations showcased in our gallery.
+                    We've curated a collection of artwork from our talented authors.
+                    With a diverse range of styles and techniques on display, there's something for everyone in our
+                    gallery.
+                    From sleek, modern designs to whimsical illustrations bursting with color,
+                    each piece offers a unique perspective on the world of visual art.
+                    We believe that anyone can tap into their inner creativity and become a master of their craft,
+                    and our gallery is the perfect place to start. So come explore, get lost in the beauty of our
+                    creations,
+                    and let your own imagination take flight.</p>
+
             </div>
 
             <div className="gallery2-container__images">
@@ -83,7 +83,8 @@ const Gallery2 = () => {
                         onMouseLeave={onMouseLeave}
                     >
                         <img className="gallery2-container__images__image" key={index} src={images[index]?.url}/>
-                        {hoveredImage === index && <ImageInfo description={images[index]?.description} title={images[index]?.title} />}
+                        {hoveredImage === index &&
+                            <ImageInfo description={images[index]?.description} title={images[index]?.title}/>}
                     </div>
                 ))}
                 <button className='gallery2-container__images__button' onClick={nextImage}>❱</button>

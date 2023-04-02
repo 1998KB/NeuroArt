@@ -4,9 +4,9 @@ import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
-        <div className='header-container'>
-            <header className='header'>
-                <div className='header__up'>
+        <div className='header'>
+            <header className='header__header'>
+                <div className='header__logo-search'>
                     <div className="header__logo-div">
                         <a href='/'>
                             <img className='header__logo-img' src={require('../../Images/LogoImg.png')}/>
@@ -21,9 +21,10 @@ const Header = () => {
                     <Link to='/'>Home</Link>
                     <Link to='/generate'>Generate</Link>
                     <Link to='/about'>About</Link>
-                    <Link to='/gallery'>Gallery</Link>
+                    <Link to='/gallery'><div className='gallery1'>Gallery</div></Link>
+                    <Link to='/gallery2'><div className='gallery2'>Gallery</div></Link>
                     <Link to='/login'>Login</Link>
-                    <Link to='/gallery2'>Gallery2</Link>
+
                 </div>
             </header>
         </div>
@@ -31,3 +32,4 @@ const Header = () => {
 };
 
 export default Header;
+

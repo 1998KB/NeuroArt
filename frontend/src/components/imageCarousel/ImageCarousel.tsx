@@ -11,6 +11,7 @@ export type Props = {
 const MIN_SWIPE_REQUIRED = 40;
 
 const ImageCarousel = ({ items }: Props) => {
+
     const containerRef = useRef<HTMLUListElement>(null);
     const containerWidthRef = useRef(0)
     const minOffSetXRef = useRef(0);
@@ -32,7 +33,6 @@ const ImageCarousel = ({ items }: Props) => {
         if(newOffsetX > maxOffsetX) {
             newOffsetX = 0;
         }
-
         if(newOffsetX < minOffsetX) {
             newOffsetX = minOffsetX;
         }
