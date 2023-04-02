@@ -21,7 +21,7 @@ const ImageContainer = (props: ImageContainerProps) => {
             {
                 method: 'POST',
                 headers: {'content-type': 'application/json',
-                    'authorization': `${props.credentials.credential}`},
+                    'Authorization': `Bearer ${props.credentials.credential}`},
                 body: JSON.stringify(save),
             }
         )
