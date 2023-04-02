@@ -51,8 +51,6 @@ public class NeuroArtService {
         UrlAndIdDto urlAndIdDto = imgBBService.fetchPermanentUrl(imageDto.temporaryUrl());
         Image image = Mapper.mapToImage(urlAndIdDto, imageDto);
         image = imageRepository.save(image);
-        Collection collection = getSingleCollection();
-        addImageToCollectionAndSave(collection, image);
         Client client = clientRepository.findClientBySub(claims.get("sub").toString());
         Collection clientCollection = client.getCollectionList().get(0);
         addImageToCollectionAndSave(clientCollection, image);
@@ -61,9 +59,6 @@ public class NeuroArtService {
 
     @Transactional
     public void deleteImage(String id, Map<String, Object> claims) {
-        Collection collection = getSingleCollection();
-        collection.getImages().removeIf(image -> image.getId().equals(id));
-        collectionRepository.save(collection);
         Client client = clientRepository.findClientBySub(claims.get("sub").toString());
         List<Collection> collectionList = client.getCollectionList();
         collectionList.get(0).getImages().removeIf(image -> image.getId().equals(id));
