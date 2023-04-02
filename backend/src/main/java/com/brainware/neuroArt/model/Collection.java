@@ -1,5 +1,6 @@
 package com.brainware.neuroArt.model;
 
+import com.brainware.neuroArt.controller.dto.CollectionDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -30,5 +31,9 @@ public class Collection {
     
     public Long getClient() {
         return client.getId();
+    }
+
+    public CollectionDTO toDTO(){
+        return new CollectionDTO(description, images);
     }
 }

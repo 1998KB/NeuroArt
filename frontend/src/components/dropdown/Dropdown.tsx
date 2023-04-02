@@ -101,13 +101,14 @@ const Dropdown = (props: DropdownProps) => {
         props.setInputTitle(null)
         props.setInputDescription(null)
         props.setIsDisabled(false)
+        handleReset();
         let promptMade = makePrompt()
         if (promptMade) {
             props.setPrompt(promptMade)
         }
         props.setGeneratedImage(null)
         props.setGenerated(true)
-        handleReset();
+
     }
     const handleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserInput(event.target.value);
