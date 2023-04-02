@@ -9,7 +9,6 @@
 .dropdown__text-input {
     height: 4vh;
     width: 55vw;
-    color: red;
     border-radius: 5px;
 }
 
@@ -56,11 +55,11 @@ label {
         display: flex;
         flex-direction: row;
         text-align: center;
-        width: 90vw;
-        height: 50vh;
-        overflow-y: scroll;
+        width: 95vw;
+        margin: auto;
         border-radius: 10px;
     }
+
 
     .dropdown__select-div-container::-webkit-scrollbar {
         width: 0.2em;
@@ -123,9 +122,10 @@ label {
         width: calc(100% + 4px);
         height: calc(100% + 4px);
         animation: glowing 20s linear infinite;
-        opacity: 0;
         transition: opacity .3s ease-in-out;
         border-radius: 10px;
+        opacity: 1;
+
     }
 
     .dropdown__generate-btn:active {
