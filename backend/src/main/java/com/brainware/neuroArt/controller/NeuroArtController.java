@@ -1,4 +1,6 @@
 package com.brainware.neuroArt.controller;
+
+import com.brainware.neuroArt.controller.dto.ClientDTO;
 import com.brainware.neuroArt.controller.dto.ImageDTO;
 import com.brainware.neuroArt.model.Client;
 import com.brainware.neuroArt.model.Image;
@@ -6,15 +8,17 @@ import com.brainware.neuroArt.service.NeuroArtService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin({"http://localhost:3000", "https://blue-sky-0e47a0403.2.azurestaticapps.net"})
 public class NeuroArtController {
 
     NeuroArtService neuroArtService;
@@ -41,7 +45,7 @@ public class NeuroArtController {
 
     @PostMapping("/image")
     public ResponseEntity<Image> saveImage(@RequestBody ImageDTO imageDTO) {
-        return new ResponseEntity<>(neuroArtService.saveImage(imageDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(neuroArtService.saveImage(imageDTO, getClaims()), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/image/{id}")
@@ -56,5 +60,21 @@ public class NeuroArtController {
     @GetMapping("/gallery")
     public ResponseEntity<List<Image>> getGallery() {
         return new ResponseEntity<>(neuroArtService.getAllImages(), HttpStatus.OK);
+    }
+
+    @PostMapping("/user")
+    public ResponseEntity<ClientDTO> getUser() {
+        Client client = neuroArtService.getClient(getClaims().get("sub").toString());
+        Map<String, Object> claims = getClaims();
+        if (client == null) {
+            client = neuroArtService.createClient(claims);
+        }
+        return new ResponseEntity<>(client.toDTO(claims), HttpStatus.OK);
+    }
+
+    private Map<String, Object> getClaims() {
+        return ((Jwt)SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal())
+                .getClaims();
     }
 }

@@ -2,8 +2,14 @@ import React, {useEffect, useState} from 'react';
 import "./Generate.css"
 import Form from "../form/Form";
 import ImageContainer from "../imageContainer/ImageContainer";
+import {CredentialResponse} from "@react-oauth/google";
+import {useNavigate} from "react-router-dom";
 
-const Generate = () => {
+interface generateProps {
+    credentials: CredentialResponse | null
+}
+
+const Generate = (props: generateProps) => {
 
     const [prompt, setPrompt] = useState<string>('');
     const [generatedImage, setGeneratedImage] = useState<string>('');
@@ -11,6 +17,7 @@ const Generate = () => {
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [inputTitle, setInputTitle] = useState("");
     const [inputDescription, setInputDescription] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         setPrompt('')
@@ -24,12 +31,17 @@ const Generate = () => {
     }, [prompt]);
 
     const handleGenerate = async () => {
+        if (props.credentials == null) {
+            navigate("/login");
+            return;
+        }
         setIsLoading(true)
         const response = await fetch(
             "https://neuroart.azurewebsites.net/generate",
             {
                 method: 'POST',
-                headers: {'content-type': 'text/plain'},
+                headers: {'content-type': 'text/plain',
+                'Authorization': `Bearer ${props.credentials.credential}`},
                 body: prompt,
             }
         )
@@ -60,7 +72,7 @@ const Generate = () => {
                   isLoading={isLoading}
                   setIsDisable={setIsDisabled}
                   setGeneratedImage={setGeneratedImage}/>
-            <ImageContainer inputTitle={inputTitle}
+            <ImageContainer credentials={props.credentials} inputTitle={inputTitle}
                             setInputTitle={setInputTitle}
                             inputDescription={inputDescription}
                             setInputDescription={setInputDescription}

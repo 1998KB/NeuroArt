@@ -6,6 +6,9 @@ import {ImageContainerProps, ImageSaveData} from "../../interfaces";
 const ImageContainer = (props: ImageContainerProps) => {
 
     const handleSave = async () => {
+        if (props.credentials == null) {
+            return;
+        }
         const save: ImageSaveData = {
             temporaryUrl: props.image,
             prompt: props.prompt,
@@ -17,7 +20,8 @@ const ImageContainer = (props: ImageContainerProps) => {
             "https://neuroart.azurewebsites.net/image",
             {
                 method: 'POST',
-                headers: {'content-type': 'application/json'},
+                headers: {'content-type': 'application/json',
+                    'authorization': `${props.credentials.credential}`},
                 body: JSON.stringify(save),
             }
         )
