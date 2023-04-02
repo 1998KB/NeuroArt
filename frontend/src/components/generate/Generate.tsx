@@ -40,7 +40,7 @@ const Generate = (props: generateProps) => {
             {
                 method: 'POST',
                 headers: {'content-type': 'text/plain',
-                'authorization': `${props.credentials.credential}`},
+                'Authorization': `Bearer ${props.credentials.credential}`},
                 body: prompt,
             }
         )
