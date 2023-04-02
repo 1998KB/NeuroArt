@@ -7,7 +7,6 @@ import Generate from "../generate/Generate";
 import Gallery from "../gallery/Gallery";
 import About from "../about/About";
 import {CredentialResponse, GoogleOAuthProvider} from "@react-oauth/google";
-import {GoogleOAuthProvider} from "@react-oauth/google";
 import Login from "../googlelogin/Login";
 import Gallery2 from "../gallery2/Gallery2";
 
