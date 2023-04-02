@@ -6,6 +6,7 @@ import Home from "../home/Home";
 import Generate from "../generate/Generate";
 import Gallery from "../gallery/Gallery";
 import About from "../about/About";
+import Gallery2 from "../gallery2/Gallery2";
 
 
 const AppContainer = () => {
@@ -19,6 +20,7 @@ const AppContainer = () => {
                     <Route path="/generate" element={<Generate/>}/>
                     <Route path="/gallery" element={<Gallery/>}/>
                     <Route path="/about" element={<About/>}/>
+                    <Route path="/gallery2" element={<Gallery2/>}/>
                     <Route path="/" element={<Home/>}/>
 
                 </Routes>
