@@ -17,6 +17,7 @@ import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import static com.brainware.neuroArt.utils.ObjectMapperUtils.toJsonTree;
@@ -45,12 +46,15 @@ public class NeuroArtService {
         return jsonTree.get("data").get(0).get("url").asText();
     }
 
-    public Image saveImage(ImageDTO imageDto) {
+    public Image saveImage(ImageDTO imageDto, Map<String, Object> claims) {
         UrlAndIdDto urlAndIdDto = imgBBService.fetchPermanentUrl(imageDto.temporaryUrl());
         Image image = Mapper.mapToImage(urlAndIdDto, imageDto);
         image = imageRepository.save(image);
         Collection collection = getSingleCollection();
         addImageToCollectionAndSave(collection, image);
+        Client client = clientRepository.findClientBySub(claims.get("sub").toString());
+        Collection clientCollection = client.getCollectionList().get(0);
+        addImageToCollectionAndSave(clientCollection, image);
         return image;
     }
 
@@ -73,5 +77,23 @@ public class NeuroArtService {
     private void addImageToCollectionAndSave(Collection collection, Image image) {
         collection.getImages().add(image);
         collectionRepository.save(collection);
+    }
+
+    public Client getClient(String sub) {
+        return clientRepository.findClientBySub(sub);
+    }
+
+    public Client createClient(Map<String, Object> claims) {
+        Client client = new Client();
+        client.setSub(claims.get("sub").toString());
+        client.setUsername(claims.get("given_name").toString());
+        client = clientRepository.save(client);
+        Collection collection = new Collection();
+        collection.setClient(client);
+        collection.setName(client.getUsername());
+        collection.setDescription("My first collection");
+        collection = collectionRepository.save(collection);
+        client.getCollectionList().add(collection);
+        return clientRepository.save(client);
     }
 }
