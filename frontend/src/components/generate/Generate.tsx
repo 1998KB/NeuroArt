@@ -55,11 +55,16 @@ const Generate = (props: generateProps) => {
     };
 
     return (
-        <div>
-            <h1 className='heading'>Be Creative</h1>
-            <p className="text">Explore your creativity. We provide different examples of options that you can set in order to translate your thoughts into art. All the examples are optional, but you can retrieve precise results if you define your preferences.
-                Feel free to experiment with different options and see what kind of images you can create. You can save your favorite creations to your account.
-                Start exploring today and see what you can create!</p>
+        <div className='generate'>
+            <div className="container">
+                <p className='heading'>Be Creative</p>
+                <p className="text">Explore your creativity. We provide different examples of options that you can set
+                    in order to translate your thoughts into art. All the examples are optional, but you can retrieve
+                    precise results if you define your preferences.
+                    Feel free to experiment with different options and see what kind of images you can create. You can
+                    save your favorite creations to your account.
+                    Start exploring today and see what you can create!</p>
+            </div>
             <Form setInputTitle={setInputTitle}
                   setInputDescription={setInputDescription}
                   setPrompt={setPrompt}
