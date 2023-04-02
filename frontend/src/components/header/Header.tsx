@@ -4,9 +4,9 @@ import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
-        <div className='header-container'>
-            <header className='header'>
-                <div className='header__up'>
+        <div className='header'>
+            <header className='header__header'>
+                <div className='header__logo-search'>
                     <div className="header__logo-div">
                         <a href='/'>
                             <img className='header__logo-img' src={require('../../Images/LogoImg.png')}/>

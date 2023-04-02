@@ -11,6 +11,7 @@ type Image = {
 };
 
 const Gallery = () => {
+
     const [images, setImages] = useState<Image[]>([]);
     const [deletedImages, setDeletedImages] = useState<string[]>([]);
 

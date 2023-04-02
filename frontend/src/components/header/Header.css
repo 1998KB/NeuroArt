@@ -1,11 +1,10 @@
 @media screen and (min-width: 320px) {
 
-    .header-container {
+    .header {
         margin-bottom: 8em;
-
     }
 
-    .header {
+    .header__header {
         width: 100%;
         border-bottom: 0.1px solid rgba(255, 255, 255, 0.95);
         top: 0;
@@ -18,7 +17,7 @@
         justify-content: space-between;
     }
 
-    .header__up {
+    .header__logo-search {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -62,8 +61,6 @@
         margin-left: 2em;
         margin-right: 2em;
         margin-bottom: 1em;
-
-
     }
 
     .header__navigation > a {
@@ -94,50 +91,18 @@
     a {
         font-size: x-large
     }
-
-    /*.header {*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*    justify-content: center;*/
-    /*    height: 10em;*/
-    /*}*/
-    /*.header__navigation {*/
-    /*    position: absolute;*/
-    /*    height: 2em;*/
-    /*    margin-top: 8em;*/
-    /*    text-align: center;*/
-    /*}*/
-    /*.header__navigation > a {*/
-    /*    font-size: larger;*/
-    /*}*/
-    /*.header__logo-img {*/
-    /*    height: 6em;*/
-    /*    margin: 0.5em;*/
-    /*}*/
-    /*.header__logo-name {*/
-    /*    height: 4em;*/
-    /*    margin-top: 0.5em;*/
-    /*}*/
-    /*.header__search-bar {*/
-    /*    margin-left: 5em;*/
-    /*    height: 4em;*/
-    /*    width: 20em;*/
-    /*}*/
-    /*::placeholder {*/
-    /*    padding-left: 1em;*/
-    /*}*/
-
 }
 
 @media screen and (min-width: 1025px) {
-    .header {
+
+    .header__header {
         flex-direction: row;
     }
 
-    .header__up {
+    .header__logo-search {
         flex-direction: row;
-        gap: 10em;
-        margin-left: 2em;
+        gap: 8em;
+        margin-left: 1em;
     }
     .header__logo-div{
         justify-content: center;
