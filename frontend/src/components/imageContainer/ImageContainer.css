@@ -1,4 +1,4 @@
-.img-container{
+.img-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,91 @@
     gap: 1em;
     margin: 1em;
 }
-.generated-image{
+
+.generated-image {
     width: 90%;
     height: 90%;
+    border-radius: 1em;
+}
+
+@media screen and (min-width: 1025px) {
+    .generated-image {
+        width: 50vw;
+        height: 70vh;
+        margin-top: -23em;
+
+    }
+
+    .add-title {
+        margin: 1em;
+        padding: 1em;
+        border-radius: 10px;
+        z-index: 50;
+        width: 20vw;
+
+
+    }
+
+    .add-description {
+        z-index: 50;
+        margin: 1em;
+        padding: 1em;
+        border-radius: 10px;
+        width: 20vw;
+        height: 5vh;
+    }
+
+    .img-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10em;
+    }
+
+    .input-user {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5em;
+        margin-top: -40em;
+    }
+
+    .save-btn{
+        font-size: xx-large;
+        font-family: Poppins-Light;
+        width: 20vw;
+        height: 5vh;
+        text-decoration: none;
+        border: 1px solid rgb(74, 255, 50);
+        position: relative;
+        overflow: hidden;
+        background-color: rgb(11, 11, 11);
+        color: white;
+    }
+
+    .save-btn:hover {
+        box-shadow: 1px 1px 25px 10px rgba(20, 148, 9, 0.65);
+    }
+
+    .save-btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(146, 148, 248, 0.4),
+                transparent
+        );
+        transition: all 650ms;
+    }
+
+    .save-btn:hover:before {
+        left: 100%;
+    }
+
 }
