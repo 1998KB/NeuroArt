@@ -1,3 +1,5 @@
+import {CredentialResponse} from "@react-oauth/google";
+
 export interface Option {
     value: string,
     label: string
@@ -24,6 +26,7 @@ export interface ImageContainerProps {
     setInputTitle: Function
     inputDescription: string
     setInputDescription: Function
+    credentials: CredentialResponse | null
 
 }
 
