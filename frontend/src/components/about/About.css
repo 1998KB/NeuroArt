@@ -3,13 +3,42 @@
     margin-bottom: 3em;
     width: 80%;
 }
+.about__java{
+    height: 5em;
+}
+
+.about__spring{
+    height: 4em;
+}
+
+.about__react{
+    height: 4em;
+}
+.about__ts{
+    height: 3em;
+}
+.about__azure{
+    height: 3em;
+}
+.about__postgresql{
+    height: 5em;
+}
+.about__logos{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+}
+.about__us{
+    padding-left: 3em;
+    margin-bottom: 1em;
+    font-family: Poppins-Bold;
+}
 
 @media screen and (min-width: 768px) {
-    .about {
-        margin-top: 15em;
-    }
+
 
     .about__description {
         text-align: left;
     }
 }
+
