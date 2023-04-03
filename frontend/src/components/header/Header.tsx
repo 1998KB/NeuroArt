@@ -26,12 +26,11 @@ const Header = (props: headerProps) => {
                     <Link to='/'>Home</Link>
                     <Link to='/generate'>Generate</Link>
                     <Link to='/about'>About</Link>
-                    <Link to='/gallery'><div className='gallery1'>Gallery</div></Link>
-                    <Link to='/gallery2'><div className='gallery2'>Gallery</div></Link>
+                    <div className='gallery1'><Link to='/gallery'>Gallery</Link></div>
+                    <div className='gallery2'><Link to='/gallery2'>Gallery</Link></div>
                     {props.user.username !== '' ? <Link to='/login'>{props.user.username}</Link>
                         : <Link to='/login'>Login</Link>}
-
-
+                        
                 </div>
             </header>
         </div>
