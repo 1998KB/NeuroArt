@@ -21,7 +21,7 @@ const Header = () => {
                     <Link to='/'>Home</Link>
                     <Link to='/generate'>Generate</Link>
                     <Link to='/about'>About</Link>
-                    <Link to='/gallery'><div className='gallery1'>Gallery</div></Link>
+                    <Link to='/gallery'><div className='gallery1'>Gallery1</div></Link>
                     <Link to='/gallery2'><div className='gallery2'>Gallery</div></Link>
                     <Link to='/login'>Login</Link>
 

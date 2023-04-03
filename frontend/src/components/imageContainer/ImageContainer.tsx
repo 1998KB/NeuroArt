@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./ImageContainer.css"
 import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 import {ImageContainerProps, ImageSaveData} from "../../interfaces";
 
 const ImageContainer = (props: ImageContainerProps) => {
+
+    const [isSaved, setIsSaved] = useState(false);
+    const [saveButtonText, setSaveButtonText] = useState('Save');
 
     const handleSave = async () => {
         if (props.credentials == null) {
@@ -15,19 +18,22 @@ const ImageContainer = (props: ImageContainerProps) => {
             title: props.inputTitle,
             description: props.inputDescription
         }
-        props.setIsDisabled(true)
         const response = await fetch(
             "https://neuroart.azurewebsites.net/image",
             {
                 method: 'POST',
-                headers: {'content-type': 'application/json',
-                    'authorization': `${props.credentials.credential}`},
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `${props.credentials.credential}`
+                },
                 body: JSON.stringify(save),
             }
         )
         if (!response.ok) {
             throw new Error(`Failed to save: ${response.status}`);
         }
+        setIsSaved(true);
+        setSaveButtonText('Saved');
         props.setIsDisabled(false);
     }
 
@@ -47,14 +53,23 @@ const ImageContainer = (props: ImageContainerProps) => {
                                value={props.inputTitle}
                                onChange={(e) => props.setInputTitle(e.target.value)}
                         />
-                        <label htmlFor="" className="add-description-label">Add Description</label>
+                        <label htmlFor="" className="add-description-label">Add Description: </label>
                         <input type="text"
                                className="imagecontainer__description-input"
                                placeholder='Add a description'
                                value={props.inputDescription}
                                onChange={(e) => props.setInputDescription(e.target.value)}
                         />
-                        <button className="imagecontainer__save-btn" onClick={handleSave} disabled={props.isDisabled}>Save</button>
+                        <button
+                            className={
+                                isSaved ? "imagecontainer__save-btn saved" : "imagecontainer__save-btn"
+                            }
+                            onClick={handleSave}
+                            disabled={props.isDisabled}
+                        >
+                            {saveButtonText}
+                        </button>
+
                     </div>
                 </>
             }
