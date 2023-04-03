@@ -73,7 +73,6 @@ label {
     }
 
     .dropdown__select-div-container:active{
-        z-index: 51;
     }
 
     .dropdown {
@@ -81,6 +80,7 @@ label {
         flex-direction: column;
         justify-content: left;
         align-items: flex-start;
+        margin: 2em 0 2em 0;
     }
 
     .dropdown__text-div {
@@ -96,7 +96,6 @@ label {
     }
     .dropdown__generate-btn {
         padding: 0;
-        border: 1px solid rgba(74, 255, 50, 0.24);
         font-size: 2em;
         font-family: Poppins-Regular;
         width: 20vw;
