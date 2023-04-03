@@ -3,6 +3,7 @@ package com.brainware.neuroArt.controller;
 import com.brainware.neuroArt.controller.dto.ClientDTO;
 import com.brainware.neuroArt.controller.dto.ImageDTO;
 import com.brainware.neuroArt.model.Client;
+import com.brainware.neuroArt.model.Collection;
 import com.brainware.neuroArt.model.Image;
 import com.brainware.neuroArt.service.NeuroArtService;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -41,6 +43,24 @@ public class NeuroArtController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
         return new ResponseEntity<>(imageUrl, HttpStatus.OK);
+    }
+
+    @GetMapping("/collection/{id}")
+    public ResponseEntity<Collection> getCollection(@PathVariable String id) {
+        Collection collection = neuroArtService.getCollectionByImageId(id);
+        if (collection == null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Collection with given image id not found!");
+        }
+        return new ResponseEntity<>(collection, HttpStatus.OK);
+    }
+
+    @GetMapping("/image/{id}")
+    public ResponseEntity<Image> getImage(@PathVariable String id) {
+        Image image = neuroArtService.getImage(id);
+        if (image == null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Image with given id not found!");
+        }
+        return new ResponseEntity<>(image, HttpStatus.OK);
     }
 
     @PostMapping("/image")

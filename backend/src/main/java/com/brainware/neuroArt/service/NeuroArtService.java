@@ -94,4 +94,12 @@ public class NeuroArtService {
         collection.getImages().add(image);
         collectionRepository.save(collection);
     }
+
+    public Image getImage(String id) {
+        return imageRepository.findById(id).orElse(null);
+    }
+
+    public Collection getCollectionByImageId(String id) {
+        return collectionRepository.findCollectionByImageId(id);
+    }
 }
