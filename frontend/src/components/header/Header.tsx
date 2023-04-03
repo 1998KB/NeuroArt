@@ -31,6 +31,7 @@ const Header = (props: headerProps) => {
                     {props.user.username !== '' ? <Link to='/login'>{props.user.username}</Link>
                         : <Link to='/login'>Login</Link>}
 
+
                 </div>
             </header>
         </div>
