@@ -104,6 +104,7 @@
 
     .home {
         flex-direction: row;
+        height: 60vh;
     }
 
     .home__image-text{

@@ -18,6 +18,9 @@ const Generate = (props: generateProps) => {
     const [inputTitle, setInputTitle] = useState("");
     const [inputDescription, setInputDescription] = useState("");
     const navigate = useNavigate();
+    const [isSaved, setIsSaved] = useState(false);
+    const [saveButtonText, setSaveButtonText] = useState('Save');
+
 
     useEffect(() => {
         setPrompt('')
@@ -40,8 +43,10 @@ const Generate = (props: generateProps) => {
             "https://neuroart.azurewebsites.net/generate",
             {
                 method: 'POST',
-                headers: {'content-type': 'text/plain',
-                'Authorization': `Bearer ${props.credentials.credential}`},
+                headers: {
+                    'content-type': 'text/plain',
+                    'Authorization': `Bearer ${props.credentials.credential}`
+                },
                 body: prompt,
             }
         )
@@ -59,7 +64,8 @@ const Generate = (props: generateProps) => {
         <div className='generate'>
             <div className="generate__div">
                 <p className='generate__heading'>Be Creative</p>
-                <p className="generate__text">Explore your creativity. We provide different examples of options that you can set
+                <p className="generate__text">Explore your creativity. We provide different examples of options that you
+                    can set
                     in order to translate your thoughts into art. All the examples are optional, but you can retrieve
                     precise results if you define your preferences.
                     Feel free to experiment with different options and see what kind of images you can create. You can
@@ -71,7 +77,10 @@ const Generate = (props: generateProps) => {
                   setPrompt={setPrompt}
                   isLoading={isLoading}
                   setIsDisable={setIsDisabled}
-                  setGeneratedImage={setGeneratedImage}/>
+                  setGeneratedImage={setGeneratedImage}
+                  setIsSaved={setIsSaved}
+                  saveButtonText={saveButtonText}
+                  setSaveButtonText={setSaveButtonText}/>
             <ImageContainer credentials={props.credentials} inputTitle={inputTitle}
                             setInputTitle={setInputTitle}
                             inputDescription={inputDescription}
@@ -80,7 +89,12 @@ const Generate = (props: generateProps) => {
                             isLoading={isLoading}
                             prompt={prompt}
                             isDisabled={isDisabled}
-                            setIsDisabled={setIsDisabled}/>
+                            setIsDisabled={setIsDisabled}
+                            isSaved={isSaved}
+                            setIsSaved={setIsSaved}
+                            saveButtonText={saveButtonText}
+                            setSaveButtonText={setSaveButtonText}
+            />
         </div>
     );
 };

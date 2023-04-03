@@ -28,7 +28,7 @@
 
     .imagecontainer__description-input {
         z-index: 50;
-        margin: 1em;
+        margin: 1em 1em 3em 1em;
         padding: 1em;
         border-radius: 10px;
         width: 20vw;
@@ -40,6 +40,7 @@
         justify-content: center;
         align-items: center;
         gap: 10em;
+        padding-bottom: 10em;
     }
 
     .imagecontainer__input-div {
@@ -49,8 +50,72 @@
         align-items: center;
     }
 
+    .letter-holder {
+        padding: 16px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: x-small;
+    }
+
+    .letter {
+        font-family: Poppins-Light;
+        float: left;
+        color: #bebebe;
+        animation-name: loadingF;
+        animation-duration: 1.44s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+    }
+
+    .l-1 {
+        animation-delay: 0.48s;
+    }
+
+    .l-2 {
+        animation-delay: 0.6s;
+    }
+
+    .l-3 {
+        animation-delay: 0.72s;
+    }
+
+    .l-4 {
+        animation-delay: 0.84s;
+    }
+
+    .l-5 {
+        animation-delay: 0.96s;
+    }
+
+    .l-6 {
+        animation-delay: 1.08s;
+    }
+
+    .l-7 {
+        animation-delay: 1.2s;
+    }
+
+    .l-8 {
+        animation-delay: 1.32s;
+    }
+
+    .l-9 {
+        animation-delay: 1.44s;
+    }
+
+
+    @keyframes loadingF {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
     .imagecontainer__save-btn {
-        margin-top: 1em;
         font-size: xx-large;
         font-family: Poppins-Light;
         width: 20vw;
@@ -88,12 +153,10 @@
     }
 
     .imagecontainer__save-btn.saved {
-        background-color: rgba(20, 148, 9, 0.65);
+        background-color: rgba(47, 255, 32, 0.34);
         color: white;
         box-shadow: 1px 1px 25px 10px rgba(20, 148, 9, 0.65);
     }
-
-
 
     .add-title-label {
         display: block;
@@ -103,7 +166,6 @@
     .add-description-label {
         display: block;
         font-family: Poppins-ExtraLight;
-
     }
 
 }

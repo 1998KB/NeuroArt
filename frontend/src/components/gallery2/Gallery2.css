@@ -1,6 +1,3 @@
-.gallery2-container {
-}
-
 .gallery2-container__images {
     width: 100%;
     height: 100%;
@@ -8,7 +5,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-top: 2em;
+    margin-top: 2em;
 }
 
 .gallery2-container__images__image {
@@ -43,12 +40,12 @@
     align-items: center;
     text-align: center;
     margin: 1em 5em 0 5em;
+    height: 30vh;
 }
 
 .gallery2-container__getinspired {
     font-size: 4em;
     text-align: left;
-    margin-top: 1em;
     border-right: 1px solid white;
     border-radius: 10px;
     padding-right: 1em;
@@ -56,8 +53,9 @@
 
 
 .gallery2-container__text {
-    height: 30vh;
-    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-left: 5em;
     text-align: left;
     width: 100%;
@@ -65,40 +63,39 @@
 
 .gallery2-container__text::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 7px;
 }
-
-.gallery2-container__text::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, .5);
-    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-}
-
 
 p {
     text-align: left;
 }
 
 .gallery2-container__images__button {
-    background: linear-gradient(to right, #196BCA, #6433E0);
-    background-color: #196BCA;
+    /*background: linear-gradient(to right, black, darkgray);*/
+    background-color: rgb(11, 11, 11);
     color: #fff;
     font-family: Trebuchet MS;
     font-size: 24px;
     font-weight: 800;
     font-style: normal;
     text-decoration: none;
-    padding: 89px 2px;
-    border: 0px solid #000;
-    border-radius: 10px;
+    padding: 1em 0.3em;
+    margin: 0 0.7em;
+    border: 1px solid #ffffff;
+    border-radius: 0.2em;
     display: inline-block;
 }
 
 .gallery2-container__images__button:hover {
-    background: linear-gradient(to right, #5482d0, #7d5ee3);
-    background-color: #5482d0;
+    /*background: linear-gradient(to right, #5482d0, #7d5ee3);*/
+    transition-duration: 700ms;
+    background-color: white;
+    color: rgb(11, 11, 11);
 }
 
 .gallery2-container__images__button:active {
     transform: scale(0.95);
+}
+
+.gallery2-container {
+    margin-bottom: -2em;
 }
