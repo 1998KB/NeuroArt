@@ -11,6 +11,8 @@ import Login from "../googlelogin/Login";
 import Gallery2 from "../gallery2/Gallery2";
 import {User} from "../../interfaces";
 import Footer from "../footer/Footer";
+import {CollectionShare} from "../collectionshare/CollectionShare";
+import {ImageShare} from "../imageshare/ImageShare";
 
 
 const AppContainer = () => {
@@ -25,6 +27,8 @@ const AppContainer = () => {
             <div>
                 <GoogleOAuthProvider clientId={"946318872366-410nr0nld5sghv8r8nntkllokcritu06.apps.googleusercontent.com"}>
                 <Routes>
+                    <Route path='/image/:id' element={<ImageShare/>}/>
+                    <Route path='/collection/:id' element={<CollectionShare/>}/>
                     <Route path="/generate" element={<Generate credentials={credentials}/>}/>
                     <Route path="/gallery" element={<Gallery/>}/>
                     <Route path="/about" element={<About/>}/>

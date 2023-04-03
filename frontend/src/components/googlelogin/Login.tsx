@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google';
 import {User} from "../../interfaces";
 import "./Login.css";
+import {CopyLinkButton} from "./CopyLinkButton";
 
 interface loginProps {
     setCredentials: Function
@@ -11,8 +12,10 @@ interface loginProps {
 }
 
 const Login = (props: loginProps) => {
+    const [copied, setCopied] = useState(false);
     const [hoveredImage, setHoveredImage] = useState<number | null>(null);
     const [deletedImages, setDeletedImages] = useState<string[]>([]);
+    const [clickedButtons, setClickedButtons] = useState<string[]>([]);
     const handleLogout = () => {
         googleLogout();
         props.setCredentials(null);
@@ -26,6 +29,7 @@ const Login = (props: loginProps) => {
             handleLogin(props.credentials)
         }
     }, [deletedImages])
+
     const handleLogin = async (credentials: CredentialResponse) => {
         const response = await fetch(
             "https://neuroart.azurewebsites.net/user",
@@ -57,6 +61,19 @@ const Login = (props: loginProps) => {
         setDeletedImages([...deletedImages, id]);
     }
 
+    const copyLink = (id:string) => {
+        navigator.clipboard.writeText(`https://blue-sky-0e47a0403.2.azurestaticapps.net/collection/${id}`)
+            .then(() => setCopied(true))
+            .catch((error) => console.error(error));
+        setTimeout(() => {
+            setCopied(false)
+        }, 2000)
+    }
+
+    function handleCopy(id: string) {
+        setClickedButtons([...clickedButtons, id]);
+    }
+
     return (
         <div className='login'>
 
@@ -72,6 +89,9 @@ const Login = (props: loginProps) => {
                         </div>
                         <div className="logout-container">
                             <button className='login__button__logout' onClick={handleLogout}>Logout</button>
+                            <button className='login__button__logout'
+                                    onClick={() => copyLink(props.user.collectionList[0].images[0].id)}>
+                                {copied ? "Link copied!" : "Share"}</button>
                         </div>
                     </div>
 
@@ -86,6 +106,7 @@ const Login = (props: loginProps) => {
                                                     onClick={(event) => deleteImage(event, image.id)}>
                                                 X
                                             </button>
+                                            <CopyLinkButton id={image.id} onCopy={handleCopy} />
                                         </div>
                                         <img
                                             onMouseEnter={() => onMouseEnter(index)}
