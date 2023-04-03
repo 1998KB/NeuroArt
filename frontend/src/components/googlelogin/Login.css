@@ -1,0 +1,11 @@
+.login {
+    margin-top: 11em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__logout-button {
+    width: 7vw;
+    height: 5vh;
+}

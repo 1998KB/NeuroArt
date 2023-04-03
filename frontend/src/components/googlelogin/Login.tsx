@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google';
+import "./Login.css"
 
 interface loginProps {
     setCredentials: Function
@@ -38,20 +39,22 @@ const Login = (props: loginProps) => {
     };
 
     return (
-        <>
-            <GoogleLogin
-                auto_select={true}
-                onSuccess={(credentialResponse) => {
-                    console.log(credentialResponse);
-                    handleLogin(credentialResponse)
-                    props.setCredentials(credentialResponse);
-                }}
-                onError={() => {
-                    console.log('Login Failed:');
-                }}
-            />
-            <button onClick={handleLogout}>Google logout</button>
-        </>
+        <div className='login'>
+            <div className='login__login-button-div'>
+                <GoogleLogin
+                    auto_select={true}
+                    onSuccess={(credentialResponse) => {
+                        console.log(credentialResponse);
+                        handleLogin(credentialResponse)
+                        props.setCredentials(credentialResponse);
+                    }}
+                    onError={() => {
+                        console.log('Login Failed:');
+                    }}
+                />
+            </div>
+            <button className='login__logout-button' onClick={handleLogout}>Google logout</button>
+        </div>
     );
 };
 
