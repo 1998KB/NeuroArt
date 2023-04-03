@@ -146,9 +146,9 @@
         outline: var(--b) solid #0000;
         outline-offset: .6em;
         font-family: Poppins-Light;
-        width: 18vw;
+        width: fit-content;
         height: 9vh;
-        font-size: x-large;
+        font-size: 0.9em;
         border: 0;
         cursor: pointer;
         user-select: none;
@@ -170,9 +170,9 @@
 
     .home__try-now {
         all: unset;
-        width: 15vw;
+        width: fit-content;
         height: 5vh;
-        font-size: 1.5em;
+        font-size: 1.3em;
         background: transparent;
         border: none;
         position: relative;
