@@ -110,7 +110,6 @@ const Login = (props: loginProps) => {
                 />}
 
             <button className='login__button__logout' onClick={handleLogout}>Logout</button>
-
         </div>
     );
 };

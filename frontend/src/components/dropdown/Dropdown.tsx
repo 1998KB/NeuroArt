@@ -108,6 +108,8 @@ const Dropdown = (props: DropdownProps) => {
         props.setInputTitle(null)
         props.setInputDescription(null)
         props.setIsDisabled(false)
+        props.setIsSaved(false)
+        props.setSaveButtonText('Save');
         handleReset();
         let promptMade = makePrompt()
         if (promptMade) {

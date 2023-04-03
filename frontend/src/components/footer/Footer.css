@@ -1,21 +1,30 @@
 .footer{
     display: flex;
-    justify-content: flex-start;
+    /*justify-content: flex-start;*/
     flex-direction: row;
     border-top: solid 1px white;
     margin-top: 5em;
     padding-left: 3em;
     padding-top: 1em;
     align-items: center;
+    margin-bottom: -3em;
+    justify-content: space-between;
 }
+
 .footer__image-wheel{
     width: 5em;
     height: 5em;
 }
+
+.footer__contact {
+
+}
+
 .footer__contact, p{
     padding-left: 2em;
     font-size: 16px;
 }
+
 .footer__contact, h1{
     padding-left: 1em;
 }
