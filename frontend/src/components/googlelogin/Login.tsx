@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google';
 import {User} from "../../interfaces";
 import "./Login.css";
@@ -17,6 +17,12 @@ const Login = (props: loginProps) => {
         props.setUser({username:'',collectionList:[],
             email:'',picture:''})
     };
+
+    useEffect(() => {
+        if (props.credentials !== null){
+            handleLogin(props.credentials)
+        }
+    }, [])
 
     const handleLogin = async (credentials: CredentialResponse) => {
         const response = await fetch(

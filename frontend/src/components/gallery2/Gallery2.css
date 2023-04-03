@@ -5,7 +5,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-top: 2em;
+    margin-top: 2em;
 }
 
 .gallery2-container__images__image {
@@ -70,23 +70,26 @@ p {
 }
 
 .gallery2-container__images__button {
-    background: linear-gradient(to right, #196BCA, #6433E0);
-    background-color: #196BCA;
+    /*background: linear-gradient(to right, black, darkgray);*/
+    background-color: rgb(11, 11, 11);
     color: #fff;
     font-family: Trebuchet MS;
     font-size: 24px;
     font-weight: 800;
     font-style: normal;
     text-decoration: none;
-    padding: 89px 2px;
-    border: 0px solid #000;
-    border-radius: 10px;
+    padding: 1em 0.3em;
+    margin: 0 0.7em;
+    border: 1px solid #ffffff;
+    border-radius: 0.2em;
     display: inline-block;
 }
 
 .gallery2-container__images__button:hover {
-    background: linear-gradient(to right, #5482d0, #7d5ee3);
-    background-color: #5482d0;
+    /*background: linear-gradient(to right, #5482d0, #7d5ee3);*/
+    transition-duration: 700ms;
+    background-color: white;
+    color: rgb(11, 11, 11);
 }
 
 .gallery2-container__images__button:active {
