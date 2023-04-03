@@ -61,4 +61,5 @@ export interface AuthorInfo{
     email: string,
     picture: string,
     collectionList: []
+
 }

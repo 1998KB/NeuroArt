@@ -1,0 +1,17 @@
+.login__info{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2em;
+}
+
+.login__info__text{
+    padding-left: 2em;
+}
+
+.login__images__image{
+
+    margin-left: 2em;
+    padding: 1em;
+    width: 400px;
+    height: 400px;
+}

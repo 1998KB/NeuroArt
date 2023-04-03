@@ -94,7 +94,7 @@
     }
 
     .gallery2{
-        display: block;
+        display: contents;
     }
 
     .header__search-bar {
@@ -115,6 +115,7 @@
     .gallery1{
         display: none;
     }
+
 
     .header__header {
         flex-direction: row;

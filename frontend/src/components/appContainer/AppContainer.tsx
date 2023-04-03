@@ -10,6 +10,7 @@ import {CredentialResponse, GoogleOAuthProvider} from "@react-oauth/google";
 import Login from "../googlelogin/Login";
 import Gallery2 from "../gallery2/Gallery2";
 import {User} from "../../interfaces";
+import Footer from "../footer/Footer";
 
 
 const AppContainer = () => {
@@ -19,7 +20,7 @@ const AppContainer = () => {
     return (
         <>
             <div>
-                <Header/>
+                <Header user={user}/>
             </div>
             <div>
                 <GoogleOAuthProvider clientId={"946318872366-410nr0nld5sghv8r8nntkllokcritu06.apps.googleusercontent.com"}>
@@ -34,6 +35,7 @@ const AppContainer = () => {
                 </Routes>
                 </GoogleOAuthProvider>
             </div>
+            <div><Footer/></div>
         </>
     );
 };

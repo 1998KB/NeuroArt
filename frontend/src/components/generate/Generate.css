@@ -29,6 +29,7 @@ label {
 
 @media screen and (min-width: 1025px) {
 
+
     .generate__heading {
         margin: 0;
         font-size: 4em;
@@ -42,6 +43,7 @@ label {
         margin: 0;
         padding-left: 5em;
     }
+
 
     .generate__div {
         margin: 0 5em 0em 5em;

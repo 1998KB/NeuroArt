@@ -40,7 +40,7 @@ export const customStyles : StylesConfig= {
     }),
     control: (provided: CSSObjectWithLabel) => ({
         ...provided,
-       width: 200,
+        width: 200,
         borderRadius: '10px',
 
     }),
