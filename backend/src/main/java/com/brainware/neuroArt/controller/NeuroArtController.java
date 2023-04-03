@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+import static com.brainware.neuroArt.mapper.Mapper.mapToClientDTO;
+
 @RestController
 @AllArgsConstructor
 public class NeuroArtController {
@@ -54,7 +56,7 @@ public class NeuroArtController {
         if (id == null || id.isEmpty() || id.isBlank()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Provided id has to be valid");
         }
-        neuroArtService.deleteImage(id);
+        neuroArtService.deleteImage(id, getClaims());
     }
     
     @GetMapping("/gallery")
@@ -64,12 +66,13 @@ public class NeuroArtController {
 
     @PostMapping("/user")
     public ResponseEntity<ClientDTO> getUser() {
-        Client client = neuroArtService.getClient(getClaims().get("sub").toString());
         Map<String, Object> claims = getClaims();
+        Client client = neuroArtService.getClient(claims.get("sub").toString());
         if (client == null) {
             client = neuroArtService.createClient(claims);
         }
-        return new ResponseEntity<>(client.toDTO(claims), HttpStatus.OK);
+        ClientDTO clientDTO = mapToClientDTO(claims, client);
+        return new ResponseEntity<>(clientDTO, HttpStatus.OK);
     }
 
     private Map<String, Object> getClaims() {

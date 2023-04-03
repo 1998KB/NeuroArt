@@ -1,11 +1,16 @@
-.login {
-    margin-top: 11em;
+.login__info{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    margin-left: 2em;
 }
 
-.login__logout-button {
-    width: 7vw;
-    height: 5vh;
+.login__info__text{
+    padding-left: 2em;
+}
+
+.login__images__image{
+    margin-left: 2em;
+    padding: 1em;
+    width: 400px;
+    height: 400px;
 }
