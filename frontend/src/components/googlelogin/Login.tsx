@@ -48,6 +48,7 @@ const Login = (props: loginProps) => {
                     <div className='login__info__text'>
                         <h1>{props.user.username}</h1>
                         <h2>{props.user.email}</h2>
+                        <button onClick={handleLogout}>Logout</button>
                     </div>
 
                 </div>
@@ -67,7 +68,6 @@ const Login = (props: loginProps) => {
                     console.log('Login Failed:');
                 }}
             />}
-            <button onClick={handleLogout}>Logout</button>
         </div>
     );
 };
