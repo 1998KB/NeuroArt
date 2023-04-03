@@ -13,12 +13,12 @@ const Header = (props: headerProps) => {
             <header className='header__header'>
                 <div className='header__logo-search'>
                     <div className="header__logo-div">
-                        <a href='/'>
+                        <Link to='/'>
                             <img className='header__logo-img' src={require('../../Images/LogoImg.png')}/>
-                        </a>
-                        <a href='/'>
+                        </Link>
+                        <Link to='/'>
                             <img className='header__logo-name' src={require('../../Images/LogoName.png')}/>
-                        </a>
+                        </Link>
                     </div>
                     <input className='header__search-bar' placeholder='Search for anything'/>
                 </div>
@@ -29,7 +29,7 @@ const Header = (props: headerProps) => {
                     <div className='gallery1'><Link to='/gallery'>Gallery</Link></div>
                     <div className='gallery2'><Link to='/gallery2'>Gallery</Link></div>
                     {props.user.username !== '' ? <Link to='/login'>{props.user.username}</Link>
-                        : <Link to='/login'>Login</Link>}   
+                        : <Link to='/login'>Login</Link>}
                 </div>
             </header>
         </div>
