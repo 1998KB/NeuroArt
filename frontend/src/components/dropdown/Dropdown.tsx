@@ -79,28 +79,30 @@ const Dropdown = (props: DropdownProps) => {
 
     const makePrompt = () => {
         let prompt: string = userInput;
-        if (lightingOption.value !== '') {
-            prompt = [prompt, lightingOption.value].join(' ').toString()
+        if(userInput !== '') {
+            if (lightingOption.value !== '') {
+                prompt = [prompt, lightingOption.value].join(' ').toString()
+            }
+            if (styleOption.value !== '') {
+                prompt = [prompt, styleOption.value].join(' ').toString()
+            }
+            if (colorOption.value !== '') {
+                prompt = [prompt, colorOption.value].join(' ').toString()
+            }
+            if (landscapeOption.value !== '') {
+                prompt = [prompt, landscapeOption.value].join(' ').toString()
+            }
+            if (textureOption.value !== '') {
+                prompt = [prompt, textureOption.value].join(' ').toString()
+            }
+            if (shapeOption.value !== '') {
+                prompt = [prompt, shapeOption.value].join(' ').toString()
+            }
+            if (moodOption.value !== '') {
+                prompt = [prompt, moodOption.value].join(' ').toString()
+            }
+            return prompt;
         }
-        if (styleOption.value !== '') {
-            prompt = [prompt, styleOption.value].join(' ').toString()
-        }
-        if (colorOption.value !== '') {
-            prompt = [prompt, colorOption.value].join(' ').toString()
-        }
-        if (landscapeOption.value !== '') {
-            prompt = [prompt, landscapeOption.value].join(' ').toString()
-        }
-        if (textureOption.value !== '') {
-            prompt = [prompt, textureOption.value].join(' ').toString()
-        }
-        if (shapeOption.value !== '') {
-            prompt = [prompt, shapeOption.value].join(' ').toString()
-        }
-        if (moodOption.value !== '') {
-            prompt = [prompt, moodOption.value].join(' ').toString()
-        }
-        return prompt;
     }
 
     const handleGenerate = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
