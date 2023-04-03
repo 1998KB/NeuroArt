@@ -33,10 +33,6 @@ public class NeuroArtService {
     private final ImgBBService imgBBService;
     private final OpenApiService openApiService;
 
-    public Client getCollectionOfUser() {
-        return clientRepository.findById(1L).orElse(null);
-    }
-
     public String getImageUrl(String prompt) throws ExecutionException, InterruptedException {
         if (prompt.isEmpty() || prompt.isBlank()) {
             throw new IllegalArgumentException("Prompt has to be valid");
@@ -71,11 +67,6 @@ public class NeuroArtService {
         return Streamable.of(imageRepository.findAll()).toList();
     }
 
-    private void addImageToCollectionAndSave(Collection collection, Image image) {
-        collection.getImages().add(image);
-        collectionRepository.save(collection);
-    }
-
     public Client getClient(String sub) {
         return clientRepository.findClientBySub(sub);
     }
@@ -97,5 +88,10 @@ public class NeuroArtService {
         userCollectionList.add(collection);
         client.setCollectionList(userCollectionList);
         return clientRepository.save(client);
+    }
+
+    private void addImageToCollectionAndSave(Collection collection, Image image) {
+        collection.getImages().add(image);
+        collectionRepository.save(collection);
     }
 }

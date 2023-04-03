@@ -27,8 +27,6 @@ public class NeuroArtController {
 
     @GetMapping("/check")
     public ResponseEntity<String> getList() {
-        Client client = neuroArtService.getCollectionOfUser();
-        System.out.println(client);
         return new ResponseEntity<>("Hey!", HttpStatus.OK);
     }
 
