@@ -2,6 +2,7 @@ package com.brainware.neuroArt.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
@@ -22,6 +23,8 @@ public class WebSecurityConfig {
                 .cors().and()
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/gallery", "/check", "/user").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/image/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/collection/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .csrf().disable()
