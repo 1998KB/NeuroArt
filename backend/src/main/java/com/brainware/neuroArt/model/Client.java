@@ -21,9 +21,4 @@ public class Client {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Collection> collectionList = new ArrayList<>();
 
-    public ClientDTO toDTO(Map<String, Object> claims) {
-        return new ClientDTO(username, collectionList.stream().map(Collection::toDTO).toList(),
-                claims.get("email").toString(),
-                claims.get("picture").toString());
-    }
 }

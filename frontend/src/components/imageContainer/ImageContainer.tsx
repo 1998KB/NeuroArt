@@ -22,10 +22,9 @@ const ImageContainer = (props: ImageContainerProps) => {
             "https://neuroart.azurewebsites.net/image",
             {
                 method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `${props.credentials.credential}`
-                },
+
+                headers: {'content-type': 'application/json',
+                    'Authorization': `Bearer ${props.credentials.credential}`},
                 body: JSON.stringify(save),
             }
         )

@@ -9,15 +9,18 @@ import About from "../about/About";
 import {CredentialResponse, GoogleOAuthProvider} from "@react-oauth/google";
 import Login from "../googlelogin/Login";
 import Gallery2 from "../gallery2/Gallery2";
+import {User} from "../../interfaces";
+import Footer from "../footer/Footer";
 
 
 const AppContainer = () => {
     const [credentials, setCredentials] = useState<CredentialResponse | null>(null);
-
+    const [user, setUser] = useState<User>({username:'',collectionList:[],
+        email:'',picture:''});
     return (
         <>
             <div>
-                <Header/>
+                <Header user={user}/>
             </div>
             <div>
                 <GoogleOAuthProvider clientId={"946318872366-410nr0nld5sghv8r8nntkllokcritu06.apps.googleusercontent.com"}>
@@ -26,11 +29,13 @@ const AppContainer = () => {
                     <Route path="/gallery" element={<Gallery/>}/>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/gallery2" element={<Gallery2/>}/>
-                    <Route path="/login" element={<Login setCredentials={setCredentials}/>}/>
+                    <Route path="/login" element={<Login user={user} setUser={setUser}
+                                                         credentials={credentials} setCredentials={setCredentials}/>}/>
                     <Route path="/" element={<Home/>}/>
                 </Routes>
                 </GoogleOAuthProvider>
             </div>
+            <div><Footer/></div>
         </>
     );
 };

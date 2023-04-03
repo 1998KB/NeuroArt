@@ -1,20 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google';
+import {User} from "../../interfaces";
+import "./Login.css";
 
 interface loginProps {
     setCredentials: Function
+    credentials: CredentialResponse | null
+    setUser: Function
+    user: User
 }
-interface User {
-    username: String,
-    collectionList: []
-    email: String,
-    picture: string
-}
+
 const Login = (props: loginProps) => {
     const handleLogout = () => {
         googleLogout();
-        console.log('User logged out successfully.');
         props.setCredentials(null);
+        props.setUser({username:'',collectionList:[],
+            email:'',picture:''})
     };
 
     const handleLogin = async (credentials: CredentialResponse) => {
@@ -22,36 +23,46 @@ const Login = (props: loginProps) => {
             "https://neuroart.azurewebsites.net/user",
             {
                 method: 'POST',
-                headers: {'authorization': `${credentials.credential}`},
+                headers: {'Authorization': `Bearer ${credentials.credential}`},
             }
         )
-
         if (!response.ok) {
             throw new Error(`Failed to get user: ${response.status}`);
         }
-
         const data: User = await response.json();
-        console.log(data.username)
-        console.log(data.email)
-        console.log(data.picture)
-        console.log(data.collectionList)
+        props.setUser(data)
     };
 
     return (
-        <>
-            <GoogleLogin
-                auto_select={true}
+        <div className='login'>
+            {props.user.username !== '' ?
+            <div>
+                <div className='login__info'>
+                    <img src={props.user.picture} alt={'no'}/>
+                    <div className='login__info__text'>
+                        <h1>{props.user.username}</h1>
+                        <h2>{props.user.email}</h2>
+                    </div>
+
+                </div>
+                <div className='login__images'>
+                    {props.user.collectionList[0].images.map((image, index) => {
+                        return <img className='login__images__image' key={index} src={image.url} alt='image'/>
+                    })}
+                </div>
+
+            </div>
+                : <GoogleLogin
                 onSuccess={(credentialResponse) => {
-                    console.log(credentialResponse);
                     handleLogin(credentialResponse)
                     props.setCredentials(credentialResponse);
                 }}
                 onError={() => {
                     console.log('Login Failed:');
                 }}
-            />
-            <button onClick={handleLogout}>Google logout</button>
-        </>
+            />}
+            <button onClick={handleLogout}>Logout</button>
+        </div>
     );
 };
 
