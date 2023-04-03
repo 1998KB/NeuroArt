@@ -40,7 +40,7 @@
         justify-content: center;
         align-items: center;
         gap: 10em;
-        /*padding-bottom: 10em;*/
+        padding-bottom: 10em;
     }
 
     .imagecontainer__input-div {
