@@ -1,6 +1,7 @@
 import "./Gallery2.css";
 import React, {useEffect, useState} from "react";
 import ImageInfo from "./ImageInfo";
+import Footer from "../footer/Footer";
 
 type Image = {
     id: string;
@@ -89,6 +90,7 @@ const Gallery2 = () => {
                 ))}
                 <button className='gallery2-container__images__button' onClick={nextImage}>❱</button>
             </div>
+            <div><Footer/></div>
         </div>
     );
 };
