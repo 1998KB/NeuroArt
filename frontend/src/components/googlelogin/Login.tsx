@@ -108,7 +108,9 @@ const Login = (props: loginProps) => {
                         console.log('Login Failed:');
                     }}
                 />}
+
             <button className='login__button__logout' onClick={handleLogout}>Logout</button>
+
         </div>
     );
 };
