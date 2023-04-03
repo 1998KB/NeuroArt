@@ -1,3 +1,7 @@
+.login {
+    height: 60vh;
+}
+
 .login__info{
     display: flex;
     flex-direction: row;

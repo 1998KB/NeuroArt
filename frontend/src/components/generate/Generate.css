@@ -29,7 +29,6 @@ label {
 
 @media screen and (min-width: 1025px) {
 
-
     .generate__heading {
         margin-top: 0;
         font-size: 4em;
@@ -49,7 +48,6 @@ label {
         width: 100%;
     }
 
-
     .generate__div {
         display: flex;
         flex-direction: row;
@@ -67,7 +65,10 @@ label {
         text-align: left;
     }
 
-
+    .generate{
+        margin-top: 10em;
+        height: 70vh;
+    }
 
 }
 
