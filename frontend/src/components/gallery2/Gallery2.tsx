@@ -40,11 +40,13 @@ const Gallery2 = () => {
         }
     }, [quantity]);
 
-    const nextImage = () => {
+    const nextImage = (event: React.MouseEvent) => {
+        event.preventDefault()
         setActiveImages(activeImages.map((index) => (index === quantity - 1 ? 0 : index + 1)));
     };
 
-    const previousImage = () => {
+    const previousImage = (event: React.MouseEvent) => {
+        event.preventDefault()
         setActiveImages(activeImages.map((index) => (index === 0 ? quantity - 1 : index - 1)));
     };
 

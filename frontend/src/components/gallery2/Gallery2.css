@@ -95,3 +95,7 @@ p {
 .gallery2-container__images__button:active {
     transform: scale(0.95);
 }
+
+.gallery2-container {
+    margin-bottom: -2em;
+}

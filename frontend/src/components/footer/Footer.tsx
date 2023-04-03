@@ -6,7 +6,7 @@ const Footer = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if(window.pageYOffset > 70) {
+            if(window.pageYOffset > 80) {
                 setShowFooter(true);
             } else {
                 setShowFooter(false);
@@ -17,8 +17,10 @@ const Footer = () => {
     })
 
     return (
-        <div className={`footer__container${showFooter ? " show" : ""}`}>
-            <div className='footer'>
+        <div className='foot'>
+            <p className={`${showFooter ? "none" : "arrow"}`}>↓</p>
+            <div className={`footer__container${showFooter ? " show" : ""}`}>
+                <div className='footer'>
                     <div className='footer__logo'>
                         <img className='footer__image-wheel' src={require('../../Images/LogoImgWhite.png')}/>
                     </div>
@@ -28,6 +30,7 @@ const Footer = () => {
                         <p>John M. Keynesplein 12-46, 1066 EP Amsterdam</p>
                         <p>brainware@appliedtechnology.se</p>
                     </div>
+                </div>
             </div>
         </div>
     );
