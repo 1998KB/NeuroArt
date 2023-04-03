@@ -65,14 +65,14 @@ const Login = (props: loginProps) => {
     return (
         <div className='login'>
             {props.user.username !== '' ?
-                <div>
-                    <div className='login__info'>
-                        <img src={props.user.picture} alt={'no'}/>
-                        <div className='login__info__text'>
-                            <h1>{props.user.username}</h1>
-                            <h2>{props.user.email}</h2>
-                        </div>
-
+            <div>
+                <div className='login__info'>
+                    <img src={props.user.picture} alt={'no'}/>
+                    <div className='login__info__text'>
+                        <h1>{props.user.username}</h1>
+                        <h2>{props.user.email}</h2>
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>
                     </div>
                     <div className='login__images'>
                         {props.user.collectionList[0].images.map((image, index) => {
@@ -100,15 +100,14 @@ const Login = (props: loginProps) => {
                     </div>
                 </div>
                 : <GoogleLogin
-                    onSuccess={(credentialResponse) => {
-                        handleLogin(credentialResponse)
-                        props.setCredentials(credentialResponse);
-                    }}
-                    onError={() => {
-                        console.log('Login Failed:');
-                    }}
-                />}
-            <button className='login__button__logout' onClick={handleLogout}>Logout</button>
+                onSuccess={(credentialResponse) => {
+                    handleLogin(credentialResponse)
+                    props.setCredentials(credentialResponse);
+                }}
+                onError={() => {
+                    console.log('Login Failed:');
+                }}
+            />}
         </div>
     );
 };
