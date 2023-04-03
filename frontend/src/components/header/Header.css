@@ -1,6 +1,6 @@
 @media screen and (min-width: 320px) {
 
-    .gallery2{
+    .gallery2 {
         display: none;
     }
 
@@ -80,7 +80,7 @@
         outline: none;
     }
 
-    a {
+    a, .gallery2 {
         -webkit-tap-highlight-color: transparent;
         transition: transform .3s;
     }
@@ -89,12 +89,12 @@
 @media screen and (min-width: 768px) {
 
 
-    .gallery1{
+    .gallery1 {
         display: none;
     }
 
-    .gallery2{
-        display: contents;
+    .gallery2 {
+        display: block;
     }
 
     .header__search-bar {
@@ -112,7 +112,7 @@
 
 @media screen and (min-width: 1025px) {
 
-    .gallery1{
+    .gallery1 {
         display: none;
     }
 
@@ -125,7 +125,8 @@
         gap: 8em;
         margin-left: 1em;
     }
-    .header__logo-div{
+
+    .header__logo-div {
         justify-content: center;
         align-items: center;
     }
@@ -155,6 +156,14 @@
 
     .header__navigation > a:hover {
         color: lightgray;
+        transform: scale(1.05);
+    }
+
+    .gallery2 > a:hover {
+        color: lightgray;
+    }
+
+    .gallery2:hover {
         transform: scale(1.05);
     }
 

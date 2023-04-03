@@ -1,16 +1,7 @@
 import React, {useState} from 'react';
 import './Form.css';
 import Dropdown from '../dropdown/Dropdown';
-
-interface FormProps {
-    setPrompt: Function;
-    isLoading: boolean;
-    setIsDisable: Function;
-    setGeneratedImage: Function;
-    setInputTitle: Function
-    setInputDescription: Function
-
-}
+import {FormProps} from "../../interfaces";
 
 const Form = (props: FormProps) => {
     const [key, setKey] = useState<number>(0);
@@ -31,6 +22,9 @@ const Form = (props: FormProps) => {
                     isLoading={props.isLoading}
                     setIsDisabled={props.setIsDisable}
                     setGeneratedImage={props.setGeneratedImage}
+                    setIsSaved={props.setIsSaved}
+                    saveButtonText={props.saveButtonText}
+                    setSaveButtonText={props.setSaveButtonText}
                     />
             </form>
         </div>
