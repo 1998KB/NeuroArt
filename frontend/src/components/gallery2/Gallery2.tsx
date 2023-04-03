@@ -62,11 +62,8 @@ const Gallery2 = () => {
                 <p className="gallery2-container__getinspired">Get Inspired</p>
                 <p className="gallery2-container__text">Step into our world of visual inspiration and marvel at the
                     stunning creations showcased in our gallery.
-                    We've curated a collection of artwork from our talented authors.
                     With a diverse range of styles and techniques on display, there's something for everyone in our
                     gallery.
-                    From sleek, modern designs to whimsical illustrations bursting with color,
-                    each piece offers a unique perspective on the world of visual art.
                     We believe that anyone can tap into their inner creativity and become a master of their craft,
                     and our gallery is the perfect place to start. So come explore, get lost in the beauty of our
                     creations,
