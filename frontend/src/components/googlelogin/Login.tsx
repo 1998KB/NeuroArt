@@ -109,15 +109,17 @@ const Login = (props: loginProps) => {
                     </div>
                 </div>
                 :
-                <GoogleLogin
-                    onSuccess={(credentialResponse) => {
-                        handleLogin(credentialResponse)
-                        props.setCredentials(credentialResponse);
-                    }}
-                    onError={() => {
-                        console.log('Login Failed:');
-                    }}
-                />
+                <div className="login__button-div">
+                    <GoogleLogin
+                        onSuccess={(credentialResponse) => {
+                            handleLogin(credentialResponse)
+                            props.setCredentials(credentialResponse);
+                        }}
+                        onError={() => {
+                            console.log('Login Failed:');
+                        }}
+                    />
+                </div>
             }
         </div>
     )
