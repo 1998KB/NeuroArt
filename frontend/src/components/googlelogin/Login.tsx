@@ -1,29 +1,58 @@
-import React, {useState} from 'react';
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import React from 'react';
+import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google';
+import {User} from "../../interfaces";
 
 interface loginProps {
     setCredentials: Function
+    credentials: CredentialResponse | null
+    setUser: Function
+    user: User
 }
 const Login = (props: loginProps) => {
     const handleLogout = () => {
         googleLogout();
-        console.log('User logged out successfully.');
         props.setCredentials(null);
+        props.setUser({username:'',collectionList:[],
+            email:'',picture:''})
+    };
+
+    const handleLogin = async (credentials: CredentialResponse) => {
+        const response = await fetch(
+            "https://neuroart.azurewebsites.net/user",
+            {
+                method: 'POST',
+                headers: {'Authorization': `Bearer ${credentials.credential}`},
+            }
+        )
+        if (!response.ok) {
+            throw new Error(`Failed to get user: ${response.status}`);
+        }
+        const data: User = await response.json();
+        props.setUser(data)
     };
 
     return (
         <>
-            <GoogleLogin
-                auto_select={true}
+            {props.user.username !== '' ?
+            <>
+                <h1>{props.user.username}</h1>
+                <h2>{props.user.email}</h2>
+                <img src={props.user.picture} alt={'no'}/>
+                {props.user.collectionList[0].images.map((image, index) => {
+                    return <img key={index} src={image.url}/>
+                })}
+            </>
+                : <GoogleLogin
                 onSuccess={(credentialResponse) => {
-                    console.log(credentialResponse);
+                    handleLogin(credentialResponse)
                     props.setCredentials(credentialResponse);
                 }}
                 onError={() => {
                     console.log('Login Failed:');
                 }}
-            />
-            <button onClick={handleLogout}>Google logout</button>
+            />}
+            <p></p>
+            <button onClick={handleLogout}>Logout</button>
         </>
     );
 };

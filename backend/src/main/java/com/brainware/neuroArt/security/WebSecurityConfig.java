@@ -21,7 +21,7 @@ public class WebSecurityConfig {
         http
                 .cors().and()
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/gallery", "/check").permitAll()
+                        .requestMatchers("/gallery", "/check", "/user").permitAll()
                         .anyRequest().authenticated()
                 )
                 .csrf().disable()

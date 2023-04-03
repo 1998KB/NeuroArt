@@ -46,12 +46,11 @@ public class NeuroArtService {
         return jsonTree.get("data").get(0).get("url").asText();
     }
 
+    @Transactional
     public Image saveImage(ImageDTO imageDto, Map<String, Object> claims) {
         UrlAndIdDto urlAndIdDto = imgBBService.fetchPermanentUrl(imageDto.temporaryUrl());
         Image image = Mapper.mapToImage(urlAndIdDto, imageDto);
         image = imageRepository.save(image);
-        Collection collection = getSingleCollection();
-        addImageToCollectionAndSave(collection, image);
         Client client = clientRepository.findClientBySub(claims.get("sub").toString());
         Collection clientCollection = client.getCollectionList().get(0);
         addImageToCollectionAndSave(clientCollection, image);
@@ -59,19 +58,17 @@ public class NeuroArtService {
     }
 
     @Transactional
-    public void deleteImage(String id) {
-        Collection collection = getSingleCollection();
-        collection.getImages().removeIf(image -> image.getId().equals(id));
-        collectionRepository.save(collection);
+    public void deleteImage(String id, Map<String, Object> claims) {
+        Client client = clientRepository.findClientBySub(claims.get("sub").toString());
+        List<Collection> collectionList = client.getCollectionList();
+        collectionList.get(0).getImages().removeIf(image -> image.getId().equals(id));
+        client.setCollectionList(collectionList);
+        clientRepository.save(client);
         imageRepository.deleteById(id);
     }
     
     public List<Image> getAllImages() {
         return Streamable.of(imageRepository.findAll()).toList();
-    }
-
-    private Collection getSingleCollection() {
-        return collectionRepository.findById(1L).get();
     }
 
     private void addImageToCollectionAndSave(Collection collection, Image image) {
@@ -83,17 +80,22 @@ public class NeuroArtService {
         return clientRepository.findClientBySub(sub);
     }
 
+    @Transactional
     public Client createClient(Map<String, Object> claims) {
         Client client = new Client();
         client.setSub(claims.get("sub").toString());
         client.setUsername(claims.get("given_name").toString());
         client = clientRepository.save(client);
+
         Collection collection = new Collection();
         collection.setClient(client);
         collection.setName(client.getUsername());
         collection.setDescription("My first collection");
         collection = collectionRepository.save(collection);
-        client.getCollectionList().add(collection);
+
+        List<Collection> userCollectionList = client.getCollectionList();
+        userCollectionList.add(collection);
+        client.setCollectionList(userCollectionList);
         return clientRepository.save(client);
     }
 }

@@ -34,11 +34,13 @@ const Dropdown = (props: DropdownProps) => {
         setMoodOption(moodOptions[0])
         setUserInput('');
     };
+
     const handleChangeLighting = (event: OnChangeValue<unknown, false>) => {
         if (event) {
             setLightingOption(event as Option);
         }
     };
+
     const handleChangeStyle = (event: OnChangeValue<unknown, false>) => {
         if (event) {
             setStyleOption(event as Option);
@@ -50,26 +52,31 @@ const Dropdown = (props: DropdownProps) => {
             setColorOption(event as Option);
         }
     };
+
     const handleChangeLandscape = (event: OnChangeValue<unknown, false>) => {
         if (event) {
             setLandscapeOption(event as Option);
         }
     };
+
     const handleChangeTexture = (event: OnChangeValue<unknown, false>) => {
         if (event) {
             setTextureOption(event as Option);
         }
     };
+
     const handleChangeShape = (event: OnChangeValue<unknown, false>) => {
         if (event) {
             setShapeOption(event as Option);
         }
     };
+
     const handleChangeMood = (event: OnChangeValue<unknown, false>) => {
         if (event) {
             setMoodOption(event as Option);
         }
     };
+
     const makePrompt = () => {
         let prompt: string = userInput;
         if (lightingOption.value !== '') {
@@ -78,7 +85,6 @@ const Dropdown = (props: DropdownProps) => {
         if (styleOption.value !== '') {
             prompt = [prompt, styleOption.value].join(' ').toString()
         }
-
         if (colorOption.value !== '') {
             prompt = [prompt, colorOption.value].join(' ').toString()
         }
@@ -96,6 +102,7 @@ const Dropdown = (props: DropdownProps) => {
         }
         return prompt;
     }
+
     const handleGenerate = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
         props.setInputTitle(null)
@@ -108,27 +115,25 @@ const Dropdown = (props: DropdownProps) => {
         }
         props.setGeneratedImage(null)
         props.setGenerated(true)
-
     }
+
     const handleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserInput(event.target.value);
     }
 
     return (
         <div className='dropdown'>
-
             <div>
-                <div className="text-input">
+                <div className="dropdown__text-div">
                     <label>
                         Text input:
                     </label>
-                    <input placeholder='Manifest your ideas ...' className='text-input-field' type="text" onChange={event => handleUserInput(event)}/>
-
+                    <input className='dropdown__text-input' placeholder='Manifest your ideas ...' type="text" onChange={event => handleUserInput(event)}/>
                     <button className='dropdown__generate-btn' onClick={event => handleGenerate(event)} disabled={props.isLoading}>Generate</button>
                 </div>
             </div>
-            <div className='dropdown-select-container'>
-                <div className="select">
+            <div className='dropdown__select-div-container'>
+                <div className="dropdown__select-div">
                     <label>Select Lighting:</label>
                     <Select theme={customTheme}
                             styles={customStyles}
@@ -138,7 +143,7 @@ const Dropdown = (props: DropdownProps) => {
                             onChange={(event) => handleChangeLighting(event)}
                     />
                 </div>
-                <div className="select">
+                <div className="dropdown__select-div">
                     <label>Select Style:</label>
                     <Select theme={customTheme}
                             styles={customStyles}
@@ -148,7 +153,7 @@ const Dropdown = (props: DropdownProps) => {
                             onChange={(event) => handleChangeStyle(event)}
                     />
                 </div>
-                <div className="select">
+                <div className="dropdown__select-div">
                     <label>Select Color:</label>
                     <Select theme={customTheme}
                             styles={customStyles}
@@ -158,7 +163,7 @@ const Dropdown = (props: DropdownProps) => {
                             onChange={(event) => handleChangeColor(event)}
                     />
                 </div>
-                <div className="select">
+                <div className="dropdown__select-div">
                     <label>Select Landscape:</label>
                     <Select theme={customTheme}
                             styles={customStyles}
@@ -168,7 +173,7 @@ const Dropdown = (props: DropdownProps) => {
                             onChange={(event) => handleChangeLandscape(event)}
                     />
                 </div>
-                <div className="select">
+                <div className="dropdown__select-div">
                     <label>Select Texture:</label>
                     <Select theme={customTheme}
                             styles={customStyles}
@@ -178,7 +183,7 @@ const Dropdown = (props: DropdownProps) => {
                             onChange={(event) => handleChangeTexture(event)}
                     />
                 </div>
-                <div className="select">
+                <div className="dropdown__select-div">
                     <label>Select Shape:</label>
                     <Select theme={customTheme}
                             styles={customStyles}
@@ -188,7 +193,7 @@ const Dropdown = (props: DropdownProps) => {
                             onChange={(event) => handleChangeShape(event)}
                     />
                 </div>
-                <div className="select">
+                <div className="dropdown__select-div">
                     <label>Select Mood:</label>
                     <Select theme={customTheme}
                             styles={customStyles}
@@ -200,9 +205,7 @@ const Dropdown = (props: DropdownProps) => {
                 </div>
             </div>
         </div>
-
-    )
-        ;
+    );
 };
 
 export default Dropdown;

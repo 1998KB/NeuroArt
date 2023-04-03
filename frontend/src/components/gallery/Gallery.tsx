@@ -1,8 +1,8 @@
 import "./Gallery.css";
 import ImageCarousel from "../imageCarousel/ImageCarousel";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 
-type Image = {
+export type Image = {
     id: string;
     url: string;
     prompt: string;
@@ -11,6 +11,7 @@ type Image = {
 };
 
 const Gallery = () => {
+
     const [images, setImages] = useState<Image[]>([]);
     const [deletedImages, setDeletedImages] = useState<string[]>([]);
 

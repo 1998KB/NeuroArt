@@ -9,11 +9,13 @@ import About from "../about/About";
 import {CredentialResponse, GoogleOAuthProvider} from "@react-oauth/google";
 import Login from "../googlelogin/Login";
 import Gallery2 from "../gallery2/Gallery2";
+import {User} from "../../interfaces";
 
 
 const AppContainer = () => {
     const [credentials, setCredentials] = useState<CredentialResponse | null>(null);
-
+    const [user, setUser] = useState<User>({username:'',collectionList:[],
+        email:'',picture:''});
     return (
         <>
             <div>
@@ -26,8 +28,9 @@ const AppContainer = () => {
                     <Route path="/gallery" element={<Gallery/>}/>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/gallery2" element={<Gallery2/>}/>
+                    <Route path="/login" element={<Login user={user} setUser={setUser}
+                                                         credentials={credentials} setCredentials={setCredentials}/>}/>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/login" element={<Login setCredentials={setCredentials}/>}/>
                 </Routes>
                 </GoogleOAuthProvider>
             </div>

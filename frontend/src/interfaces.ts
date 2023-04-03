@@ -1,3 +1,6 @@
+import {CredentialResponse} from "@react-oauth/google";
+import {Image} from "./components/gallery/Gallery";
+
 export interface Option {
     value: string,
     label: string
@@ -13,6 +16,18 @@ export interface DropdownProps {
     setInputDescription: Function
 }
 
+export interface User {
+    username: String,
+    collectionList: Collection[]
+    email: String,
+    picture: string
+}
+
+export interface Collection {
+    description: String
+    images: Image[]
+
+}
 
 export interface ImageContainerProps {
     image: string
@@ -24,6 +39,7 @@ export interface ImageContainerProps {
     setInputTitle: Function
     inputDescription: string
     setInputDescription: Function
+    credentials: CredentialResponse | null
 
 }
 
@@ -45,4 +61,5 @@ export interface AuthorInfo{
     email: string,
     picture: string,
     collectionList: []
+
 }
