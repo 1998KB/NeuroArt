@@ -87,7 +87,6 @@ const Gallery2 = () => {
                 ))}
                 <button className='gallery2-container__images__button' onClick={nextImage}>❱</button>
             </div>
-            <div><Footer/></div>
         </div>
     );
 };

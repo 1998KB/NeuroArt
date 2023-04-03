@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div className='footer'>
             <div className='footer__logo'>
-                <img className='home__image-wheel' src={require('../../Images/LogoImgWhite.png')}/>
+                <img className='footer__image-wheel' src={require('../../Images/LogoImgWhite.png')}/>
             </div>
             <div className='footer__contact'>
                 <h1>Contact</h1>
