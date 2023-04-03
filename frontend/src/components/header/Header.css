@@ -94,7 +94,8 @@
     }
 
     .gallery2{
-        display: block;
+        display: contents;
+        margin-left: -15px;
     }
 
     .header__search-bar {

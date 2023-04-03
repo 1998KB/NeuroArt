@@ -3,13 +3,13 @@ import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google
 import {User} from "../../interfaces";
 import "./Login.css";
 
-
 interface loginProps {
     setCredentials: Function
     credentials: CredentialResponse | null
     setUser: Function
     user: User
 }
+
 const Login = (props: loginProps) => {
     const handleLogout = () => {
         googleLogout();

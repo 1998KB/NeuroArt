@@ -23,7 +23,6 @@
         margin: 1em;
         padding: 1em;
         border-radius: 10px;
-        z-index: 50;
         width: 20vw;
     }
 
@@ -48,10 +47,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 5em;
     }
 
     .imagecontainer__save-btn {
+        margin-top: 1em;
         font-size: xx-large;
         font-family: Poppins-Light;
         width: 20vw;
@@ -86,6 +85,25 @@
 
     .imagecontainer__save-btn:hover:before {
         left: 100%;
+    }
+
+    .imagecontainer__save-btn.saved {
+        background-color: rgba(20, 148, 9, 0.65);
+        color: white;
+        box-shadow: 1px 1px 25px 10px rgba(20, 148, 9, 0.65);
+    }
+
+
+
+    .add-title-label {
+        display: block;
+        font-family: Poppins-ExtraLight;
+    }
+
+    .add-description-label {
+        display: block;
+        font-family: Poppins-ExtraLight;
+
     }
 
 }
