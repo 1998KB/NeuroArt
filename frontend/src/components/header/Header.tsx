@@ -1,8 +1,13 @@
 import React from 'react';
 import "./Header.css"
 import {Link} from "react-router-dom";
+import {User} from "../../interfaces";
 
-const Header = () => {
+interface headerProps {
+    user: User
+}
+
+const Header = (props: headerProps) => {
     return (
         <div className='header'>
             <header className='header__header'>
@@ -23,7 +28,8 @@ const Header = () => {
                     <Link to='/about'>About</Link>
                     <Link to='/gallery'><div className='gallery1'>Gallery</div></Link>
                     <Link to='/gallery2'><div className='gallery2'>Gallery</div></Link>
-                    <Link to='/login'>Login</Link>
+                    {props.user.username !== '' ? <Link to='/login'>{props.user.username}</Link>
+                        : <Link to='/login'>Login</Link>}
 
                 </div>
             </header>

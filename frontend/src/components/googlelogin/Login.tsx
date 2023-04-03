@@ -1,6 +1,8 @@
 import React from 'react';
 import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google';
 import {User} from "../../interfaces";
+import "./Login.css";
+
 
 interface loginProps {
     setCredentials: Function
@@ -32,16 +34,24 @@ const Login = (props: loginProps) => {
     };
 
     return (
-        <>
+        <div className='login'>
             {props.user.username !== '' ?
-            <>
-                <h1>{props.user.username}</h1>
-                <h2>{props.user.email}</h2>
-                <img src={props.user.picture} alt={'no'}/>
-                {props.user.collectionList[0].images.map((image, index) => {
-                    return <img key={index} src={image.url}/>
-                })}
-            </>
+            <div>
+                <div className='login__info'>
+                    <img src={props.user.picture} alt={'no'}/>
+                    <div className='login__info__text'>
+                        <h1>{props.user.username}</h1>
+                        <h2>{props.user.email}</h2>
+                    </div>
+
+                </div>
+                <div className='login__images'>
+                    {props.user.collectionList[0].images.map((image, index) => {
+                        return <img className='login__images__image' key={index} src={image.url} alt='image'/>
+                    })}
+                </div>
+
+            </div>
                 : <GoogleLogin
                 onSuccess={(credentialResponse) => {
                     handleLogin(credentialResponse)
@@ -51,9 +61,8 @@ const Login = (props: loginProps) => {
                     console.log('Login Failed:');
                 }}
             />}
-            <p></p>
             <button onClick={handleLogout}>Logout</button>
-        </>
+        </div>
     );
 };
 

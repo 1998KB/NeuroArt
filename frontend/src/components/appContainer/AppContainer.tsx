@@ -19,7 +19,7 @@ const AppContainer = () => {
     return (
         <>
             <div>
-                <Header/>
+                <Header user={user}/>
             </div>
             <div>
                 <GoogleOAuthProvider clientId={"946318872366-410nr0nld5sghv8r8nntkllokcritu06.apps.googleusercontent.com"}>
