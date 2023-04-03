@@ -14,6 +14,9 @@ export interface DropdownProps {
     setGeneratedImage: Function
     setInputTitle: Function
     setInputDescription: Function
+    setIsSaved: Function
+    saveButtonText: string
+    setSaveButtonText: Function
 }
 
 export interface User {
@@ -40,6 +43,10 @@ export interface ImageContainerProps {
     inputDescription: string
     setInputDescription: Function
     credentials: CredentialResponse | null
+    isSaved: boolean
+    setIsSaved: Function
+    saveButtonText: string
+    setSaveButtonText: Function
 
 }
 
@@ -56,10 +63,21 @@ export type CarouselType = {
     imageId: string
 }
 
-export interface AuthorInfo{
+export interface AuthorInfo {
     username: string,
     email: string,
     picture: string,
     collectionList: []
+}
 
+export interface FormProps {
+    setPrompt: Function;
+    isLoading: boolean;
+    setIsDisable: Function;
+    setGeneratedImage: Function;
+    setInputTitle: Function
+    setInputDescription: Function
+    setIsSaved: Function
+    saveButtonText: string
+    setSaveButtonText: Function
 }

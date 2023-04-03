@@ -4,11 +4,10 @@ import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 import {ImageContainerProps, ImageSaveData} from "../../interfaces";
 
 const ImageContainer = (props: ImageContainerProps) => {
-
-    const [isSaved, setIsSaved] = useState(false);
-    const [saveButtonText, setSaveButtonText] = useState('Save');
+    const [isSaving, setIsSaving] = useState(false);
 
     const handleSave = async () => {
+        setIsSaving(true)
         if (props.credentials == null) {
             return;
         }
@@ -31,8 +30,9 @@ const ImageContainer = (props: ImageContainerProps) => {
         if (!response.ok) {
             throw new Error(`Failed to save: ${response.status}`);
         }
-        setIsSaved(true);
-        setSaveButtonText('Saved');
+        props.setIsSaved(true);
+        setIsSaving(false)
+        props.setSaveButtonText('Saved');
         props.setIsDisabled(false);
     }
 
@@ -59,14 +59,25 @@ const ImageContainer = (props: ImageContainerProps) => {
                                value={props.inputDescription}
                                onChange={(e) => props.setInputDescription(e.target.value)}
                         />
+                        {isSaving && <div className="letter-holder">
+                            <div className="l-1 letter">S</div>
+                            <div className="l-2 letter">a</div>
+                            <div className="l-3 letter">v</div>
+                            <div className="l-4 letter">i</div>
+                            <div className="l-5 letter">n</div>
+                            <div className="l-6 letter">g</div>
+                            <div className="l-7 letter">.</div>
+                            <div className="l-8 letter">.</div>
+                            <div className="l-9 letter">.</div>
+                        </div>}
                         <button
                             className={
-                                isSaved ? "imagecontainer__save-btn saved" : "imagecontainer__save-btn"
+                                props.isSaved ? "imagecontainer__save-btn saved" : "imagecontainer__save-btn"
                             }
                             onClick={handleSave}
                             disabled={props.isDisabled}
                         >
-                            {saveButtonText}
+                            {props.saveButtonText}
                         </button>
 
                     </div>
