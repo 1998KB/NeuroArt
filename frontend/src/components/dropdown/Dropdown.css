@@ -124,7 +124,7 @@ label {
         animation: glowing 20s linear infinite;
         transition: opacity .3s ease-in-out;
         border-radius: 10px;
-        opacity: 1;
+        opacity: 0;
 
     }
 
