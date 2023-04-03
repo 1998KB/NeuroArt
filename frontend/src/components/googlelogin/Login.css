@@ -161,3 +161,7 @@
     justify-content: flex-end;
     align-items: flex-end;
 }
+
+.login__button-div {
+    margin-bottom: 65vh;
+}
