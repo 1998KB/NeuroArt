@@ -3,6 +3,7 @@ import {CredentialResponse, GoogleLogin, googleLogout} from '@react-oauth/google
 import {User} from "../../interfaces";
 import "./Login.css";
 import {CopyLinkButton} from "./CopyLinkButton";
+import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 
 interface loginProps {
     setCredentials: Function
@@ -16,6 +17,7 @@ const Login = (props: loginProps) => {
     const [hoveredImage, setHoveredImage] = useState<number | null>(null);
     const [deletedImages, setDeletedImages] = useState<string[]>([]);
     const [clickedButtons, setClickedButtons] = useState<string[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
     const handleLogout = () => {
         googleLogout();
         props.setCredentials(null);
@@ -31,6 +33,7 @@ const Login = (props: loginProps) => {
     }, [deletedImages])
 
     const handleLogin = async (credentials: CredentialResponse) => {
+        setIsLoading(true)
         const response = await fetch(
             "https://neuroart.azurewebsites.net/user",
             {
@@ -43,6 +46,7 @@ const Login = (props: loginProps) => {
         }
         const data: User = await response.json();
         props.setUser(data)
+        setIsLoading(false)
     };
     const onMouseEnter = (index: number) => {
         setHoveredImage(index);
@@ -136,7 +140,7 @@ const Login = (props: loginProps) => {
                 </div>
                 :
                 <div className="container-handleLogin">
-                    <div className="login__button-div">
+                    {isLoading ? <div className="loading"><LoadingSpinner/></div> : <div className="login__button-div">
                         <p className="sign-in">Sign in and start generating</p>
                         <GoogleLogin
                             onSuccess={(credentialResponse) => {
@@ -147,7 +151,7 @@ const Login = (props: loginProps) => {
                                 console.log('Login Failed:');
                             }}
                         />
-                    </div>
+                    </div>}
                 </div>
             }
         </div>

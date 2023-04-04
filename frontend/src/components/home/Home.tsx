@@ -33,7 +33,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <div className='wheel-container'>
             <img className='home__image-wheel' src={require('../../Images/LogoImgWhite.png')}/>
+            </div>
 
         </div>
     );
