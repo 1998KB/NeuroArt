@@ -1,40 +1,27 @@
-.about__description {
-    margin-left: 3em;
-    margin-bottom: 3em;
-    width: 80%;
-}
-.about__java{
-    height: 5em;
-}
-
-.about__spring{
-    height: 4em;
-}
-
-.about__react{
-    height: 4em;
-}
-.about__ts{
-    height: 3em;
-}
-.about__azure{
-    height: 3em;
-}
-.about__postgresql{
-    height: 5em;
-}
-.about__logos{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: space-around;
-}
-.about__us{
-    padding-left: 3em;
-    margin-bottom: 1em;
-    font-family: Poppins-Bold;
+@media screen and (min-width: 320px) {
+    .about__logos {
+        display: none;
+    }
+    .about__description {
+        margin-left: 3em;
+        margin-bottom: 3em;
+        width: 80%;
+    }
+    .about__us {
+        text-align: center;
+        padding-top: 1em;
+        margin-bottom: 1em;
+        font-family: Poppins-Bold;
+    }
 }
 
 @media screen and (min-width: 768px) {
+    .about__us {
+        text-align: center;
+        padding-top: 2em;
+        margin-bottom: 1em;
+        font-family: Poppins-Bold;
+    }
 
     .about__description {
         text-align: left;
@@ -45,3 +32,49 @@
     }
 }
 
+@media screen and (min-width: 1025px) {
+
+    .about__description {
+        margin-left: 3em;
+        margin-bottom: 3em;
+        width: 80%;
+    }
+
+    .about__java {
+        height: 5em;
+    }
+
+    .about__spring {
+        height: 4em;
+    }
+
+    .about__react {
+        height: 4em;
+    }
+
+    .about__ts {
+        height: 3em;
+    }
+
+    .about__azure {
+        height: 3em;
+    }
+
+    .about__postgresql {
+        height: 5em;
+    }
+
+    .about__logos {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: space-around;
+    }
+
+    .about__us {
+        text-align: left;
+        padding-left: 3em;
+        margin-bottom: 1em;
+        font-family: Poppins-Bold;
+    }
+
+}

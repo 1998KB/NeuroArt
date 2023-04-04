@@ -28,7 +28,10 @@ const Header = (props: headerProps) => {
                     <Link to='/about'>About</Link>
                     <div className='gallery1'><Link to='/gallery'>Gallery</Link></div>
                     <div className='gallery2'><Link to='/gallery2'>Gallery</Link></div>
-                    {props.user.username !== '' ? <Link to='/login'>{props.user.username}</Link>
+                    {props.user.username !== '' ?
+                        <Link to='/login'><img  src={props.user.picture} className='header-img'
+                                               alt=""/>
+                        </Link>
                         : <Link to='/login'>Login</Link>}
                 </div>
             </header>

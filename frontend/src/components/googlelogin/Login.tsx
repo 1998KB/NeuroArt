@@ -80,19 +80,24 @@ const Login = (props: loginProps) => {
             {props.user.username !== '' ?
                 <div>
                     <div className='login__info'>
-                        <div className='info'>
-                            <img src={props.user.picture} className='image-pic-profile' alt={'no'}/>
-                            <div className='login__info__text'>
-                                <h1>{props.user.username}</h1>
-                                <h2>{props.user.email}</h2>
+                        <div className='info-container'>
+                            <div className='info'>
+                                <img src={props.user.picture} className='image-pic-profile' alt={'no'}/>
+                                <div className='login__info__text'>
+                                    <h1>{props.user.username}</h1>
+                                    <h2>{props.user.email}</h2>
+                                </div>
                             </div>
-                            <button className='login__button__share'
-                                    onClick={() => copyLink(props.user.collectionList[0].images[0].id)}>
-                                {copied ? "Link copied!" : "Share Gallery"} <img
-                                src={require('../../Images/ShareWhite.png')} alt="" className="share-icon"/></button>
-                        </div>
-                        <div className="logout-container">
-                            <button className='login__button__logout' onClick={handleLogout}>Logout</button>
+                            <div className='buttons-container'>
+                                <button className='login__button__share'
+                                        onClick={() => copyLink(props.user.collectionList[0].images[0].id)}>
+                                    {copied ? "Link copied!" : "Share Gallery"} <img
+                                    src={require('../../Images/ShareWhite.png')} alt="" className="share-icon"/>
+                                </button>
+                                <div className="logout-container">
+                                    <button className='login__button__logout' onClick={handleLogout}>Logout</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

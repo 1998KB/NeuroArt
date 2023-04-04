@@ -170,6 +170,10 @@
     .header__search-bar:hover {
         transform: scale(1.1);
     }
+    .header-img{
+        height: 2.5em;
+        border-radius: 100px;
+    }
 }
 
 /*    .header {*/
