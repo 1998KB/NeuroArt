@@ -100,9 +100,9 @@
 
     .about__us {
         text-align: left;
-        padding-left: 3em;
+        padding-left: 1.5em;
         margin-bottom: 1em;
-        font-family: Poppins-Bold;
+        font-family: Poppins-Regular;
         animation: fadeInAnimation ease 1s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
