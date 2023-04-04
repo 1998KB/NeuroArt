@@ -29,7 +29,7 @@ const AppContainer = () => {
                 <Routes>
                     <Route path='/image/:id' element={<ImageShare/>}/>
                     <Route path='/collection/:id' element={<CollectionShare/>}/>
-                    <Route path="/generate" element={<Generate credentials={credentials}/>}/>
+                    <Route path="/generate" element={<Generate credentials={credentials} user={user}/>}/>
                     <Route path="/gallery" element={<Gallery/>}/>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/gallery2" element={<Gallery2/>}/>

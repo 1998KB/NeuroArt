@@ -17,6 +17,7 @@ export interface DropdownProps {
     setIsSaved: Function
     saveButtonText: string
     setSaveButtonText: Function
+    user:User
 }
 
 export interface User {
@@ -80,4 +81,5 @@ export interface FormProps {
     setIsSaved: Function
     saveButtonText: string
     setSaveButtonText: Function
+    user: User
 }
