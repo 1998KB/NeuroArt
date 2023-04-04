@@ -56,6 +56,9 @@ public class NeuroArtService {
     @Transactional
     public void deleteImage(String id, Map<String, Object> claims) {
         Client client = clientRepository.findClientBySub(claims.get("sub").toString());
+        if (client == null) {
+            return;
+        }
         List<Collection> collectionList = client.getCollectionList();
         collectionList.get(0).getImages().removeIf(image -> image.getId().equals(id));
         client.setCollectionList(collectionList);

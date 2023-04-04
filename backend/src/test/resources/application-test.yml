@@ -1,12 +1,15 @@
 spring:
   datasource:
-    url: jdbc:postgresql://trumpet.db.elephantsql.com:5432/mfxbjraz
-    username: mfxbjraz
-    password: 8UBBsIE525Qevsz-8yG6cpe06rUoRYGg
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
 
 openaikey: OPENAI_KEY
 imgbbkey: IMGBB_KEY
 
-logging:
-  level:
-    root : DEBUG
+#logging:
+#  level:
+#    root : DEBUG
