@@ -4,9 +4,11 @@ import Form from "../form/Form";
 import ImageContainer from "../imageContainer/ImageContainer";
 import {CredentialResponse} from "@react-oauth/google";
 import {useNavigate} from "react-router-dom";
+import {User} from "../../interfaces";
 
 interface generateProps {
     credentials: CredentialResponse | null
+    user: User
 }
 
 const Generate = (props: generateProps) => {
@@ -80,7 +82,8 @@ const Generate = (props: generateProps) => {
                   setGeneratedImage={setGeneratedImage}
                   setIsSaved={setIsSaved}
                   saveButtonText={saveButtonText}
-                  setSaveButtonText={setSaveButtonText}/>
+                  setSaveButtonText={setSaveButtonText}
+                  user={props.user}/>
             <ImageContainer credentials={props.credentials} inputTitle={inputTitle}
                             setInputTitle={setInputTitle}
                             inputDescription={inputDescription}

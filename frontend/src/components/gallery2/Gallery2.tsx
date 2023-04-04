@@ -2,6 +2,7 @@ import "./Gallery2.css";
 import React, {useEffect, useState} from "react";
 import ImageInfo from "./ImageInfo";
 import Footer from "../footer/Footer";
+import {useNavigate} from "react-router-dom";
 
 type Image = {
     id: string;
@@ -14,6 +15,7 @@ const Gallery2 = () => {
     const [images, setImages] = useState<Image[]>([]);
     const [activeImages, setActiveImages] = useState<number[]>([]);
     const [hoveredImage, setHoveredImage] = useState<number | null>(null);
+    const navigate = useNavigate();
 
     const quantity = images?.length;
 
@@ -77,15 +79,18 @@ const Gallery2 = () => {
                 <button className='gallery2-container__images__button' onClick={previousImage}>❰</button>
                 {activeImages.map((index, idx) => (
                     <div
+
                         className="gallery2-container__images__carrousel"
                         key={idx}
                         onMouseEnter={() => onMouseEnter(index)}
                         onMouseLeave={onMouseLeave}
                     >
+                        <a href="#" onMouseDown={(e) => { e.preventDefault(); navigate(`/collection/${images[index].id}`); }}>Go to Author</a>
                         <img className="gallery2-container__images__image" key={index} src={images[index]?.url}/>
                         {hoveredImage === index &&
                             <ImageInfo description={images[index]?.description} title={images[index]?.title}/>}
                     </div>
+
                 ))}
                 <button className='gallery2-container__images__button' onClick={nextImage}>❱</button>
             </div>

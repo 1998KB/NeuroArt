@@ -12,6 +12,7 @@ import {
     styleOptions,
     textureOptions
 } from "./options";
+import {useNavigate} from "react-router-dom";
 
 const Dropdown = (props: DropdownProps) => {
 
@@ -23,6 +24,7 @@ const Dropdown = (props: DropdownProps) => {
     const [shapeOption, setShapeOption] = useState<Option>(shapeOptions[0]);
     const [moodOption, setMoodOption] = useState<Option>(moodOptions[0]);
     const [userInput, setUserInput] = useState('');
+    const navigate = useNavigate();
 
     const handleReset = () => {
         setLightingOption(lightingOptions[0]);
@@ -127,13 +129,20 @@ const Dropdown = (props: DropdownProps) => {
 
     return (
         <div className='dropdown'>
+            {props.user.username === '' ? <button className='dropdown__generate-btn'
+                                                  onClick={(event) => navigate('/login')}>Please Log In</button>
+                :
+            <>
             <div>
                 <div className="dropdown__text-div">
                     <label>
                         Text input:
                     </label>
-                    <input className='dropdown__text-input' placeholder='Manifest your ideas ...' type="text" onChange={event => handleUserInput(event)}/>
-                    <button className='dropdown__generate-btn' onClick={event => handleGenerate(event)} disabled={props.isLoading}>Generate</button>
+                    <input className='dropdown__text-input' placeholder='Manifest your ideas ...' type="text"
+                           onChange={event => handleUserInput(event)}/>
+                    <button className='dropdown__generate-btn'
+                            onClick={event => handleGenerate(event)}
+                            disabled={props.isLoading}>Generate</button>
                 </div>
             </div>
             <div className='dropdown__select-div-container'>
@@ -208,6 +217,8 @@ const Dropdown = (props: DropdownProps) => {
                     />
                 </div>
             </div>
+            </>
+            }
         </div>
     );
 };
