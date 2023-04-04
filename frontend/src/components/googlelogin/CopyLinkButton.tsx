@@ -1,11 +1,12 @@
-import { useState } from "react";
+import React, {useState} from "react";
+import './CopyLinkButton.css'
 
 interface CopyLinkButtonProps {
     id: string;
     onCopy: (id: string) => void;
 }
 
-export const CopyLinkButton = ( props : CopyLinkButtonProps) => {
+export const CopyLinkButton = (props: CopyLinkButtonProps) => {
     const [copied, setCopied] = useState(false);
 
     function copyLink() {
@@ -17,12 +18,15 @@ export const CopyLinkButton = ( props : CopyLinkButtonProps) => {
             .catch((error) => console.error(error));
         setTimeout(() => {
             setCopied(false)
-        },3000)
+        }, 3000)
     }
 
     return (
-        <button onClick={copyLink}>
-            {copied ? "Link copied!" : "Share"}
-        </button>
+        <div className='button'>
+            <button className='button__share' onClick={copyLink}>
+                {copied ? "Link copied!" : "Share"}
+                <img src={require('../../Images/ShareWhite.png')} alt="" className="share-icon"/>
+            </button>
+        </div>
     );
 }

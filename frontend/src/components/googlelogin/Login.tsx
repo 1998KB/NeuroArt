@@ -61,7 +61,7 @@ const Login = (props: loginProps) => {
         setDeletedImages([...deletedImages, id]);
     }
 
-    const copyLink = (id:string) => {
+    const copyLink = (id: string) => {
         navigator.clipboard.writeText(`https://blue-sky-0e47a0403.2.azurestaticapps.net/collection/${id}`)
             .then(() => setCopied(true))
             .catch((error) => console.error(error));
@@ -81,17 +81,18 @@ const Login = (props: loginProps) => {
                 <div>
                     <div className='login__info'>
                         <div className='info'>
-                        <img src={props.user.picture} alt={'no'}/>
-                        <div className='login__info__text'>
-                            <h1>{props.user.username}</h1>
-                            <h2>{props.user.email}</h2>
-                        </div>
+                            <img src={props.user.picture} className='image-pic-profile' alt={'no'}/>
+                            <div className='login__info__text'>
+                                <h1>{props.user.username}</h1>
+                                <h2>{props.user.email}</h2>
+                            </div>
+                            <button className='login__button__share'
+                                    onClick={() => copyLink(props.user.collectionList[0].images[0].id)}>
+                                {copied ? "Link copied!" : "Share Gallery"} <img
+                                src={require('../../Images/ShareWhite.png')} alt="" className="share-icon"/></button>
                         </div>
                         <div className="logout-container">
                             <button className='login__button__logout' onClick={handleLogout}>Logout</button>
-                            <button className='login__button__logout'
-                                    onClick={() => copyLink(props.user.collectionList[0].images[0].id)}>
-                                {copied ? "Link copied!" : "Share"}</button>
                         </div>
                     </div>
 
@@ -106,7 +107,6 @@ const Login = (props: loginProps) => {
                                                     onClick={(event) => deleteImage(event, image.id)}>
                                                 X
                                             </button>
-                                            <CopyLinkButton id={image.id} onCopy={handleCopy} />
                                         </div>
                                         <img
                                             onMouseEnter={() => onMouseEnter(index)}
@@ -115,7 +115,6 @@ const Login = (props: loginProps) => {
                                             src={image.url}
                                             alt='image'
                                         />
-
                                         {hoveredImage === index && (
                                             <div className='login__images__info'>
                                                 <h2>Title: {image.title}</h2>
@@ -123,6 +122,7 @@ const Login = (props: loginProps) => {
 
                                             </div>
                                         )}
+                                        <CopyLinkButton id={image.id} onCopy={handleCopy}/>
                                     </div>
                                 </div>
                             );
@@ -130,17 +130,19 @@ const Login = (props: loginProps) => {
                     </div>
                 </div>
                 :
-                <div className="login__button-div">
-                    <p className="sign-in">Sign in and start generating</p>
-                    <GoogleLogin
-                        onSuccess={(credentialResponse) => {
-                            handleLogin(credentialResponse)
-                            props.setCredentials(credentialResponse);
-                        }}
-                        onError={() => {
-                            console.log('Login Failed:');
-                        }}
-                    />
+                <div className="container-handleLogin">
+                    <div className="login__button-div">
+                        <p className="sign-in">Sign in and start generating</p>
+                        <GoogleLogin
+                            onSuccess={(credentialResponse) => {
+                                handleLogin(credentialResponse)
+                                props.setCredentials(credentialResponse);
+                            }}
+                            onError={() => {
+                                console.log('Login Failed:');
+                            }}
+                        />
+                    </div>
                 </div>
             }
         </div>
