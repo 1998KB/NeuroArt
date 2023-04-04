@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -25,5 +26,12 @@ public class NeuroArtControllerTest {
     void shouldThrowUnauthorizedOnGenerate() throws Exception {
         mockMvc.perform(post("/generate"))
                 .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void shouldReturnEmptyListOnGallery() throws Exception {
+        mockMvc.perform(get("/gallery"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[]"));
     }
 }
