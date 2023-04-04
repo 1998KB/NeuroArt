@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Image} from "../gallery/Gallery";
+import "./ImageShare.css"
 
 const ImageShare = () => {
     const [image, setImage] = useState<Image>({id:'',url:'',prompt:'',title:'',description:''});
@@ -18,11 +19,18 @@ const ImageShare = () => {
     return (
         <div>
             {image.url === '' ? <div>Loading...</div> :
-                <div>
-                    <h1>Title: {image.title}</h1>
-                    <img src={image.url}/>
-                    {image.description && <p>Description: {image.description}</p>}
-                    <p>Prompt: {image.prompt}</p>
+                <div className='imageshare__container'>
+                    <div>
+                        <h1 className='imageshare__title'>Title: {image.title}</h1>
+                        {image.description &&
+                            <h2>Description: {image.description}</h2>}
+                            <p>Prompt: {image.prompt}</p>
+                    </div>
+                    <div>
+                        <img className='imageshare__image' src={image.url}/>
+                    </div>
+
+
                 </div>
             }
         </div>
