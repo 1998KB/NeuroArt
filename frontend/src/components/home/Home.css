@@ -117,17 +117,30 @@
 
     .home__description{
         margin: 2em 3em 3em 0.5em;
+        animation: fadeInAnimation ease 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
 
     }
 
     .home__motto{
         font-size: 4em;
+        animation: fadeInAnimation ease 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    .wheel-container{
+        animation: fadeInAnimation ease 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
     }
 
     .home__link-div{
         margin-left: 3em;
         gap: 5em;
-        margin-bottom: 6em;
+        animation: fadeInAnimation ease 3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
     }
 
     .home__image-wheel{
@@ -235,6 +248,16 @@
     .home__try-now:active::after {
         transition: 0s;
         transform: translate(0, 5%);
+    }
+
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+
     }
 
 
