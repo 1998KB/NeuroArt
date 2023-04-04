@@ -119,7 +119,6 @@ const Login = (props: loginProps) => {
                                             <div className='login__images__info'>
                                                 <h2>Title: {image.title}</h2>
                                                 <h3>Description: {image.description}</h3>
-
                                             </div>
                                         )}
                                         <CopyLinkButton id={image.id} onCopy={handleCopy}/>

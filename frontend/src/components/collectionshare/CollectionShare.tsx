@@ -13,6 +13,7 @@ const CollectionShare = () => {
     const [images, setImages] = useState<Image[]>([]);
     const [collection, setCollection] = useState<CollectionShare>({name:'',description:'',images:[]});
     let {id} = useParams();
+    const [hoveredImage, setHoveredImage] = useState<number | null>(null);
 
     useEffect(() => {
         fetch(`https://neuroart.azurewebsites.net/collection/${id}`)
@@ -24,12 +25,29 @@ const CollectionShare = () => {
             });
     }, []);
 
+    const onMouseEnter = (index: number) => {
+        setHoveredImage(index);
+    };
+
+    const onMouseLeave = () => {
+        setHoveredImage(null);
+    };
+
     return (
         <div className='collectionshare'>
             {collection.name === '' ? <div className='collectionshare__loading'>Loading...</div> :
                 <div className='collectionshare__container'>
                     <h1 className='collectionshare__author'>Author: {collection.name}</h1>
-                    {images.map((image, index) => <img className='collectionshare__img' key={index} src={image.url}/>)}
+                    <>
+                    {images.map((image, index) =>
+                        <img onMouseEnter={() => onMouseEnter(index)}
+                             onMouseLeave={onMouseLeave}
+                             className='collectionshare__img'
+                             key={index}
+                             src={image.url}/>
+
+                    )}
+                    </>
                 </div>
             }
         </div>
@@ -39,4 +57,3 @@ const CollectionShare = () => {
 export {
     CollectionShare
 }
-

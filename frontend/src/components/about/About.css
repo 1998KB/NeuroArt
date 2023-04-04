@@ -31,17 +31,23 @@
 .about__us{
     padding-left: 3em;
     margin-bottom: 1em;
-    font-family: Poppins-Bold;
+    font-family: Poppins-Regular;
 }
 
 @media screen and (min-width: 768px) {
 
     .about__description {
         text-align: left;
+        margin-left: 6em;
     }
 
     .about {
-        height: 70vh;
+        height: 60vh;
+        padding-top: 3em;
+    }
+
+    .about__us {
+        font-size: 2em;
     }
 }
 
