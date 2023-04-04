@@ -4,11 +4,16 @@ import com.brainware.neuroArt.model.Client;
 import com.brainware.neuroArt.model.repository.ClientRepository;
 import com.brainware.neuroArt.model.repository.CollectionRepository;
 import com.brainware.neuroArt.model.repository.ImageRepository;
+import com.brainware.neuroArt.service.NeuroArtService;
+import com.brainware.neuroArt.service.OpenApiService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.context.ActiveProfiles;
@@ -35,6 +40,9 @@ public class NeuroArtControllerTest {
 
     @Autowired
     ImageRepository imageRepository;
+
+    @MockBean
+    OpenApiService openApiService;
 
     @AfterEach
     void cleanup() {
@@ -96,9 +104,18 @@ public class NeuroArtControllerTest {
                 .andExpect(content().string("Image with given id not found!"));
     }
 
-//    @Test
+    @Test
     void shouldGenerateImage() throws Exception {
-        // given
+        Mockito.when(openApiService.generateImage(Mockito.anyString())).thenReturn("""
+                        {
+                            "data" : [
+                                {
+                                    "url" : "url://some_url"
+                                }
+                            ]
+                        }
+                        """
+                );
         createClient();
 
         mockMvc.perform(post("/generate")
@@ -106,8 +123,8 @@ public class NeuroArtControllerTest {
                 .content("aswdw")
                 .with(SecurityMockMvcRequestPostProcessors.jwt().jwt(jwt -> jwt
                         .claim("sub", "123"))))
-                .andExpect(status().isCreated())
-                .andExpect(content().string(""));
+                .andExpect(status().isOk())
+                .andExpect(content().string("url://some_url"));
     }
 
     private void createClient() throws Exception {
