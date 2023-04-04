@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Image} from "../gallery/Gallery";
+import './CollectionShare.css'
 
 interface CollectionShare {
     name: string,
@@ -24,11 +25,11 @@ const CollectionShare = () => {
     }, []);
 
     return (
-        <div>
-            {collection.name === '' ? <div>Loading...</div> :
-                <div>
-                    <h1>Author: {collection.name}</h1>
-                    {images.map((image, index) => <img key={index} src={image.url}/>)}
+        <div className='collectionshare'>
+            {collection.name === '' ? <div className='collectionshare__loading'>Loading...</div> :
+                <div className='collectionshare__container'>
+                    <h1 className='collectionshare__author'>Author: {collection.name}</h1>
+                    {images.map((image, index) => <img className='collectionshare__img' key={index} src={image.url}/>)}
                 </div>
             }
         </div>
@@ -38,3 +39,4 @@ const CollectionShare = () => {
 export {
     CollectionShare
 }
+
