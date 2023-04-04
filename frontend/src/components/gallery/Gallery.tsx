@@ -1,6 +1,7 @@
 import "./Gallery.css";
 import ImageCarousel from "../imageCarousel/ImageCarousel";
 import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export type Image = {
     id: string;
@@ -13,7 +14,7 @@ export type Image = {
 const Gallery = () => {
 
     const [images, setImages] = useState<Image[]>([]);
-    const [deletedImages, setDeletedImages] = useState<string[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchImages() {
@@ -25,20 +26,12 @@ const Gallery = () => {
     }, []);
 
     const items = images
-        .filter((image) => !deletedImages.includes(image.id))
         .map((image) => ({
             imageAlt: image.title,
             imageSrc: image.url,
             imageId: image.id,
         }));
 
-    async function deleteImage(event: React.MouseEvent<HTMLButtonElement>, id: string) {
-        event.preventDefault();
-        await fetch(`https://neuroart.azurewebsites.net/image/${id}`, {
-            method: "DELETE",
-        });
-        setDeletedImages([...deletedImages, id]);
-    }
 
     return (
         <div className="gallery">
@@ -46,10 +39,7 @@ const Gallery = () => {
             <div className="gallery__image-container">
                 {items.map((item, index) => (
                     <div key={index}>
-                        <img className="gallery__image" src={item.imageSrc} />
-                        <button className="imagecarousel__button-delete" onClick={(event) => deleteImage(event, item.imageId)}>
-                            Delete
-                        </button>
+                        <img onClick={() => navigate(`/image/${item.imageId}`)} className="gallery__image" src={item.imageSrc} />
                     </div>
                 ))}
             </div>
