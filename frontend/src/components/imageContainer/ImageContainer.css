@@ -7,6 +7,19 @@
     margin: 1em;
 }
 
+.imagecontainer__title-input-error::placeholder {
+    margin: 1em;
+    border-radius: 10px;
+    width: 20vw;
+    color: red;
+}
+.imagecontainer__title-input-error {
+    margin: 1em;
+    padding: 1em;
+    border-radius: 10px;
+    width: 20vw;
+}
+
 .imagecontainer__generated-image {
     width: 90%;
     height: 90%;
