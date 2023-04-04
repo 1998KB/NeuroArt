@@ -127,6 +127,7 @@
     .home__link-div{
         margin-left: 3em;
         gap: 5em;
+        margin-bottom: 6em;
     }
 
     .home__image-wheel{
@@ -281,4 +282,5 @@
 /*        width: 20em;*/
 /*    }*/
 /*}*/
+
 
