@@ -1,12 +1,10 @@
 package com.brainware.neuroArt.model;
 
-import com.brainware.neuroArt.controller.dto.ClientDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Table(name = "client")
