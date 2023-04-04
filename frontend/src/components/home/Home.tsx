@@ -19,7 +19,7 @@ const Home = () => {
 
                 <div className='home__link-div'>
                     <Link to='/generate'>
-                        <button className='home__try-now'>Try Now</button>
+                        <button className='home__visit-our-gallery'>Try Now</button>
                     </Link>
                     <div className='gallery1'>
                         <Link to='/gallery'>
