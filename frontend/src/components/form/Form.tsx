@@ -25,6 +25,7 @@ const Form = (props: FormProps) => {
                     setIsSaved={props.setIsSaved}
                     saveButtonText={props.saveButtonText}
                     setSaveButtonText={props.setSaveButtonText}
+                    user={props.user}
                     />
             </form>
         </div>
