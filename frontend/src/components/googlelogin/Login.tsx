@@ -131,6 +131,7 @@ const Login = (props: loginProps) => {
                 </div>
                 :
                 <div className="login__button-div">
+                    <p className="sign-in">Sign in and start generating</p>
                     <GoogleLogin
                         onSuccess={(credentialResponse) => {
                             handleLogin(credentialResponse)
