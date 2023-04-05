@@ -8,6 +8,9 @@ const ImageContainer = (props: ImageContainerProps) => {
     const [inputTitleError, setInputTitleError] = useState(false);
 
     const handleSave = async () => {
+        if (props.isDisabled) {
+            return;
+        }
         if (props.inputTitle == null) {
             setInputTitleError(true)
             return;
@@ -43,7 +46,7 @@ const ImageContainer = (props: ImageContainerProps) => {
         props.setIsSaved(true);
         setIsSaving(false);
         props.setSaveButtonText("Saved");
-        props.setIsDisabled(false);
+        props.setIsDisabled(true);
     };
 
 
