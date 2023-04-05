@@ -13,6 +13,7 @@ import {User} from "../../interfaces";
 import Footer from "../footer/Footer";
 import {CollectionShare} from "../collectionshare/CollectionShare";
 import {ImageShare} from "../imageshare/ImageShare";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 
 const AppContainer = () => {
@@ -23,6 +24,7 @@ const AppContainer = () => {
         <>
             <div>
                 <Header user={user}/>
+                <ScrollToTop/>
             </div>
             <div>
                 <GoogleOAuthProvider clientId={"946318872366-410nr0nld5sghv8r8nntkllokcritu06.apps.googleusercontent.com"}>
