@@ -6,7 +6,8 @@ const Footer = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if(window.pageYOffset > 80) {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            if (scrollTop + clientHeight >= scrollHeight) {
                 setShowFooter(true);
             } else {
                 setShowFooter(false);
@@ -14,12 +15,12 @@ const Footer = () => {
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    })
+    }, []);
 
     return (
         <div className='foot'>
-            <p className={`${showFooter ? "none" : "arrow"}`}>↓</p>
             <div className={`footer__container${showFooter ? " show" : ""}`}>
+            {/*<div className={`footer__container show`}>*/}
                 <div className='footer'>
                     <div className='footer__logo'>
                         <img className='footer__image-wheel' src={require('../../Images/LogoImgWhite.png')}/>

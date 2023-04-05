@@ -74,16 +74,18 @@ const Generate = (props: generateProps) => {
                     save your favorite creations to your account.
                     Start exploring today and see what you can create!</p>
             </div>
-            <Form setInputTitle={setInputTitle}
-                  setInputDescription={setInputDescription}
-                  setPrompt={setPrompt}
-                  isLoading={isLoading}
-                  setIsDisable={setIsDisabled}
-                  setGeneratedImage={setGeneratedImage}
-                  setIsSaved={setIsSaved}
-                  saveButtonText={saveButtonText}
-                  setSaveButtonText={setSaveButtonText}
-                  user={props.user}/>
+            <div className="form-container">
+                <Form setInputTitle={setInputTitle}
+                      setInputDescription={setInputDescription}
+                      setPrompt={setPrompt}
+                      isLoading={isLoading}
+                      setIsDisable={setIsDisabled}
+                      setGeneratedImage={setGeneratedImage}
+                      setIsSaved={setIsSaved}
+                      saveButtonText={saveButtonText}
+                      setSaveButtonText={setSaveButtonText}
+                      user={props.user}/>
+            </div>
             <ImageContainer credentials={props.credentials} inputTitle={inputTitle}
                             setInputTitle={setInputTitle}
                             inputDescription={inputDescription}

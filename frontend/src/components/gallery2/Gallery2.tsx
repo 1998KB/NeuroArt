@@ -78,6 +78,8 @@ const Gallery2 = () => {
             <div className="gallery2-container__images">
                 <button className='gallery2-container__images__button' onClick={previousImage}>❰</button>
                 {activeImages.map((index, idx) => (
+                    <div className="gallery2-container">
+                        <a href="#" onMouseDown={(e) => { e.preventDefault(); navigate(`/collection/${images[index].id}`); }}>Go to Author</a>
                     <div
 
                         className="gallery2-container__images__carrousel"
@@ -85,12 +87,11 @@ const Gallery2 = () => {
                         onMouseEnter={() => onMouseEnter(index)}
                         onMouseLeave={onMouseLeave}
                     >
-                        <a href="#" onMouseDown={(e) => { e.preventDefault(); navigate(`/collection/${images[index].id}`); }}>Go to Author</a>
                         <img className="gallery2-container__images__image" key={index} src={images[index]?.url}/>
                         {hoveredImage === index &&
                             <ImageInfo description={images[index]?.description} title={images[index]?.title}/>}
                     </div>
-
+                    </div>
                 ))}
                 <button className='gallery2-container__images__button' onClick={nextImage}>❱</button>
             </div>
